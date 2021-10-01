@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "751055206136",
+    "project_id": "crypto-expo",
+    "storage_bucket": "crypto-expo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751055206136:android:63aef60cd1c2ae2d192d0d",
+        "android_client_info": {
+          "package_name": "app.cryptoexpo.cryptoexpo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751055206136-o992sq54014tptnmeko2tmtg826u3g30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyX8M8EFzMK9zxB_9cMfF-p4GBVg8Ym-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751055206136-o992sq54014tptnmeko2tmtg826u3g30.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "751055206136-32tmpqimhl6bb40ec88ri7m4i8djmtpo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.cryptoexpo.cryptoexpo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
