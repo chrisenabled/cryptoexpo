@@ -29,12 +29,24 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  # The following adds the FlutterFire libraries for the firebase products used in the app
+  firebase_core: ^1.7.0
+  firebase_auth: ^3.1.2
+  cloud_firestore: ^2.5.3
+
+  # GetX Flutter solution for DI, Routing, State, Navigation, MVC
+  get: ^4.3.8
+  get_storage: ^2.0.3
+
+  # Cryptographic hashing
+  crypto: ^3.0.1
+
+  http: ^0.13.3
+  csv: ^5.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
@@ -44,16 +56,10 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/default.png
+    - assets/images/defaultDark.png
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
