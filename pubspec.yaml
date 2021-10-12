@@ -43,8 +43,11 @@ dependencies:
 
   http: ^0.13.3
   csv: ^5.0.0
+  device_preview: ^0.7.4
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
+  flutter_native_splash: ^1.2.4
   flutter_test:
     sdk: flutter
 
@@ -57,6 +60,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/images/
     - assets/images/default.png
     - assets/images/defaultDark.png
 

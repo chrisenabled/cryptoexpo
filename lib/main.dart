@@ -1,24 +1,40 @@
-import 'package:cryptoexpo/ui/components/loading.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'constants/app_routes.dart';
-import 'constants/app_themes.dart';
-import 'controllers/auth_controller.dart';
-import 'controllers/language_controller.dart';
-import 'controllers/theme_controller.dart';
-import 'helpers/localization.g.dart';
+import 'common/widgets/loading.dart';
+import 'config/routes/app_routes.dart';
+import 'config/themes/app_themes.dart';
+import 'config/languages/language_controller.dart';
+import 'config/themes/theme_controller.dart';
+import 'config/languages/localization.g.dart';
+import 'core/auth/auth_controller.dart';
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
+
   await GetStorage.init();
+
+  await precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoder,
+      'assets/images/cx-landing.svg'),null);
+
   Get.put<AuthController>(AuthController());
+  //
   Get.put<ThemeController>(ThemeController());
+
   Get.put<LanguageController>(LanguageController());
+
   runApp(MyApp());
+  // if(kReleaseMode) {
+  //   runApp(MyApp());
+  // } else {
+  //   runApp(DevicePreview(builder: (context) => MyApp()));
+  // }
 }
 
 class MyApp extends StatelessWidget {
