@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cryptoexpo/core/auth/auth.dart';
 import 'package:get/get.dart';
-import 'package:cryptoexpo/common/widgets/widgets.dart';
-import 'package:cryptoexpo/common/models/models.dart';
+import 'package:cryptoexpo/widgets/widgets.dart';
+import 'package:cryptoexpo/modules/models/models.dart';
 
 import '../auth/auth_controller.dart';
 

@@ -1,5 +1,6 @@
 import 'package:cryptoexpo/core/auth/user_model.dart';
-import 'package:cryptoexpo/common/widgets/loading.dart';
+import 'package:cryptoexpo/utils/helpers/helpers.dart';
+import 'package:cryptoexpo/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
@@ -7,7 +8,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoexpo/core/auth/auth.dart';
-import 'package:cryptoexpo/helpers/helpers.dart';
 
 import '../home_ui.dart';
 
@@ -21,7 +21,7 @@ class AuthController extends GetxController {
   Rxn<User> firebaseUser = Rxn<User>();
   Rxn<UserModel> firestoreUser = Rxn<UserModel>();
   final RxBool admin = false.obs;
-
+  final RxDouble counter = 0.0.obs; //only for demonstration
   @override
   void onReady() async {
     //run every time auth state changes
@@ -247,5 +247,11 @@ class AuthController extends GetxController {
     emailController.clear();
     passwordController.clear();
     return _auth.signOut();
+  }
+
+  //only for demonstration
+  toggleAdmin() {
+    admin.value = !admin.value;
+    counter.value += 98.3;
   }
 }

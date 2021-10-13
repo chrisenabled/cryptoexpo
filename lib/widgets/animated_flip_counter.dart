@@ -132,60 +132,60 @@ class AnimatedFlipCounter extends StatelessWidget {
     List<int> digits = value == 0 ? [0] : [];
     int v = value.abs();
     while (v > 0) {
-    digits.add(v);
-    v = v ~/ 10;
+      digits.add(v);
+      v = v ~/ 10;
     }
     while (digits.length <= fractionDigits) {
-    digits.add(0); // add trailing zeroes if needed
+      digits.add(0); // add trailing zeroes if needed
     }
     digits = digits.reversed.toList(growable: false);
 
     return DefaultTextStyle.merge(
-    style: style,
-    child: Row(
-    mainAxisSize: MainAxisSize.min,
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-    if (prefix != null) Text(prefix!),
-    ClipRect(
-    child: TweenAnimationBuilder(
-    // Animate the negative sign (-) appear and disappearing
-    duration: duration,
-    tween: Tween(end: value < 0 ? 1.0 : 0.0),
-    builder: (_, double v, __) => Center(
-    widthFactor: v,
-    child: Text(
-    "-",
-    style: TextStyle(color: color.withOpacity(v)),
-    ),
-    ),
-    ),
-    ),
-    // Draw digits before the decimal point
-    for (int i = 0; i < digits.length - fractionDigits; i++)
-    _SingleDigitFlipCounter(
-    key: ValueKey(digits.length - i),
-    value: digits[i].toDouble(),
-    duration: duration,
-    curve: curve,
-    size: prototypeDigit.size,
-    color: color,
-    ),
-    // Draw the decimal point
-    if (fractionDigits != 0) Text("."),
-    // Draw digits after the decimal point
-    for (int i = digits.length - fractionDigits; i < digits.length; i++)
-    _SingleDigitFlipCounter(
-    key: ValueKey("decimal$i"),
-    value: digits[i].toDouble(),
-    duration: duration,
-    curve: curve,
-    size: prototypeDigit.size,
-    color: color,
-    ),
-    if (suffix != null) Text(suffix!),
-    ],
-    ),
+      style: style,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (prefix != null) Text(prefix!),
+          ClipRect(
+            child: TweenAnimationBuilder(
+              // Animate the negative sign (-) appear and disappearing
+              duration: duration,
+              tween: Tween(end: value < 0 ? 1.0 : 0.0),
+              builder: (_, double v, __) => Center(
+                widthFactor: v,
+                child: Text(
+                  "-",
+                  style: TextStyle(color: color.withOpacity(v)),
+                ),
+              ),
+            ),
+          ),
+          // Draw digits before the decimal point
+          for (int i = 0; i < digits.length - fractionDigits; i++)
+            _SingleDigitFlipCounter(
+              key: ValueKey(digits.length - i),
+              value: digits[i].toDouble(),
+              duration: duration,
+              curve: curve,
+              size: prototypeDigit.size,
+              color: color,
+            ),
+          // Draw the decimal point
+          if (fractionDigits != 0) Text("."),
+          // Draw digits after the decimal point
+          for (int i = digits.length - fractionDigits; i < digits.length; i++)
+            _SingleDigitFlipCounter(
+              key: ValueKey("decimal$i"),
+              value: digits[i].toDouble(),
+              duration: duration,
+              curve: curve,
+              size: prototypeDigit.size,
+              color: color,
+            ),
+          if (suffix != null) Text(suffix!),
+        ],
+      ),
     );
   }
 }

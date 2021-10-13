@@ -1,8 +1,8 @@
+import 'package:cryptoexpo/utils/helpers/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:cryptoexpo/common/widgets/widgets.dart';
-import 'package:cryptoexpo/helpers/helpers.dart';
+import 'package:cryptoexpo/widgets/widgets.dart';
 import 'package:cryptoexpo/core/auth/auth.dart';
 
 import 'auth_controller.dart';

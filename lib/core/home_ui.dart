@@ -1,6 +1,10 @@
+import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/core/settings/settings_ui.dart';
+import 'package:cryptoexpo/widgets/BullBearIcon.dart';
+import 'package:cryptoexpo/widgets/animated_flip_counter.dart';
+import 'package:cryptoexpo/widgets/animated_flipper.dart';
 import 'package:flutter/material.dart';
-import 'package:cryptoexpo/common/widgets/widgets.dart';
+import 'package:cryptoexpo/widgets/widgets.dart';
 import 'package:get/get.dart';
 
 import 'auth/auth_controller.dart';
@@ -27,41 +31,65 @@ class HomeUI extends StatelessWidget {
               ),
               body: Center(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    SizedBox(height: 120),
+                    Obx(() => BullBearIcon(
+                          isBullRun: controller.admin.value,
+                          bgColor: AppThemes.whiteLilac,
+                          iconSize: 48.0,
+                        )),
                     Avatar(controller.firestoreUser.value!),
-                    Expanded(child:
-                      Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    Obx(() =>
+                        AnimatedFlipCounter(
+                          value: 2000 + controller.counter.value,
+                          prefix: "Profit ",
+                          duration: Duration(seconds: 1),
+                          curve: Curves.bounceOut,
+                          fractionDigits: 2,
+                          textStyle: TextStyle(
+                          fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.greenAccent,
+                            shadows: [
+                              BoxShadow(
+                                color: Colors.green,
+                                offset: Offset(1, 1),
+                                blurRadius: 2,
+                              ),
+                            ],
+                          )
+                        )
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
+
                       children: <Widget>[
-                        FormVerticalSpace(),
                         Text(
                             'home.uidLabel'.tr +
                                 ': ' +
                                 controller.firestoreUser.value!.uid,
                             style: TextStyle(fontSize: 16)),
-                        FormVerticalSpace(),
                         Text(
                             'home.nameLabel'.tr +
                                 ': ' +
                                 controller.firestoreUser.value!.name,
                             style: TextStyle(fontSize: 16)),
-                        FormVerticalSpace(),
                         Text(
                             'home.emailLabel'.tr +
                                 ': ' +
                                 controller.firestoreUser.value!.email,
                             style: TextStyle(fontSize: 16)),
-                        FormVerticalSpace(),
                         Text(
                             'home.adminUserLabel'.tr +
                                 ': ' +
                                 controller.admin.value.toString(),
                             style: TextStyle(fontSize: 16)),
                       ],
-                    )
                     ),
+                    FloatingActionButton(
+                            child: Icon(Icons.add),
+                            onPressed: () => controller.toggleAdmin()),
                   ],
                 ),
               ),

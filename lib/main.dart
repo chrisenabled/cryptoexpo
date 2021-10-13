@@ -1,10 +1,9 @@
+import 'package:cryptoexpo/widgets/loading.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
-import 'common/widgets/loading.dart';
 import 'config/routes/app_routes.dart';
 import 'config/themes/app_themes.dart';
 import 'config/languages/language_controller.dart';
