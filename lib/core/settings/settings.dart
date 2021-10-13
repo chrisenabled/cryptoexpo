@@ -1,4 +1,4 @@
-import 'package:cryptoexpo/common/models/menu_option_model.dart';
+import 'package:cryptoexpo/modules/models/menu_option_model.dart';
 import 'package:cryptoexpo/constants/constants.dart';
 
 class Settings {
