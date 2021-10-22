@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoexpo/core/auth/auth.dart';
 
-import '../home_ui.dart';
+import '../home/home_ui.dart';
 
 class AuthController extends GetxController {
   static AuthController to = Get.find();
@@ -22,13 +22,13 @@ class AuthController extends GetxController {
   Rxn<UserModel> firestoreUser = Rxn<UserModel>();
   final RxBool admin = false.obs;
   final RxDouble counter = 0.0.obs; //only for demonstration
+  final RxInt selectedPos = 0.obs; //only for demonstration
+
   @override
   void onReady() async {
     //run every time auth state changes
     ever(firebaseUser, handleAuthChanged);
-
     firebaseUser.bindStream(user);
-
     super.onReady();
   }
 

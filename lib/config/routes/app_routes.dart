@@ -2,7 +2,7 @@ import 'package:cryptoexpo/core/auth/reset_password_ui.dart';
 import 'package:cryptoexpo/core/auth/sign_in_ui.dart';
 import 'package:cryptoexpo/core/auth/sign_up_ui.dart';
 import 'package:cryptoexpo/core/auth/update_profile_ui.dart';
-import 'package:cryptoexpo/core/home_ui.dart';
+import 'package:cryptoexpo/core/home/home_ui.dart';
 import 'package:cryptoexpo/core/onboarding/landing_ui.dart';
 import 'package:cryptoexpo/core/settings/settings_ui.dart';
 import 'package:cryptoexpo/core/splash_ui.dart';
