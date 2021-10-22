@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
+import 'app_themes.dart';
 
 // https://gist.github.com/RodBr/37310335c6639f486bb3c8a628052405
 //https://medium.com/swlh/flutter-dynamic-themes-in-3-lines-c3b375f292e3
@@ -19,6 +22,12 @@ class ThemeController extends GetxController {
     _themeMode = getThemeModeFromString(value);
     Get.changeThemeMode(_themeMode);
     await store.write('theme', value);
+    if(this.isDarkModeOn) {
+      AppThemes.darkSystemUiOverlayStyle();
+    } else {
+      AppThemes.lightSystemUiOverlayStyle();
+
+    }
     update();
   }
 
