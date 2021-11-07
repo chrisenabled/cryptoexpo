@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -12,11 +11,11 @@ class LottieTabItem {
   final String label;
   final double size;
 
-  LottieTabItem(this.iconPathOnLight, this.iconPathOnDark, this.label, {this.size = 0});
+  LottieTabItem(this.iconPathOnLight, this.iconPathOnDark, this.label,
+      {this.size = 0});
 }
 
 class LottieBottomNavigation extends StatefulWidget {
-
   final List<LottieTabItem> tabItems;
   final double itemsSize;
   final Color backgroundColor;
@@ -31,14 +30,13 @@ class LottieBottomNavigation extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _LottieBottomNavigationState();
-
 }
 
 class _LottieBottomNavigationState extends State<LottieBottomNavigation>
-  with TickerProviderStateMixin {
-
+    with TickerProviderStateMixin {
   late AnimationController idleAnimation;
   late AnimationController onSelectedAnimation;
+
   // late AnimationController onChangedAnimation; for reverse animation
 
   late LottieBottomNavigationController _controller;
@@ -47,6 +45,7 @@ class _LottieBottomNavigationState extends State<LottieBottomNavigation>
   var previousIndex;
 
   Duration animationDuration = Duration(milliseconds: 700);
+
   @override
   void initState() {
     super.initState();
@@ -76,26 +75,24 @@ class _LottieBottomNavigationState extends State<LottieBottomNavigation>
   }
 
   List<BottomNavigationBarItem> barItems() {
-     return widget.tabItems.asMap().entries.map((e) {
-       int index = e.key;
-       final tabItem = e.value;
-       return BottomNavigationBarItem(
-         icon: Lottie.asset(
-              Get.isDarkMode? tabItem.iconPathOnDark : tabItem.iconPathOnLight,
-             height: tabItem.size == 0 ? widget.itemsSize : tabItem.size,
-             controller: selectedIndex == index
-                 ? onSelectedAnimation
-                 : previousIndex == index
-                 ? idleAnimation  //onChangedAnimation
-                 : idleAnimation
-         ),
-         label: tabItem.label,
-       );
-     }).toList();
+    return widget.tabItems.asMap().entries.map((e) {
+      int index = e.key;
+      final tabItem = e.value;
+      return BottomNavigationBarItem(
+        icon: Lottie.asset(
+            Get.isDarkMode ? tabItem.iconPathOnDark : tabItem.iconPathOnLight,
+            height: tabItem.size == 0 ? widget.itemsSize : tabItem.size,
+            controller: selectedIndex == index
+                ? onSelectedAnimation
+                : previousIndex == index
+                    ? idleAnimation //onChangedAnimation
+                    : idleAnimation),
+        label: tabItem.label,
+      );
+    }).toList();
   }
 
   _setSelectedIndex(int index) {
-
     _makeSelectedIndexAnimate();
 
     // onChangedAnimation.value = 1;
@@ -107,7 +104,6 @@ class _LottieBottomNavigationState extends State<LottieBottomNavigation>
       previousIndex = selectedIndex;
       selectedIndex = index;
     });
-
   }
 
   _makeSelectedIndexAnimate() {
@@ -116,37 +112,31 @@ class _LottieBottomNavigationState extends State<LottieBottomNavigation>
   }
 
   void _newSelectedPosNotify() {
-    print("This tab has been selected: ${widget.tabItems[_controller.value].label}");
+    print(
+        "This tab has been selected: ${widget.tabItems[_controller.value].label}");
     _setSelectedIndex(_controller.value);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Theme(data: Theme.of(context).copyWith(
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-    ),
-        child:  BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      showSelectedLabels: true,
-        showUnselectedLabels: true,
-        // backgroundColor: widget.backgroundColor,
-        selectedFontSize: 10.0,
-        unselectedFontSize: 10.0,
-        selectedLabelStyle: TextStyle(
-          height: 2
+    return Theme(
+        data: Theme.of(context).copyWith(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
         ),
-      unselectedLabelStyle: TextStyle(
-          height: 2
-      ),
-        currentIndex: selectedIndex,
-        onTap: (index) {
-          if(index != selectedIndex) {
-            _controller.value = index;
-          }
-        },
-        items: barItems(),
-    ));
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          // backgroundColor: widget.backgroundColor,
+          currentIndex: selectedIndex,
+          onTap: (index) {
+            if (index != selectedIndex) {
+              _controller.value = index;
+            }
+          },
+          items: barItems(),
+        ));
   }
 }
 

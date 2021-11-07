@@ -11,13 +11,13 @@ class AppBottomNav extends StatelessWidget {
 
   final List<LottieTabItem> tabItems = List.of([
     new LottieTabItem('assets/lottie/signal_on_light.json',
-        'assets/lottie/signal_on_dark.json', "Signals"),
+        'assets/lottie/signal_on_dark.json', "Derivatives"),
     new LottieTabItem('assets/lottie/markets_on_light.json',
         'assets/lottie/markets_on_dark.json', "Markets"),
     new LottieTabItem(
-        'assets/lottie/trading.json', 'assets/lottie/trading.json', "Trainers"),
+        'assets/lottie/trading.json', 'assets/lottie/trading.json', "Spot"),
     new LottieTabItem('assets/lottie/profile_on_light.json',
-        'assets/lottie/profile_on_dark.json', "Profile"),
+        'assets/lottie/profile_on_dark.json', "Assets"),
   ]);
 
   final ThemeController themeController = ThemeController.to;

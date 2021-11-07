@@ -8,10 +8,28 @@ class Globals {
 //https://docs.google.com/spreadsheets/d/1oS7iJ6ocrZBA53SxRfKF0CG9HAaXeKtzvsTBhgG4Zzk/edit?usp=sharing
 }
 
+enum TradePeriod {
+  FiveMin,
+  FifteenMin,
+  FourHours,
+  OneWeek,
+}
+
+extension TradePeriodExtension on TradePeriod {
+  String get string {
+    switch(this) {
+      case TradePeriod.FiveMin: return '5m';
+      case TradePeriod.FifteenMin: return '15m';
+      case TradePeriod.FourHours: return '4h';
+      case TradePeriod.OneWeek: return '1w';
+    }
+  }
+}
+
 enum Lang {
+  english,
   chinese,
   deutsche,
-  english,
   spanish,
   french,
   hindi,
@@ -20,7 +38,7 @@ enum Lang {
   russian
 }
 
-extension LangExtention on Lang {
+extension LangExtension on Lang {
 
   String get name {
     switch(this) {

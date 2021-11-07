@@ -1,10 +1,16 @@
 
 
+import 'package:cryptoexpo/config/languages/select_language_ui.dart';
+import 'package:cryptoexpo/widgets/simple_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Landing extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,16 +18,53 @@ class Landing extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              child: SvgPicture.asset(
-                'assets/images/cx-landing.svg',
-                semanticsLabel: 'Landing Page Svg',
-                width: MediaQuery.of(context).size.width,
+              child: Stack(
+                children: [
+                  SvgPicture.asset(
+                    'assets/images/cx-landing.svg',
+                    semanticsLabel: 'Landing Page Svg',
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                  SafeArea(
+                    child: Align(
+                      alignment: Alignment(0.8, 0),
+                      child: GestureDetector(
+                        onTap: () => Get.to(() => SelectLanguage()),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.blue.shade100,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(width: 2.0, color: const Color(0xFFFFFFFF))
+                          ),
+                          child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                    'lang.code'.tr.toString().toUpperCase(),
+                                    style: Theme.of(context).textTheme.caption?.copyWith(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold
+                                    )
+                                ),
+                                SizedBox(width: 5,),
+                                Icon(
+                                  Icons.keyboard_arrow_down_sharp,
+                                  size: 16,
+                                )
+                              ],
+                            ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
             Column(
               children: [
                 Text(
-                  'Welcome to Crypto Expo',
+                  'landing.WelcomeMsg'.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 24,
@@ -32,34 +75,30 @@ class Landing extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
                   child: Text(
-                    'Improve your trading confidence with quality signals',
+                    'landing.WelcomeMsgSubtitle'.tr,
                     style: TextStyle(
-                        letterSpacing: 0.5,
-                        fontSize: 13,
-                        color: Color.fromRGBO(0, 0, 0, 0.38823529411764707)
+                        color: Colors.black54
                     ),
                     textAlign: TextAlign.center,
                   ),
                 ),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 30, right: 30, top: 0, bottom: 30),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF223253),
-                  minimumSize: Size(double.infinity, 30), // double.infinity is the width and 30 is the height
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SimpleButton(
+                  text: 'landing.GetStartedButtonText'.tr,
+                  onPressed: () {},
                 ),
-                onPressed: () {},
-                child: Padding(
-                    child: Text(
-                        'Get Started',
-                        style: TextStyle(
-                          fontSize: 18,
-                        )
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15)),
-              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('question.haveAccount'.tr),
+                    TextButton(onPressed: (){}, child: Text('auth.signInButton'.tr))
+                  ],
+                )
+              ],
             ),
           ],
         ),
