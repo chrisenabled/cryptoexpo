@@ -1,101 +1,96 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
+import 'package:cryptoexpo/constants/test_data.dart';
+import 'package:cryptoexpo/core/home/home_controller.dart';
 import 'package:cryptoexpo/core/settings/settings_ui.dart';
 import 'package:cryptoexpo/widgets/app_buttom_nav.dart';
+import 'package:cryptoexpo/widgets/my_tab_bar.dart';
+import 'package:cryptoexpo/widgets/my_tab_bar_view.dart';
+import 'package:cryptoexpo/core/home/signals_ui.dart';
 import 'package:cryptoexpo/widgets/bull_bear_icon.dart';
 import 'package:cryptoexpo/widgets/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptoexpo/widgets/widgets.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../auth/auth_controller.dart';
 
 class HomeUI extends StatelessWidget {
-  final double bottomNavBarHeight = 60;
 
+  final RxBool isBackgroundBar = false.obs;
 
-  @override
   Widget build(BuildContext context) {
-    return GetBuilder<AuthController>(
-        init: AuthController(),
-        builder: (controller) => controller.firestoreUser.value!.uid == null
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Scaffold(
-                    bottomNavigationBar: AppBottomNav(
-                        selectedCallback: (int selectedPos) {
-                          controller.selectedPos.value = selectedPos;
-                          // setSystemUIOverlayStyle(context);
-                        }
-                    ),
-                    appBar: AppBar(
-                      title: Text('home.title'.tr),
-                      actions: [
-                        IconButton(
-                            icon: Icon(Icons.settings),
-                            onPressed: () {
-                              Get.to(() => SettingsUI());
-                            }),
-                      ],
-                      // backgroundColor: tabItems[controller.selectedPos.value].circleColor,
-                    ),
-                    body: Stack(
-                      children: <Widget>[
-                        Padding(
-                          child: Obx(() => BodyContainer(
-                                frontPage: _frontPage(controller),
-                                selectedPos: controller.selectedPos.value,
-                              )),
-                          padding: EdgeInsets.only(bottom: bottomNavBarHeight),
-                        ),
-                      ],
-                    )));
+    return GetBuilder<HomeController>(
+        init: HomeController(),
+        // builder: (controller) => controller.firestoreUser.value!.uid == null
+        builder: (controller) => Scaffold(
+            appBar: _buildAppBar(controller.selectedPos.value),
+            body: BottomNavViewHolder(
+                selectedPos: controller.selectedPos.value,
+                views: [_buildHomeWidget()]),
+            bottomNavigationBar:
+                AppBottomNav(selectedCallback: (int selectedPos) {
+              controller.setSelectedPos(selectedPos);
+            })));
   }
-}
 
-class BodyContainer extends StatelessWidget {
-  BodyContainer(
-      {this.color = Colors.white,
-      required this.selectedPos,
-      required this.frontPage});
+  PreferredSizeWidget _buildAppBar(int selectedPos) {
+    return AppBar(
+      title: Text('home.title'.tr),
+      actions: [
+        IconButton(
+            icon: Icon(Icons.share_arrival_time_outlined),
+            onPressed: () {
+              isBackgroundBar.toggle();
+            }),
+        IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Get.to(() => SettingsUI());
+            }),
+      ],
+    ); //
+  }
 
-  final Color color;
-  final int selectedPos;
-  final Widget frontPage;
+  Widget _buildHomeWidget() {
+    List<String> tabs = ['Derivatives', 'Spot'];
 
-  @override
-  Widget build(BuildContext context) {
-    String slogan;
+    PreferredSizeWidget myTabBar = MyTabBar(
+      tabs: tabs,
+      rightButtonText: 'All Orders',
+      rightButtonIcon: Icons.article_outlined,
+      padding: EdgeInsets.symmetric(horizontal: 15),
+    );
 
-    if (selectedPos == 0) {
-      return frontPage;
-    }
+    Widget myTabBarView = Obx(() => MyTabBarView(
+          isBackgroundBar: isBackgroundBar.value,
+          models: myTabBarViewModels,
+          padding: EdgeInsets.symmetric(horizontal: 15),
+        ));
 
-    switch (selectedPos) {
-      case 1:
-        slogan = "Find, Check, Use";
-        break;
-      case 2:
-        slogan = "Receive, Review, Rip";
-        break;
-      default:
-        slogan = "Noise, Panic, Ignore";
-        break;
-    }
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Theme.of(context).primaryColor,
-      child: Center(
-        child: Text(
-          slogan,
-          style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-      ),
+    return Home(
+      tabBar: myTabBar,
+      tabBarView: myTabBarView,
+      tabCount: tabs.length,
     );
   }
 }
+
+class BottomNavViewHolder extends StatelessWidget {
+  BottomNavViewHolder({required this.selectedPos, required this.views});
+
+  final int selectedPos;
+  final List<Widget> views;
+
+  @override
+  Widget build(BuildContext context) {
+    if (selectedPos > (views.length - 1)) {
+      return Center(
+        child: Text('Position $selectedPos does not have a view'),
+      );
+    }
+    return views[selectedPos];
+  }
+}
+
 
 Widget _frontPage(AuthController controller) {
   return Container(
