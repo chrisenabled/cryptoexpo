@@ -68,3 +68,25 @@ extension LangExtension on Lang {
     }
   }
 }
+
+enum Markets {
+  BTC_USDT,
+  ETH_USDT,
+  BIT_USDT,
+  ADA_USDT,
+  XRP_USDT,
+  DOT_USDT,
+}
+
+extension MarketsExt on Markets {
+  String get string {
+    switch(this) {
+      case Markets.BTC_USDT: return "BTC/USDT";
+      case Markets.ETH_USDT: return "ETH/USDT";
+      case Markets.BIT_USDT: return "BIT/USDT";
+      case Markets.ADA_USDT: return "ADA/USDT";
+      case Markets.XRP_USDT: return "XRP/USDT";
+      case Markets.DOT_USDT: return "DOT/USDT";
+    }
+  }
+}

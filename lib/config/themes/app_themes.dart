@@ -10,6 +10,7 @@ class MyColors {
   static const Color whyte = Color.fromRGBO(252, 252, 252, 1);
   static const Color sweetWhite = Color.fromRGBO(250, 250, 250, 1);
   static const Color fadedWhite = Color(0xFFF7F9FC);
+  static const Color dirtyWhite = Color(0x09000000);
   static const Color mintCream = Color.fromRGBO(239, 247, 246, 1);
   static const Color ivory = Color.fromRGBO(251, 255, 241, 1);
   static const Color papayaWhip = Color.fromRGBO(249, 236, 204, 1);
@@ -27,10 +28,13 @@ class MyColors {
   static const Color deepChestnut = Color.fromRGBO(188, 71, 73, 1);
   static const Color internationalOrange = Color.fromRGBO(187, 52, 47, 1);
   static const Color purpleMunsell = Color.fromRGBO(177, 24, 200, 1);
-  static const Color spanishGray = Color.fromRGBO(149, 150, 157, 1);
+  static const Color purplePallor = Color(0xFF8957E5);
+  static const Color spanishGray = Color(0xFF9297A4);
   static const Color xiketic = Color.fromRGBO(2, 1, 10, 1);
   static const Color spaceCadet = Color.fromRGBO(44, 42, 74, 1);
   static const Color richBlack = Color.fromRGBO(8, 7, 8, 1);
+  static const Color upTrendColor = Colors.green;
+  static const Color downTrendColor = Colors.redAccent;
 }
 
 class AppThemes {
@@ -157,7 +161,7 @@ class AppThemes {
     secondaryVariant: MyColors.spanishGray,
     // error: null,
     // onError: null,
-    // surface: null,
+    surface: MyColors.dirtyWhite,
     // onSurface: MyColors.spanishGray,
     background: MyColors.fadedWhite,
     onBackground: MyColors.spanishGray,
@@ -198,7 +202,7 @@ class AppThemes {
       unselectedLabelStyle: _lightTextTheme.caption!.copyWith(
           height: 1.5
       ),
-      backgroundColor: _lightColorScheme.background,
+      backgroundColor: _lightColorScheme.primary,
       elevation: 0
     ),
     tabBarTheme: TabBarTheme(
@@ -270,7 +274,7 @@ class AppThemes {
     bodyText2: TextStyle(fontSize: 14.0, color: _darkColorScheme.onPrimary),
     button: TextStyle(
         fontSize: 14.0, fontWeight: FontWeight.w600,
-        color: MyColors.purpleMunsell
+        color: MyColors.purplePallor
     ),
     subtitle1: TextStyle(fontSize: 16.0, color: _darkTextColor),
     caption: TextStyle(fontSize: 11.0, color: _darkColorScheme.onBackground),
@@ -281,13 +285,13 @@ class AppThemes {
     onPrimary: MyColors.ivory,
     // primaryVariant: null,
     background: MyColors.xiketic,
-    secondary: MyColors.purpleMunsell,
+    secondary: MyColors.purplePallor,
     onSecondary: MyColors.whyte,
     secondaryVariant: MyColors.spanishGray,
     // error: null,
     // onError: null,
-    // surface: null,
-    onSurface: MyColors.whyte,
+    // surface: No need because the default is just perfect
+    // onSurface: MyColors.whyte,
     onBackground: MyColors.spanishGray,
     // brightness: null,
   );
@@ -348,7 +352,7 @@ class AppThemes {
     textTheme: _darkTextTheme,
     textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(MyColors.purpleMunsell),
+          foregroundColor: MaterialStateProperty.all<Color>(MyColors.purplePallor),
         )
     ),
     buttonTheme: ButtonThemeData(

@@ -28,25 +28,29 @@ class SimpleCheckBox extends StatelessWidget {
 
     RxBool  isCheckedRx = isChecked? true.obs : false.obs;
 
-    return GestureDetector(
+    return onPressed != null? GestureDetector(
       onTap: () {
-        if (onPressed != null) {
-          onPressed!(!isCheckedRx.value);
-          isCheckedRx.toggle();
-        }
+        isCheckedRx.toggle();
+        onPressed!(isCheckedRx.value);
       },
-      child: Obx(() => Container(
-        width: size,
-        height: size,
-        child: isCheckedRx.isTrue? Icon(Icons.check, size: size - 1, color: Colors.white,) : null,
-        decoration: BoxDecoration(
-            shape: isRound? BoxShape.circle : BoxShape.rectangle ,
-            color: isCheckedRx.isTrue? activeColor?? Theme.of(context).colorScheme.secondary : null,
-            border: isCheckedRx.isTrue? null : Border.all(width: isBoldBorder? 0.5 : 1,
-                color: Theme.of(context).colorScheme.secondaryVariant),
-            borderRadius: isRound? null : BorderRadius.all(Radius.circular(3))
-        ),
-      )),
+      child: Obx(() => _buildContainer(isCheckedRx, context)),
+    ) : Obx(() => _buildContainer(isCheckedRx, context));
+  }
+
+  Container _buildContainer(RxBool isCheckedRx, BuildContext context) {
+    return Container(
+      width: size,
+      height: size,
+      child: isCheckedRx.isTrue? Icon(Icons.check, size: size - 1,
+        color: Theme.of(context).colorScheme.primary,
+      ) : null,
+      decoration: BoxDecoration(
+          shape: isRound? BoxShape.circle : BoxShape.rectangle ,
+          color: isCheckedRx.isTrue? activeColor?? Theme.of(context).colorScheme.secondary : null,
+          border: isCheckedRx.isTrue? null : Border.all(width: isBoldBorder? 0.5 : 1,
+              color: Theme.of(context).colorScheme.secondaryVariant),
+          borderRadius: isRound? null : BorderRadius.all(Radius.circular(3))
+      ),
     );
   }
 

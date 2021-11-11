@@ -4,7 +4,7 @@ import 'dart:math';
 
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/modules/models/trading_pair_list_item_model.dart';
-import 'package:cryptoexpo/widgets/my_tab_bar_view.dart';
+import 'package:cryptoexpo/widgets/signals_tab_bar_view.dart';
 import 'package:cryptoexpo/widgets/trading_pair_list_item.dart';
 import 'package:flutter/material.dart';
 
@@ -25,45 +25,45 @@ int getFreq() {
 }
 
 
-final List<MyTabBarViewModel> myTabBarViewModels = [
-  MyTabBarViewModel('Derivative', [
-    TradingPairListItemModel('BTC/USDT', 'Sell', Colors.redAccent, Colors.green,
+final List<SignalsTabBarViewModel> myTabBarViewModels = [
+  SignalsTabBarViewModel('Derivative', [
+    SignalListItemModel('BTC/USDT', 'Sell', Colors.redAccent, Colors.green,
         getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel('ETH/USDT', 'Buy', Colors.green, Colors.green,
+     SignalListItemModel('ETH/USDT', 'Buy', Colors.green, Colors.green,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel('BIT/USDT',  'Sell',  Colors.redAccent, Colors.redAccent,
+     SignalListItemModel('BIT/USDT',  'Sell',  Colors.redAccent, Colors.redAccent,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel('ADA', 'Buy',  Colors.green, Colors.green,
+     SignalListItemModel('ADA', 'Buy',  Colors.green, Colors.green,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'XRP/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
+     SignalListItemModel( 'XRP/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'DOT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
+     SignalListItemModel( 'DOT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'BTC/USDT',  'Buy',  Colors.green, Colors.green,
+     SignalListItemModel( 'BTC/USDT',  'Buy',  Colors.green, Colors.green,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'ETH/USDT',  'Buy',  Colors.green, Colors.green,
+     SignalListItemModel( 'ETH/USDT',  'Buy',  Colors.green, Colors.green,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'BIT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
+     SignalListItemModel( 'BIT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'ADA',  'Buy',  Colors.green, Colors.green,
+     SignalListItemModel( 'ADA',  'Buy',  Colors.green, Colors.green,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'XRP/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
+     SignalListItemModel( 'XRP/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'DOT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
+     SignalListItemModel( 'DOT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'BTC/USDT',  'Buy',  Colors.green, Colors.green,
+     SignalListItemModel( 'BTC/USDT',  'Buy',  Colors.green, Colors.green,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'ETH/USDT',  'Buy',  Colors.green, Colors.green,
+     SignalListItemModel( 'ETH/USDT',  'Buy',  Colors.green, Colors.green,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'BIT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
+     SignalListItemModel( 'BIT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
          getRandomPrice(), getRandomPrice(), getFreq() ),
   ]),
-  MyTabBarViewModel('Spot', [
-     TradingPairListItemModel( 'ADA',  'Buy',  Colors.green,Colors.green,
+  SignalsTabBarViewModel('Spot', [
+     SignalListItemModel( 'ADA',  'Buy',  Colors.green,Colors.green,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'XRP/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
+     SignalListItemModel( 'XRP/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
          getRandomPrice(), getRandomPrice(), getFreq() ),
-     TradingPairListItemModel( 'DOT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
+     SignalListItemModel( 'DOT/USDT',  'Sell',  Colors.redAccent,Colors.redAccent,
          getRandomPrice(), getRandomPrice(), getFreq() )
   ]),
 ];
