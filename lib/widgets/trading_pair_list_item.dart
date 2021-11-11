@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class TradingPairListItem extends StatelessWidget {
-  final TradingPairListItemModel model;
+  final SignalListItemModel model;
   final bool isBackgroundBar;
 
   const TradingPairListItem(
@@ -68,10 +68,11 @@ class TradingPairListItem extends StatelessWidget {
             textAlign: TextAlign.end,
             style: Theme.of(context).textTheme.caption!.copyWith(
                   fontWeight: FontWeight.bold,
+                  fontSize: 10,
                   color: model.getPercentage() > 0
                       ? Colors.green
                       : Colors.redAccent,
-                  letterSpacing: 1,
+                  // letterSpacing: 1,
                   shadows: !isBackgroundBar
                       ? null
                       : <Shadow>[
@@ -194,11 +195,11 @@ class TradingPairListItem extends StatelessWidget {
                   '${model.signalFrequency}',
                   style: Theme.of(context).textTheme.caption!.copyWith(
                     fontSize: 8,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.primary,
                     shadows: <Shadow>[
                       Shadow(
-                        offset: Offset(0.2, 0.2),
-                        blurRadius: 0.2,
+                        offset: Offset(0.4, 0.4),
+                        blurRadius: 0.3,
                         color: MyColors.richBlack,
                       )
                     ],
@@ -247,7 +248,7 @@ class TradingPairListItem extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .bodyText1!
-              .copyWith( letterSpacing: 1),
+              .copyWith( letterSpacing: 0.5),
         ),
         RichText(
           text: TextSpan(

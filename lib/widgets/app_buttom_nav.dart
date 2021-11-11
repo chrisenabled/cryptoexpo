@@ -7,18 +7,18 @@ import 'package:get/get.dart';
 class AppBottomNav extends StatelessWidget {
   AppBottomNav({required this.selectedCallback});
 
-  final dynamic Function(int) selectedCallback;
+  final Function(int) selectedCallback;
 
-  final List<LottieTabItem> tabItems = List.of([
-    new LottieTabItem('assets/lottie/signal_on_light.json',
-        'assets/lottie/signal_on_dark.json', "Derivatives"),
-    new LottieTabItem('assets/lottie/markets_on_light.json',
+  static const List<LottieTabItem> tabItems = [
+    const LottieTabItem('assets/lottie/signal_on_light.json',
+        'assets/lottie/signal_on_dark.json', "Signals"),
+    const LottieTabItem('assets/lottie/markets_on_light.json',
         'assets/lottie/markets_on_dark.json', "Markets"),
-    new LottieTabItem(
+    const LottieTabItem(
         'assets/lottie/trading.json', 'assets/lottie/trading.json', "Spot"),
-    new LottieTabItem('assets/lottie/profile_on_light.json',
+    const LottieTabItem('assets/lottie/profile_on_light.json',
         'assets/lottie/profile_on_dark.json', "Assets"),
-  ]);
+  ];
 
   final ThemeController themeController = ThemeController.to;
 

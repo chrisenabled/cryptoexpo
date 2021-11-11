@@ -1,10 +1,11 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/constants/test_data.dart';
 import 'package:cryptoexpo/core/home/home_controller.dart';
+import 'package:cryptoexpo/core/home/markets_ui.dart';
 import 'package:cryptoexpo/core/settings/settings_ui.dart';
 import 'package:cryptoexpo/widgets/app_buttom_nav.dart';
 import 'package:cryptoexpo/widgets/my_tab_bar.dart';
-import 'package:cryptoexpo/widgets/my_tab_bar_view.dart';
+import 'package:cryptoexpo/widgets/signals_tab_bar_view.dart';
 import 'package:cryptoexpo/core/home/signals_ui.dart';
 import 'package:cryptoexpo/widgets/bull_bear_icon.dart';
 import 'package:cryptoexpo/widgets/animated_flip_counter.dart';
@@ -25,16 +26,32 @@ class HomeUI extends StatelessWidget {
             appBar: _buildAppBar(controller.selectedPos.value),
             body: BottomNavViewHolder(
                 selectedPos: controller.selectedPos.value,
-                views: [_buildHomeWidget()]),
-            bottomNavigationBar:
-                AppBottomNav(selectedCallback: (int selectedPos) {
-              controller.setSelectedPos(selectedPos);
-            })));
+                views: [
+                  _buildHomeWidget(),
+                  const MarketsUI()
+                ]
+            ),
+            bottomNavigationBar: AppBottomNav(
+                   selectedCallback: (int selectedPos) {
+                     controller.setSelectedPos(selectedPos);
+                   })
+        )
+    );
   }
 
   PreferredSizeWidget _buildAppBar(int selectedPos) {
+
+    String getTitle() {
+      String title = 'Needs Title';
+      switch(selectedPos) {
+        case 0: title = 'Signals'; break;
+        case 1: title = 'Markets';
+      }
+      return title;
+    }
+
     return AppBar(
-      title: Text('home.title'.tr),
+      title: Text(getTitle()),
       actions: [
         IconButton(
             icon: Icon(Icons.share_arrival_time_outlined),
@@ -60,13 +77,13 @@ class HomeUI extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 15),
     );
 
-    Widget myTabBarView = Obx(() => MyTabBarView(
+    Widget myTabBarView = Obx(() => SignalsTabBarView(
           isBackgroundBar: isBackgroundBar.value,
           models: myTabBarViewModels,
           padding: EdgeInsets.symmetric(horizontal: 15),
         ));
 
-    return Home(
+    return Signals(
       tabBar: myTabBar,
       tabBarView: myTabBarView,
       tabCount: tabs.length,

@@ -5,19 +5,19 @@ import 'package:cryptoexpo/widgets/trading_pair_list_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class MyTabBarViewModel {
+class SignalsTabBarViewModel {
   final String tabName;
-  final List<TradingPairListItemModel> items;
+  final List<SignalListItemModel> items;
 
-  MyTabBarViewModel(this.tabName, this.items);
+  SignalsTabBarViewModel(this.tabName, this.items);
 }
 
-class MyTabBarView extends StatelessWidget {
-  final List<MyTabBarViewModel> models;
+class SignalsTabBarView extends StatelessWidget {
+  final List<SignalsTabBarViewModel> models;
   final EdgeInsetsGeometry? padding;
   final bool isBackgroundBar;
 
-  const MyTabBarView({
+  const SignalsTabBarView({
     Key? key,
     required this.models,
     this.padding,
@@ -42,7 +42,7 @@ class MyTabBarView extends StatelessWidget {
   }
 
   Widget buildCustomScrollView(
-      MyTabBarViewModel model, BuildContext context) {
+      SignalsTabBarViewModel model, BuildContext context) {
     int count = (model.items.length);
     return Container(
       padding: padding,

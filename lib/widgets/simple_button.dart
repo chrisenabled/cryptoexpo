@@ -42,8 +42,9 @@ class SimpleButton extends StatelessWidget {
       child: Obx(() {
 
         Color getContentColor() {
-          return isPressed.isTrue? Colors.white12 :
-          isEnabled? Colors.white : Colors.grey;
+          return isPressed.isTrue? Theme.of(context).colorScheme.primary.withOpacity(0.4) :
+          isEnabled? Theme.of(context).colorScheme.primary :
+          Theme.of(context).colorScheme.secondaryVariant;
         }
 
         List<Widget> contents() {

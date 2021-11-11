@@ -6,7 +6,7 @@ import 'package:cryptoexpo/constants/test_data.dart';
 import 'package:cryptoexpo/modules/models/signal_model.dart';
 import 'package:flutter/material.dart';
 
-class TradingPairListItemModel {
+class SignalListItemModel {
 
   final String signal;
 
@@ -40,7 +40,7 @@ class TradingPairListItemModel {
   double get percentageChange => double.parse((getPercentage() / 100).toStringAsFixed(1));
 
 
-  const TradingPairListItemModel(
+  const SignalListItemModel(
       this.pair,
       this.signal,
       this.signalColor,

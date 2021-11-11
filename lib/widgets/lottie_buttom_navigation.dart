@@ -11,7 +11,7 @@ class LottieTabItem {
   final String label;
   final double size;
 
-  LottieTabItem(this.iconPathOnLight, this.iconPathOnDark, this.label,
+  const LottieTabItem(this.iconPathOnLight, this.iconPathOnDark, this.label,
       {this.size = 0});
 }
 
