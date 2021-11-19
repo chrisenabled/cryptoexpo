@@ -1,5 +1,6 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/constants/test_data.dart';
+import 'package:cryptoexpo/core/home/assets_ui.dart';
 import 'package:cryptoexpo/core/home/home_controller.dart';
 import 'package:cryptoexpo/core/home/markets_ui.dart';
 import 'package:cryptoexpo/core/settings/settings_ui.dart';
@@ -28,13 +29,15 @@ class HomeUI extends StatelessWidget {
                 selectedPos: controller.selectedPos.value,
                 views: [
                   _buildHomeWidget(),
-                  const MarketsUI()
+                  const MarketsUI(),
+                  const AssetsUI()
                 ]
             ),
-            bottomNavigationBar: AppBottomNav(
-                   selectedCallback: (int selectedPos) {
-                     controller.setSelectedPos(selectedPos);
-                   })
+            bottomNavigationBar:
+            AppBottomNav(
+                selectedCallback: (int selectedPos) {
+                  controller.setSelectedPos(selectedPos);
+                })
         )
     );
   }
@@ -42,12 +45,12 @@ class HomeUI extends StatelessWidget {
   PreferredSizeWidget _buildAppBar(int selectedPos) {
 
     String getTitle() {
-      String title = 'Needs Title';
       switch(selectedPos) {
-        case 0: title = 'Signals'; break;
-        case 1: title = 'Markets';
+        case 0: return 'Signals';
+        case 1: return 'Markets';
+        case 3: return 'Assets';
+        default: return 'Need Title';
       }
-      return title;
     }
 
     return AppBar(
@@ -68,7 +71,7 @@ class HomeUI extends StatelessWidget {
   }
 
   Widget _buildHomeWidget() {
-    List<String> tabs = ['Derivatives', 'Spot'];
+    List<String> tabs = ['MacD', 'Trend'];
 
     PreferredSizeWidget myTabBar = MyTabBar(
       tabs: tabs,
@@ -99,12 +102,20 @@ class BottomNavViewHolder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (selectedPos > (views.length - 1)) {
-      return Center(
-        child: Text('Position $selectedPos does not have a view'),
-      );
+    // if (selectedPos > (views.length - 1)) {
+    //   return Center(
+    //     child: Text('Position $selectedPos does not have a view'),
+    //   );
+    // }
+    // return views[selectedPos];
+
+    switch(selectedPos) {
+      case 0: return views[0];
+      case 1: return views[1];
+      case 2: return Center(child: Text('Position $selectedPos does not have a view'),);
+      case 3: return views[2];
+      default: return Center(child: Text('Nothing to show'),);
     }
-    return views[selectedPos];
   }
 }
 

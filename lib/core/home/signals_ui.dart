@@ -1,12 +1,17 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/constants/test_data.dart';
+import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
+import 'package:cryptoexpo/modules/models/coin_data/coin_data_model.dart';
+import 'package:cryptoexpo/modules/services/coin_coingecko_service.dart';
 import 'package:cryptoexpo/widgets/circular_icon_link_bitton.dart';
-import 'package:cryptoexpo/widgets/crypto_list_item.dart';
+import 'package:cryptoexpo/widgets/asset_list_item.dart';
+import 'package:cryptoexpo/widgets/my_form_field.dart';
 import 'package:cryptoexpo/widgets/my_tab_bar.dart';
 import 'package:cryptoexpo/widgets/news_snippets.dart';
 import 'package:cryptoexpo/widgets/signals_tab_bar_view.dart';
 import 'package:cryptoexpo/widgets/billboard_ads.dart';
+import 'package:cryptoexpo/widgets/simple_lottie_icon.dart';
 import 'package:cryptoexpo/widgets/trade_duration_group.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -40,6 +45,8 @@ class Signals extends StatelessWidget {
     // }, onDone: () {
     //   cd.cancel();
     // });
+
+    CoinController coinCtrl = Get.find<CoinController>(tag: '01coin');
 
     return DefaultTabController(
         length: tabCount,
@@ -87,6 +94,17 @@ class Signals extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 20,),
+                      Obx(() {
+                        final priceData = coinCtrl.coinData.value?.priceData;
+                        // final  ticker = tickers != null?
+                        //     tickers.first : null;
+                        // tickers.lastWhere((ticker) =>
+                        // ticker.base == 'BTC' && ticker.target == 'USDT')
+                        //     : null;
+
+                        return Text('${priceData?.usd?? 'No price yet'}');
+                      }),
+                      const SizedBox(height: 20,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -104,18 +122,6 @@ class Signals extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // const SizedBox(height: 30,),
-                      // const CryptoListItem(
-                      //     cryptoName: 'Bitcoin',
-                      //     cryptoTicker: 'BTC',
-                      //     iconAsset: 'assets/images/btc.png'
-                      // ),
-                      // const SizedBox(height: 30,),
-                      // const CryptoListItem(
-                      //     cryptoName: 'Action Coin',
-                      //     cryptoTicker: 'ACTN',
-                      //     iconAsset: 'assets/images/actn.png'
-                      // ),
                       const SizedBox(height: 30,),
                     ],
                   ),

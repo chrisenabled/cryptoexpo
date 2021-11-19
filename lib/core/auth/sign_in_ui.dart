@@ -1,4 +1,5 @@
 import 'package:cryptoexpo/utils/helpers/validator.dart';
+import 'package:cryptoexpo/widgets/my_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -10,7 +11,7 @@ import 'package:cryptoexpo/widgets/widgets.dart';
 import 'auth_controller.dart';
 
 class SignInUI extends StatelessWidget {
-  final AuthController authController = AuthController.to;
+  // final AuthController authController = AuthController.to;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
@@ -27,36 +28,40 @@ class SignInUI extends StatelessWidget {
                 children: <Widget>[
                   LogoGraphicHeader(),
                   SizedBox(height: 48.0),
-                  FormInputFieldWithIcon(
-                    controller: authController.emailController,
-                    iconPrefix: Icons.email,
-                    labelText: 'auth.emailFormField'.tr,
-                    validator: Validator().email,
-                    keyboardType: TextInputType.emailAddress,
-                    onChanged: (value) => null,
-                    onSaved: (value) =>
-                    authController.emailController.text = value!,
-                  ),
+                  MyFormField(inputType: MyFormField.mobile,),
+                  // FormInputFieldWithIcon(
+                  //   controller: authController.emailController,
+                  //   iconPrefix: Icons.email,
+                  //   labelText: 'auth.emailFormField'.tr,
+                  //   validator: Validator().email,
+                  //   keyboardType: TextInputType.emailAddress,
+                  //   onChanged: (value) => null,
+                  //   onSaved: (value) =>
+                  //   authController.emailController.text = value!,
+                  // ),
                   FormVerticalSpace(),
-                  FormInputFieldWithIcon(
-                    controller: authController.passwordController,
-                    iconPrefix: Icons.lock,
-                    labelText: 'auth.passwordFormField'.tr,
-                    validator: Validator().password,
-                    obscureText: true,
-                    onChanged: (value) => null,
-                    onSaved: (value) =>
-                    authController.passwordController.text = value!,
-                    maxLines: 1,
+                  MyFormField(
+                    inputType: MyFormField.password,
                   ),
+                  // FormInputFieldWithIcon(
+                  //   controller: authController.passwordController,
+                  //   iconPrefix: Icons.lock,
+                  //   labelText: 'auth.passwordFormField'.tr,
+                  //   validator: Validator().password,
+                  //   obscureText: true,
+                  //   onChanged: (value) => null,
+                  //   onSaved: (value) =>
+                  //   authController.passwordController.text = value!,
+                  //   maxLines: 1,
+                  // ),
                   FormVerticalSpace(),
-                  PrimaryButton(
-                      labelText: 'auth.signInButton'.tr,
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          authController.signInWithEmailAndPassword(context);
-                        }
-                      }),
+                  // PrimaryButton(
+                  //     labelText: 'auth.signInButton'.tr,
+                  //     onPressed: () async {
+                  //       if (_formKey.currentState!.validate()) {
+                  //         authController.signInWithEmailAndPassword(context);
+                  //       }
+                  //     }),
                   FormVerticalSpace(),
                   LabelButton(
                     labelText: 'auth.resetPasswordLabelButton'.tr,

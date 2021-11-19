@@ -1,3 +1,7 @@
+import 'package:cryptoexpo/constants/test_data.dart';
+import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
+import 'package:cryptoexpo/modules/models/coin_data/coin_data_model.dart' as Coin;
+import 'package:cryptoexpo/modules/services/coin_coingecko_service.dart';
 import 'package:cryptoexpo/widgets/loading.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,6 +17,7 @@ import 'config/languages/language_controller.dart';
 import 'config/themes/theme_controller.dart';
 import 'config/languages/localization.g.dart';
 import 'core/auth/auth_controller.dart';
+import 'modules/services/coin_firestore_service.dart';
 
 void main() async {
 
@@ -27,10 +32,31 @@ void main() async {
   await precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoder,
       'assets/images/cx-landing.svg'),null);
 
+  //initialize app-wide services
+  Get.put(CoinCoinGeckoService());
+  Get.put(CoinFirestoreService());
+
   // initialize app-wide controllers
   Get.put<AuthController>(AuthController());
   Get.put<ThemeController>(ThemeController());
   Get.put<LanguageController>(LanguageController());
+
+  final coinMetas = await readJsonCoinIds();
+
+  coinMetas.sublist(0, 30).forEach((coinMeta) {
+    print('i am looping coin metas sublist now @: ${coinMeta.id}');
+    Get.lazyPut<CoinController>(() =>
+        CoinController(coinMeta: coinMeta), tag: coinMeta.id);
+  });
+
+
+
+  //load CoinDataControllers
+  // CoinUrls.forEach((uri) {
+  //   Get.put<CoinDataController>(CoinDataController(uri: uri), tag: uri);
+  // });
+  //call same instance with tags
+  //get _ => Get.find<AttachController>(tag: tag);
 
   // set preferred orientation to portrait mode
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
@@ -72,7 +98,6 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   // we use flutter's WidgetsBindingObserver mixin.
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    // setState(() { _notification = state; });
     if(Get.isDarkMode || Get.isPlatformDarkMode) {
       AppThemes.darkSystemUiOverlayStyle();
     } else {

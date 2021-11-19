@@ -22,6 +22,7 @@ class SimpleSlider extends StatelessWidget {
       duration:  Duration(milliseconds: isUpDownAnimation? milliseconds?? 300 : milliseconds?? 1000),
       // reverseDuration: Duration(milliseconds: isUpDownAnimation? upDownMilliseconds : leftRightMilliseconds),
       transitionBuilder: _transitionBuilder,
+      layoutBuilder: _layoutBuilder,
       child: ClipRect(
         key: slide.key,
         child: Container(
@@ -33,10 +34,26 @@ class SimpleSlider extends StatelessWidget {
     );
   }
 
+  Widget _layoutBuilder(Widget? currentChild, List<Widget> previousChildren) {
+    return Stack(
+      alignment: Alignment.center,
+      children: <Widget>[
+        ...previousChildren.map((child) =>
+            Opacity(
+              opacity: 0.8,
+              child: child,
+            )
+        ).toList(),
+        if (currentChild != null) currentChild,
+      ],
+    );
+  }
+
   Widget _transitionBuilder(Widget child, Animation<double> animation) {
 
     final inAnimation = isUpDownAnimation?
     Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset(0.0, 0.0))
+        .chain(CurveTween(curve: Curves.easeIn))
         .animate(animation)
         :
     Tween<Offset>(begin: Offset(1.0, 0.0), end: Offset(0.0, 0.0))

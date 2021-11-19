@@ -1,9 +1,13 @@
 import 'dart:math';
 
+import 'package:cryptoexpo/constants/test_data.dart';
+import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
+import 'package:cryptoexpo/modules/models/coin_data/coin_data_model.dart';
 import 'package:cryptoexpo/modules/models/trading_pair_list_item_model.dart';
 import 'package:cryptoexpo/widgets/trading_pair_list_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignalsTabBarViewModel {
   final String tabName;
@@ -17,12 +21,12 @@ class SignalsTabBarView extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final bool isBackgroundBar;
 
-  const SignalsTabBarView({
-    Key? key,
-    required this.models,
-    this.padding,
-    this.isBackgroundBar = false
-  }) : super(key: key);
+  const SignalsTabBarView(
+      {Key? key,
+      required this.models,
+      this.padding,
+      this.isBackgroundBar = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

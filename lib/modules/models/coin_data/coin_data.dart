@@ -1,0 +1,11 @@
+export 'coin_community_data.dart';
+export 'coin_description.dart';
+export 'coin_localization.dart';
+export 'coin_market_data.dart';
+export 'coin_meta_data.dart';
+export 'coin_price_data.dart';
+export 'coin_ticker_converted_last.dart';
+export 'coin_ticker_converted_volume.dart';
+export 'coin_ticker_market.dart';
+export 'coin_ticker_model.dart';
+export 'coin_data_model.dart';

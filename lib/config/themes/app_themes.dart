@@ -141,14 +141,15 @@ class AppThemes {
     headline3: TextStyle(fontSize: 28.0, color: _lightColorScheme.onPrimary),
     headline4: TextStyle(fontSize: 24.0, color: _lightColorScheme.onPrimary),
     headline5: TextStyle(fontSize: 20.0, color: _lightColorScheme.onPrimary),
-    headline6: TextStyle(fontSize: 16.0, color: _lightColorScheme.onPrimary),
+    headline6: TextStyle(fontSize: 18.0, color: _lightColorScheme.onPrimary),
     bodyText1: TextStyle(fontSize: 16.0, color: _lightColorScheme.onPrimary),
     bodyText2: TextStyle(fontSize: 14.0, color: _lightColorScheme.onPrimary),
     button: TextStyle(
         fontSize: 14.0, fontWeight: FontWeight.w600,
       color: MyColors.trueBlue
     ),
-    subtitle1: TextStyle(fontSize: 16.0, color: _lightTextColor),
+    subtitle1: TextStyle(fontSize: 13.0, color: _lightColorScheme.onPrimary),
+    subtitle2: TextStyle(fontSize: 12.0, color: _lightColorScheme.secondaryVariant),
     caption: TextStyle(fontSize: 11.0, color: _lightColorScheme.onPrimary),
   ));
 
@@ -166,6 +167,11 @@ class AppThemes {
     background: MyColors.fadedWhite,
     onBackground: MyColors.spanishGray,
     // brightness: null,
+  );
+
+  static final InputBorder _lightOutlineInputBorder = OutlineInputBorder(
+    // borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+    borderSide: BorderSide(width: 0.0, color: _lightColorScheme.surface),
   );
 
   //the light theme
@@ -222,9 +228,18 @@ class AppThemes {
     popupMenuTheme: PopupMenuThemeData(color: _lightBackgroundAppBarColor),
     textTheme: _lightTextTheme,
     textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
-        )
+        style: TextButton.styleFrom(
+          primary: _lightColorScheme.secondary,
+          padding: EdgeInsets.zero,
+          minimumSize: Size.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          splashFactory: NoSplash.splashFactory
+        ),
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: _lightColorScheme.secondary,
+      selectionColor: _lightColorScheme.secondary,
+      selectionHandleColor: _lightColorScheme.secondary,
     ),
     buttonTheme: ButtonThemeData(
         shape: RoundedRectangleBorder(
@@ -236,29 +251,17 @@ class AppThemes {
     ),
     unselectedWidgetColor: _lightPrimaryColor,
     inputDecorationTheme: InputDecorationTheme(
-      //prefixStyle: TextStyle(color: _lightIconColor),
-      border: OutlineInputBorder(
-          borderSide: BorderSide(width: 1.0),
-          borderRadius: BorderRadius.all(
-            Radius.circular(8.0),
-          )),
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: _lightBorderColor, width: 1.0),
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: _lightBorderActiveColor),
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: _lightBorderErrorColor),
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: _lightBorderErrorColor),
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      ),
-      fillColor: _lightBackgroundSecondaryColor,
+      border: _lightOutlineInputBorder,
+      enabledBorder: _lightOutlineInputBorder,
+      focusedBorder: _lightOutlineInputBorder,
+      errorBorder: _lightOutlineInputBorder,
+      focusedErrorBorder: _lightOutlineInputBorder,
+      fillColor: _lightColorScheme.surface,
+      filled: true,
+      contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
+        hintStyle: _lightTextTheme
+            .headline6!
+            .copyWith(color: _lightColorScheme.secondaryVariant),
       //focusColor: _lightBorderActiveColor,
     ),
   );
@@ -269,14 +272,15 @@ class AppThemes {
     headline3: TextStyle(fontSize: 28.0, color: _darkColorScheme.onPrimary),
     headline4: TextStyle(fontSize: 24.0, color: _darkColorScheme.onPrimary),
     headline5: TextStyle(fontSize: 20.0, color: _darkColorScheme.onPrimary),
-    headline6: TextStyle(fontSize: 16.0, color: _darkColorScheme.onPrimary),
+    headline6: TextStyle(fontSize: 18.0, color: _darkColorScheme.onPrimary),
     bodyText1: TextStyle(fontSize: 16.0, color: _darkColorScheme.onPrimary),
     bodyText2: TextStyle(fontSize: 14.0, color: _darkColorScheme.onPrimary),
     button: TextStyle(
         fontSize: 14.0, fontWeight: FontWeight.w600,
         color: MyColors.purplePallor
     ),
-    subtitle1: TextStyle(fontSize: 16.0, color: _darkTextColor),
+    subtitle1: TextStyle(fontSize: 13.0, color: _darkColorScheme.onPrimary),
+    subtitle2: TextStyle(fontSize: 12.0, color: _darkColorScheme.secondaryVariant),
     caption: TextStyle(fontSize: 11.0, color: _darkColorScheme.onBackground),
   ));
 
@@ -294,6 +298,11 @@ class AppThemes {
     // onSurface: MyColors.whyte,
     onBackground: MyColors.spanishGray,
     // brightness: null,
+  );
+
+  static final InputBorder _darkOutlineInputBorder = OutlineInputBorder(
+    // borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+    borderSide: BorderSide(width: 0.0, color: _darkColorScheme.surface),
   );
 
   //the dark theme
@@ -351,9 +360,18 @@ class AppThemes {
     popupMenuTheme: PopupMenuThemeData(color: _darkBackgroundAppBarColor),
     textTheme: _darkTextTheme,
     textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(MyColors.purplePallor),
+        style: TextButton.styleFrom(
+          primary: _darkColorScheme.secondary,
+          padding: EdgeInsets.zero,
+          minimumSize: Size.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            splashFactory: NoSplash.splashFactory
         )
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: _darkColorScheme.secondary,
+      selectionColor: _darkColorScheme.secondary,
+      selectionHandleColor: _darkColorScheme.secondary,
     ),
     buttonTheme: ButtonThemeData(
         shape: RoundedRectangleBorder(
@@ -363,30 +381,17 @@ class AppThemes {
         textTheme: ButtonTextTheme.primary),
     unselectedWidgetColor: _darkPrimaryColor,
     inputDecorationTheme: InputDecorationTheme(
-      prefixStyle: TextStyle(color: _darkIconColor),
-      //labelStyle: TextStyle(color: nevada),
-      border: OutlineInputBorder(
-          borderSide: BorderSide(width: 1.0),
-          borderRadius: BorderRadius.all(
-            Radius.circular(8.0),
-          )),
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: _darkBorderColor, width: 1.0),
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: _darkBorderActiveColor),
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: _darkBorderErrorColor),
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: _darkBorderErrorColor),
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      ),
-      fillColor: _darkInputFillColor,
+      border: _darkOutlineInputBorder,
+      enabledBorder: _darkOutlineInputBorder,
+      focusedBorder: _darkOutlineInputBorder,
+      errorBorder: _darkOutlineInputBorder,
+      focusedErrorBorder: _darkOutlineInputBorder,
+      fillColor: _darkColorScheme.surface,
+      filled: true,
+      contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
+      hintStyle: _darkTextTheme
+          .headline6!
+          .copyWith(color: _lightColorScheme.secondaryVariant),
       //focusColor: _darkBorderActiveColor,
     ),
   );

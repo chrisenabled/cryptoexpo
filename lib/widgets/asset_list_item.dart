@@ -1,24 +1,19 @@
 
 
 import 'package:cryptoexpo/config/themes/app_themes.dart';
+import 'package:cryptoexpo/modules/models/asset_model.dart';
 import 'package:flutter/material.dart';
 
-class CryptoListItem extends StatelessWidget {
+class AssetListItem extends StatelessWidget {
 
-  const CryptoListItem({
+  const AssetListItem({
     Key? key,
-    required this.cryptoName,
-    required this.cryptoTicker,
-    required this.iconAsset,
-    this.currentPrice = 0.000000,
-    this.percentage = 0.00
+    required this.asset,
+    this.size = 24
   }): super(key: key);
 
-  final String cryptoName;
-  final String cryptoTicker;
-  final String iconAsset;
-  final double currentPrice;
-  final double percentage;
+  final Asset asset;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +27,9 @@ class CryptoListItem extends StatelessWidget {
             Transform.translate(
               offset: Offset(0, -4),
               child: Image.asset(
-                iconAsset,
-                width: 24,
-                height: 24,
+                asset.iconAsset,
+                width: size,
+                height: size,
               ),
             ),
             SizedBox(width: 15,),
@@ -42,7 +37,7 @@ class CryptoListItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cryptoTicker,
+                  asset.assetTicker,
                   style: textTheme.bodyText1!.copyWith(
                     fontWeight: FontWeight.bold,
                     shadows: <Shadow>[
@@ -56,7 +51,7 @@ class CryptoListItem extends StatelessWidget {
                 ),
                 SizedBox(height: 4,),
                 Text(
-                  '($cryptoName)',
+                  '(${asset.assetName})',
                   style: textTheme.bodyText1!.copyWith(
                     fontSize: 13,
                     color: Theme.of(context).colorScheme.secondaryVariant,
@@ -70,18 +65,18 @@ class CryptoListItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '$currentPrice',
+              '${asset.currentPrice}',
               style: textTheme.bodyText1!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(height: 4,),
             Text(
-              '$percentage%',
+              '${asset.percentage}%',
               style: textTheme.caption!.copyWith(
                 fontSize: 13,
-                color: percentage < 0? MyColors.downTrendColor :
-                    percentage == 0? Theme.of(context).colorScheme.secondaryVariant :
+                color: asset.percentage < 0? MyColors.downTrendColor :
+                asset.percentage == 0? Theme.of(context).colorScheme.secondaryVariant :
                         MyColors.upTrendColor
               ),
             )

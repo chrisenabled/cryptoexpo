@@ -1,9 +1,12 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/config/themes/theme_controller.dart';
+import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/trading_pair_list_item_model.dart';
+import 'package:cryptoexpo/widgets/simple_lottie_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class TradingPairListItem extends StatelessWidget {
   final SignalListItemModel model;
@@ -12,6 +15,17 @@ class TradingPairListItem extends StatelessWidget {
   const TradingPairListItem(
       {Key? key, required this.model, this.isBackgroundBar = true})
       : super(key: key);
+
+  bool isWidget(SignalListItemModel model) {
+    return model.signal.toLowerCase() == 'bear' ||
+        model.signal.toLowerCase() == 'bull';
+  }
+
+  Color getTrendColor(SignalListItemModel model) {
+    return model.getPercentage() > 0
+        ? MyColors.upTrendColor
+        : MyColors.downTrendColor;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,28 +81,18 @@ class TradingPairListItem extends StatelessWidget {
                 : '${model.getPercentage()}%',
             textAlign: TextAlign.end,
             style: Theme.of(context).textTheme.caption!.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10,
-                  color: model.getPercentage() > 0
-                      ? Colors.green
-                      : Colors.redAccent,
-                  // letterSpacing: 1,
-                  shadows: !isBackgroundBar
-                      ? null
-                      : <Shadow>[
-                          ThemeController.to.isDarkModeOn
-                              ? Shadow(
-                                  offset: Offset(1.0, 1.0),
-                                  blurRadius: 1.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                )
-                              : Shadow(
-                                  offset: Offset(0.1, 0.1),
-                                  blurRadius: 0.3,
-                                  color: Color.fromRGBO(252, 252, 252, 0.5),
-                                ),
-                        ],
-                ),
+              // fontWeight: FontWeight.bold,
+              fontSize: 10,
+              color: getTrendColor(model),
+              // letterSpacing: 1,
+              shadows: <Shadow>[
+                Shadow(
+                  offset: Offset(0.1, 0.1),
+                  blurRadius: 0.1,
+                  color: getTrendColor(model),
+                )
+              ],
+            ),
           ),
         ));
   }
@@ -115,9 +119,7 @@ class TradingPairListItem extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      color: model.getPercentage() > 0
-                          ? Colors.green
-                          : Colors.redAccent,
+                      color: getTrendColor(model),
                     ),
                   ),
                 ),
@@ -144,68 +146,79 @@ class TradingPairListItem extends StatelessWidget {
   }
 
   Widget _signalContainer(BuildContext context) {
+    bool isAlternateDecoration() {
+      return isBackgroundBar ||
+          model.signal == 'Bull' ||
+          model.signal == 'Bear';
+    }
+
     return Stack(
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(3.0),
-            color: isBackgroundBar
+            color: isAlternateDecoration()
                 ? null
                 : model.signal == 'Buy'
                     ? Colors.green
                     : Colors.redAccent,
           ),
-          child: Text(
-            model.signal,
-            textScaleFactor: !isBackgroundBar ? 1 : 1.2,
-            style: Theme.of(context).textTheme.bodyText2!.copyWith(
-              color: !isBackgroundBar
-                  ? model.signal == 'Buy'
-                  ? Colors.white
-                  : Colors.black
-                  : model.signal == 'Buy'
-                  ? Colors.green
-                  : Colors.redAccent,
-              shadows: !isBackgroundBar
-                  ? null
-                  : <Shadow>[
-                Shadow(
-                  offset: Offset(0.5, 0.5),
-                  blurRadius: 0.5,
-                  color: MyColors.richBlack,
+          child: isWidget(model)
+              ? Lottie.asset(
+                  'assets/lottie/${model.signal.toLowerCase()}_run.json',
+                  height: 42,
                 )
-              ],
-            ),
-          ),
+              : Text(
+                  model.signal,
+                  textScaleFactor: !isBackgroundBar ? 1 : 1.2,
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: !isBackgroundBar
+                            ? model.signal == 'Buy'
+                                ? Colors.white
+                                : Colors.black
+                            : model.signal == 'Buy'
+                                ? Colors.green
+                                : Colors.redAccent,
+                        shadows: !isBackgroundBar
+                            ? null
+                            : <Shadow>[
+                                Shadow(
+                                  offset: Offset(0.5, 0.5),
+                                  blurRadius: 0.5,
+                                  color: MyColors.richBlack,
+                                )
+                              ],
+                      ),
+                ),
         ),
         Transform.translate(
-          offset: Offset(isBackgroundBar? -3 :-13, isBackgroundBar? 6 : 2),
+          offset: Offset(isAlternateDecoration() ? -3 : -13,
+              isAlternateDecoration() ? 6 : 2),
           child: Container(
             width: 11,
             height: 11,
             decoration: new BoxDecoration(
-              color: model.signal == 'Buy'
+              color: model.signal == 'Buy' || model.signal == 'Bull'
                   ? Colors.green
                   : Colors.redAccent,
               shape: BoxShape.circle,
             ),
             child: Center(
                 child: Text(
-                  '${model.signalFrequency}',
-                  style: Theme.of(context).textTheme.caption!.copyWith(
-                    fontSize: 8,
-                    color: Theme.of(context).colorScheme.primary,
-                    shadows: <Shadow>[
-                      Shadow(
-                        offset: Offset(0.4, 0.4),
-                        blurRadius: 0.3,
-                        color: MyColors.richBlack,
-                      )
-                    ],
-                  ),
-                )
-            ),
+              '${model.signalFrequency}',
+              style: Theme.of(context).textTheme.caption!.copyWith(
+                fontSize: 8,
+                color: Theme.of(context).colorScheme.primary,
+                shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(0.4, 0.4),
+                    blurRadius: 0.3,
+                    color: MyColors.richBlack,
+                  )
+                ],
+              ),
+            )),
           ),
         )
       ],
@@ -248,7 +261,7 @@ class TradingPairListItem extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .bodyText1!
-              .copyWith( letterSpacing: 0.5),
+              .copyWith(letterSpacing: 0.5),
         ),
         RichText(
           text: TextSpan(

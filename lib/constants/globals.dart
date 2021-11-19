@@ -90,3 +90,25 @@ extension MarketsExt on Markets {
     }
   }
 }
+
+enum Assets {
+  BTC,
+  ETH,
+  BIT,
+  ADA,
+  XRP,
+  DOT,
+}
+
+extension AssetsExt on Assets {
+  String get string {
+    switch(this) {
+      case Assets.BTC: return "BTC/USDT";
+      case Assets.ETH: return "ETH/USDT";
+      case Assets.BIT: return "BIT/USDT";
+      case Assets.ADA: return "ADA/USDT";
+      case Assets.XRP: return "XRP/USDT";
+      case Assets.DOT: return "DOT/USDT";
+    }
+  }
+}
