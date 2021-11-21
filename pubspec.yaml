@@ -49,6 +49,9 @@ dependencies:
   google_fonts: ^2.1.0
   font_awesome_flutter: ^9.2.0
   quiver: ^3.0.1+1
+  country_icons: ^2.0.2
+  alphabet_scroll_view: ^0.3.1
+  country_codes: ^2.1.1
 
 dev_dependencies:
   flutter_native_splash: ^1.2.4
@@ -64,6 +67,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/json/
     - assets/lottie/
     - assets/images/
     - assets/images/default.png

@@ -1,4 +1,5 @@
 import 'package:cryptoexpo/utils/helpers/validator.dart';
+import 'package:cryptoexpo/widgets/my_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,6 +28,7 @@ class SignInUI extends StatelessWidget {
                 children: <Widget>[
                   LogoGraphicHeader(),
                   SizedBox(height: 48.0),
+                  // MyFormField(inputType: MyFormField.mobile,),
                   FormInputFieldWithIcon(
                     controller: authController.emailController,
                     iconPrefix: Icons.email,
@@ -38,6 +40,7 @@ class SignInUI extends StatelessWidget {
                     authController.emailController.text = value!,
                   ),
                   FormVerticalSpace(),
+                  // MyFormField(inputType: MyFormField.password,),
                   FormInputFieldWithIcon(
                     controller: authController.passwordController,
                     iconPrefix: Icons.lock,
@@ -50,13 +53,13 @@ class SignInUI extends StatelessWidget {
                     maxLines: 1,
                   ),
                   FormVerticalSpace(),
-                  PrimaryButton(
-                      labelText: 'auth.signInButton'.tr,
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          authController.signInWithEmailAndPassword(context);
-                        }
-                      }),
+                  // PrimaryButton(
+                  //     labelText: 'auth.signInButton'.tr,
+                  //     onPressed: () async {
+                  //       if (_formKey.currentState!.validate()) {
+                  //         authController.signInWithEmailAndPassword(context);
+                  //       }
+                  //     }),
                   FormVerticalSpace(),
                   LabelButton(
                     labelText: 'auth.resetPasswordLabelButton'.tr,

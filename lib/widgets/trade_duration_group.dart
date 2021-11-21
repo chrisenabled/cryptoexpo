@@ -9,9 +9,11 @@ class TradeDurationGroup extends StatelessWidget implements PreferredSizeWidget 
 
   const TradeDurationGroup({
     this.selectedIndex = 0,
+    required this.onPressed,
   });
 
   final int selectedIndex;
+  final  Function(int) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,10 @@ class TradeDurationGroup extends StatelessWidget implements PreferredSizeWidget 
             TradeDuration(
               duration: value.string,
               isSelected: value.index == selectedIndex,
-              onSelected: (duration) => _selectedPos.value = value.index,
+              onSelected: (duration) {
+                onPressed(value.number);
+                _selectedPos.value = value.index;
+              },
             ));
       }
       return list;

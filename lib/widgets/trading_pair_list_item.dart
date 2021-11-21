@@ -1,99 +1,142 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/config/themes/theme_controller.dart';
-import 'package:cryptoexpo/modules/models/trading_pair_list_item_model.dart';
+import 'package:cryptoexpo/constants/constants.dart';
+import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
+import 'package:cryptoexpo/modules/models/alert_model.dart';
+import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
+import 'package:cryptoexpo/utils/helpers/converters.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class TradingPairListItem extends StatelessWidget {
-  final SignalListItemModel model;
+  final String alertType;
   final bool isBackgroundBar;
+  final String coinId;
+  final num alertDuration;
 
-  const TradingPairListItem(
-      {Key? key, required this.model, this.isBackgroundBar = true})
-      : super(key: key);
+  const TradingPairListItem({
+    Key? key,
+    required this.alertType,
+    this.isBackgroundBar = true,
+    required this.coinId,
+    this.alertDuration = 5,
+  }) : super(key: key);
+
+  bool isWidget(String? msg) {
+    if (msg == null) return false;
+    return msg == 'bear' || msg == 'bull';
+  }
+
+  Color getTrendColor(BuildContext context, num percentage) {
+    return percentage == 0
+        ? Theme.of(context).colorScheme.secondaryVariant
+        : percentage > 0
+            ? MyColors.upTrendColor
+            : MyColors.downTrendColor;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.symmetric(vertical: 5),
-        child: Stack(
-          children: [
-            if (isBackgroundBar)
-              Positioned.fill(
-                child: _fullPriceProgressIndicator(),
-              ),
-            Container(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
-              padding:
-                  const EdgeInsets.only(left: 4, top: 2, bottom: 2, right: 4),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _pairInfoColumn(context),
-                      _priceColumn(context),
-                      _signalContainer(context)
-                    ],
+    return GetBuilder<CoinController>(
+      // id: Key(indicatorTypeTag),
+      tag: coinId,
+      builder: (controller) {
+        return Container(
+            margin: const EdgeInsets.symmetric(vertical: 5),
+            child: Stack(
+              children: [
+                if (isBackgroundBar)
+                  Positioned.fill(
+                    child: _fullPriceProgressIndicator(controller),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
+                Container(
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                  padding: const EdgeInsets.only(
+                      left: 4, top: 2, bottom: 2, right: 4),
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _xAmount(context),
-                      _miniPriceProgressIndicator(),
-                      _percentageChange(context)
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _pairInfoColumn(context, controller),
+                          _priceColumn(context, controller),
+                          Obx(() {
+                            final alert =
+                            controller.alerts.firstWhere(
+                                    (alert) => (alert.value.duration - alertDuration == 0
+                                    && alert.value.type == alertType),
+                                orElse: () =>
+                                    AlertModel(type: alertType,
+                                        duration: alertDuration).obs
+                            );
+                            return _signalContainer(context, alert.value);
+                          }),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _xAmount(context, controller),
+                          _miniPriceProgressIndicator(context, controller),
+                          _percentageDiff(context, controller)
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
-            ),
-          ],
-        ));
+                ),
+              ],
+            ));
+      },
+    );
   }
 
-  Expanded _percentageChange(BuildContext context) {
+  num _getPercentageDiff(CoinController controller) {
+    final marketData = controller.coinData.value?.coinMarketData;
+    final priceData = controller.coinData.value?.priceData;
+    return getPercentageDiff(
+        initial: marketData?.currentPrice ?? 0.00,
+        current: priceData?.usd ?? 0.00);
+  }
+
+  Expanded _percentageDiff(BuildContext context, CoinController controller) {
+    final percentage = _getPercentageDiff(controller);
     return Expanded(
         flex: 2,
         child: Container(
           padding: EdgeInsets.all(4.0),
           child: Text(
-            model.getPercentage() > 0
-                ? '+${model.getPercentage()}%'
-                : '${model.getPercentage()}%',
+            percentage > 0 ? '+$percentage%' : '$percentage%',
             textAlign: TextAlign.end,
             style: Theme.of(context).textTheme.caption!.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10,
-                  color: model.getPercentage() > 0
-                      ? Colors.green
-                      : Colors.redAccent,
-                  // letterSpacing: 1,
-                  shadows: !isBackgroundBar
-                      ? null
-                      : <Shadow>[
-                          ThemeController.to.isDarkModeOn
-                              ? Shadow(
-                                  offset: Offset(1.0, 1.0),
-                                  blurRadius: 1.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                )
-                              : Shadow(
-                                  offset: Offset(0.1, 0.1),
-                                  blurRadius: 0.3,
-                                  color: Color.fromRGBO(252, 252, 252, 0.5),
-                                ),
-                        ],
-                ),
+              // fontWeight: FontWeight.bold,
+              fontSize: 10,
+              color: getTrendColor(context, percentage),
+              // letterSpacing: 1,
+              shadows: <Shadow>[
+                Shadow(
+                  offset: Offset(0.1, 0.1),
+                  blurRadius: 0.1,
+                  color: getTrendColor(context, percentage),
+                )
+              ],
+            ),
           ),
         ));
   }
 
-  Expanded _miniPriceProgressIndicator() {
+  Expanded _miniPriceProgressIndicator(
+      BuildContext context, CoinController controller) {
+    final percentage = _getPercentageDiff(controller);
+    final _getPercentageProgress =
+        getPercentageChangeProgress(percentage: percentage);
+    final widthFactor = _getPercentageProgress / 100;
+
     return Expanded(
         flex: 6,
         child: isBackgroundBar
@@ -108,120 +151,141 @@ class TradingPairListItem extends StatelessWidget {
                       : Colors.black12,
                 ),
                 child: FractionallySizedBox(
-                  alignment: model.getPercentage() > 0
+                  alignment: percentage > 0
                       ? Alignment.centerLeft
                       : Alignment.centerRight,
-                  widthFactor: (model.getPercentageChangeProgress / 100).abs(),
+                  widthFactor: widthFactor,
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      color: model.getPercentage() > 0
-                          ? Colors.green
-                          : Colors.redAccent,
+                      color: getTrendColor(context, percentage),
                     ),
                   ),
                 ),
               ));
   }
 
-  Expanded _xAmount(BuildContext context) {
+  Expanded _xAmount(BuildContext context, CoinController controller) {
+    final percentage = _getPercentageDiff(controller);
+    final getPercentageProgress =
+        getPercentageChangeProgress(percentage: percentage);
     return Expanded(
         flex: 2,
-        child: model.percentageChange.abs() < 1
+        child: getPercentageProgress.abs() < 1
             ? Text(
                 '. . .',
                 textAlign: TextAlign.start,
                 style: Theme.of(context).textTheme.caption,
               )
             : Text(
-                '${model.percentageChange}x',
+                '${getPercentageProgress}x',
                 textAlign: TextAlign.start,
                 style: Theme.of(context).textTheme.caption!.copyWith(
                       fontWeight: FontWeight.bold,
-                      // color: MyColors.purpleMunsell
                     ),
               ));
   }
 
-  Widget _signalContainer(BuildContext context) {
+  Widget _signalContainer(
+      BuildContext context,
+      AlertModel alert
+      ) {
+
+    String? msg = '';
+
+    if (alert.signalAlerts.length > 0) {
+      final signalAlerts = alert.signalAlerts;
+      msg = signalAlerts[signalAlerts.length - 1].alertMsg;
+    }
+    printInfo(info: 'the alert msg received by $coinId is  $msg');
+    bool isAlternateDecoration() {
+      return isBackgroundBar || msg == 'bull' || msg == 'bear';
+    }
+
     return Stack(
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(3.0),
-            color: isBackgroundBar
+            color: isAlternateDecoration()
                 ? null
-                : model.signal == 'Buy'
-                    ? Colors.green
-                    : Colors.redAccent,
+                : msg.isEmpty
+                    ? Theme.of(context).colorScheme.surface
+                    : msg == 'buy'
+                        ? MyColors.upTrendColor
+                        : MyColors.downTrendColor,
           ),
-          child: Text(
-            model.signal,
-            textScaleFactor: !isBackgroundBar ? 1 : 1.2,
-            style: Theme.of(context).textTheme.bodyText2!.copyWith(
-              color: !isBackgroundBar
-                  ? model.signal == 'Buy'
-                  ? Colors.white
-                  : Colors.black
-                  : model.signal == 'Buy'
-                  ? Colors.green
-                  : Colors.redAccent,
-              shadows: !isBackgroundBar
-                  ? null
-                  : <Shadow>[
-                Shadow(
-                  offset: Offset(0.5, 0.5),
-                  blurRadius: 0.5,
-                  color: MyColors.richBlack,
-                )
-              ],
-            ),
-          ),
+          child: msg.isEmpty
+              ? Text('. . .')
+              : isWidget(msg)
+                  ? Lottie.asset(
+                      'assets/lottie/${msg}_run.json',
+                      height: 36,
+                    )
+                  : Text(
+                      '${msg.isNotEmpty ? msg : 'No signal'}',
+                      textScaleFactor: !isBackgroundBar ? 1 : 1.2,
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                            color: !isBackgroundBar
+                                ? msg == 'buy'
+                                    ? Colors.white
+                                    : Colors.black
+                                : msg == 'buy'
+                                    ? MyColors.upTrendColor
+                                    : MyColors.downTrendColor,
+                            shadows: !isBackgroundBar
+                                ? null
+                                : <Shadow>[
+                                    Shadow(
+                                      offset: Offset(0.5, 0.5),
+                                      blurRadius: 0.5,
+                                      color: MyColors.richBlack,
+                                    )
+                                  ],
+                          ),
+                    ),
         ),
         Transform.translate(
-          offset: Offset(isBackgroundBar? -3 :-13, isBackgroundBar? 6 : 2),
+          offset: Offset(isAlternateDecoration() ? -3 : -13,
+              isAlternateDecoration() ? 6 : 2),
           child: Container(
             width: 11,
             height: 11,
             decoration: new BoxDecoration(
-              color: model.signal == 'Buy'
-                  ? Colors.green
-                  : Colors.redAccent,
+              color: msg == 'buy' || msg == 'bull'
+                  ? MyColors.upTrendColor
+                  : MyColors.downTrendColor,
               shape: BoxShape.circle,
             ),
             child: Center(
                 child: Text(
-                  '${model.signalFrequency}',
-                  style: Theme.of(context).textTheme.caption!.copyWith(
-                    fontSize: 8,
-                    color: Theme.of(context).colorScheme.primary,
-                    shadows: <Shadow>[
-                      Shadow(
-                        offset: Offset(0.4, 0.4),
-                        blurRadius: 0.3,
-                        color: MyColors.richBlack,
-                      )
-                    ],
-                  ),
-                )
-            ),
+              '${10}',
+              style: Theme.of(context).textTheme.caption!.copyWith(
+                fontSize: 8,
+                color: Theme.of(context).colorScheme.primary,
+                shadows: <Shadow>[
+                  Shadow(
+                    offset: Offset(0.4, 0.4),
+                    blurRadius: 0.3,
+                    color: MyColors.richBlack,
+                  )
+                ],
+              ),
+            )),
           ),
         )
       ],
     );
   }
 
-  Column _pairInfoColumn(BuildContext context) {
+  Column _pairInfoColumn(BuildContext context, CoinController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          model.pair,
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1!
-              .copyWith(
+          controller.coinMeta.symbol?.toUpperCase() ?? 'Cant get Coin Symbol',
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(
             shadows: <Shadow>[
               Shadow(
                 offset: Offset(0.3, 0.3),
@@ -239,20 +303,21 @@ class TradingPairListItem extends StatelessWidget {
     );
   }
 
-  Column _priceColumn(BuildContext context) {
+  Column _priceColumn(BuildContext context, CoinController controller) {
+    CoinDataModel coin = controller.coinData.value!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
-          '${model.currentPrice}',
+          '${(coin.priceData?.usd) ?? Globals.zeroMoney}',
           style: Theme.of(context)
               .textTheme
               .bodyText1!
-              .copyWith( letterSpacing: 0.5),
+              .copyWith(letterSpacing: 0.5),
         ),
         RichText(
           text: TextSpan(
-              text: '${model.startPrice}',
+              text: '${coin.coinMarketData?.currentPrice ?? Globals.zeroMoney}',
               style:
                   Theme.of(context).textTheme.caption!.copyWith(fontSize: 9.5),
               children: [
@@ -269,32 +334,31 @@ class TradingPairListItem extends StatelessWidget {
     );
   }
 
-  Container _fullPriceProgressIndicator() {
+  Container _fullPriceProgressIndicator(CoinController controller) {
+    final percentage = _getPercentageDiff(controller);
     return Container(
       child: FractionallySizedBox(
-        alignment:
-            model.getPercentage() > 0 ? Alignment.topLeft : Alignment.topRight,
-        widthFactor: (model.getPercentageChangeProgress / 100).abs(),
+        alignment: percentage > 0 ? Alignment.topLeft : Alignment.topRight,
+        widthFactor:
+            (getPercentageChangeProgress(percentage: percentage) / 100).abs(),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: model.getPercentage() > 0 ||
-                        (model.getPercentage()).abs() == 100.00
+                topLeft: percentage > 0 || percentage.abs() >= 99.8
                     ? Radius.circular(3)
                     : Radius.circular(0),
-                topRight: model.getPercentage() < 0 ||
-                        (model.getPercentage()).abs() == 100.00
+                topRight: percentage < 0 || percentage.abs() >= 99.8
                     ? Radius.circular(3)
                     : Radius.circular(0),
-                bottomLeft: model.getPercentage() > 0 ||
-                        (model.getPercentage()).abs() == 100.00
+                bottomLeft: percentage > 0 || percentage.abs() >= 99.8
                     ? Radius.circular(3)
                     : Radius.circular(0),
-                bottomRight: model.getPercentage() < 0 ||
-                        (model.getPercentage()).abs() == 100.00
+                bottomRight: percentage < 0 || percentage.abs() >= 99.8
                     ? Radius.circular(3)
                     : Radius.circular(0)),
-            color: model.getPercentage() > 0 ? Colors.green : Colors.redAccent,
+            color: percentage > 0
+                ? MyColors.upTrendColor
+                : MyColors.downTrendColor,
           ),
         ),
       ),

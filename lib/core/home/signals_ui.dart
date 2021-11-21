@@ -1,12 +1,17 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/constants/test_data.dart';
+import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
+import 'package:cryptoexpo/modules/models/coin_data/coin_data_model.dart';
+import 'package:cryptoexpo/modules/services/coin_coingecko_service.dart';
 import 'package:cryptoexpo/widgets/circular_icon_link_bitton.dart';
-import 'package:cryptoexpo/widgets/crypto_list_item.dart';
+import 'package:cryptoexpo/widgets/asset_list_item.dart';
+import 'package:cryptoexpo/widgets/my_form_field.dart';
 import 'package:cryptoexpo/widgets/my_tab_bar.dart';
 import 'package:cryptoexpo/widgets/news_snippets.dart';
 import 'package:cryptoexpo/widgets/signals_tab_bar_view.dart';
 import 'package:cryptoexpo/widgets/billboard_ads.dart';
+import 'package:cryptoexpo/widgets/simple_lottie_icon.dart';
 import 'package:cryptoexpo/widgets/trade_duration_group.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -20,29 +25,19 @@ import '../../widgets/my_nested_scroll_view.dart' as nested;
 class Signals extends StatelessWidget {
   const Signals({
     Key? key,
-    required this.tabCount,
-    required this.tabBar,
-    required this.tabBarView,
   }) : super(key: key);
-
-  final PreferredSizeWidget tabBar;
-  final Widget tabBarView;
-  final int tabCount;
 
   @override
   Widget build(BuildContext context) {
+
+    final RxBool isBackgroundBar = false.obs;
+
+    final RxNum currentDuration = RxNum(5);
+
     print('app_tab_bar has been created');
 
-    // final cd = CountdownTimer(Duration(seconds: 70), Duration(seconds: 5));
-    //
-    // cd.listen((data) {
-    //   news.value = '${news.value} ${cd.elapsed.inSeconds}';
-    // }, onDone: () {
-    //   cd.cancel();
-    // });
-
     return DefaultTabController(
-        length: tabCount,
+        length: Globals.AlertTypes.length,
         child: NestedScrollView(
           // floatHeaderSlivers: true,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -51,7 +46,11 @@ class Signals extends StatelessWidget {
                 flexibleSpace: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    TradeDurationGroup()
+                    TradeDurationGroup(
+                      onPressed: (duration) {
+                        currentDuration.value = duration;
+                      },
+                    )
                   ],
                 ),
                 expandedHeight: 60,
@@ -104,18 +103,6 @@ class Signals extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // const SizedBox(height: 30,),
-                      // const CryptoListItem(
-                      //     cryptoName: 'Bitcoin',
-                      //     cryptoTicker: 'BTC',
-                      //     iconAsset: 'assets/images/btc.png'
-                      // ),
-                      // const SizedBox(height: 30,),
-                      // const CryptoListItem(
-                      //     cryptoName: 'Action Coin',
-                      //     cryptoTicker: 'ACTN',
-                      //     iconAsset: 'assets/images/actn.png'
-                      // ),
                       const SizedBox(height: 30,),
                     ],
                   ),
@@ -126,12 +113,22 @@ class Signals extends StatelessWidget {
                 sliver: SliverAppBar(
                   toolbarHeight: 32,
                   pinned: true,
-                  bottom: tabBar,
+                  bottom: MyTabBar(
+                    tabs: Globals.AlertTypes,
+                    rightButtonText: 'All Orders',
+                    rightButtonIcon: Icons.article_outlined,
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                  ),
                 ),
               )
             ];
           },
-          body: tabBarView,
+          body: Obx(() => SignalsTabBarView(
+            isBackgroundBar: isBackgroundBar.value,
+            alertTypes: Globals.AlertTypes,
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            duration: currentDuration.value,
+          )),
         ));
   }
 }

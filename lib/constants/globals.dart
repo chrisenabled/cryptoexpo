@@ -1,6 +1,8 @@
 
 class Globals {
   static final String defaultLanguage = Lang.english.code;
+  static final num zeroMoney = 0.00;
+  static  const AlertTypes = ['MacD', 'Trend'];
 //List of languages that are supported.  Used in selector.
 //Follow this plugin for translating a google sheet to languages
 //https://github.com/aloisdeniel/flutter_sheet_localization
@@ -22,6 +24,15 @@ extension TradePeriodExtension on TradePeriod {
       case TradePeriod.FifteenMin: return '15m';
       case TradePeriod.FourHours: return '4h';
       case TradePeriod.OneWeek: return '1w';
+    }
+  }
+
+  int get number {
+    switch(this) {
+      case TradePeriod.FiveMin: return 5;
+      case TradePeriod.FifteenMin: return 15;
+      case TradePeriod.FourHours: return 240;
+      case TradePeriod.OneWeek: return 10080;
     }
   }
 }
@@ -87,6 +98,28 @@ extension MarketsExt on Markets {
       case Markets.ADA_USDT: return "ADA/USDT";
       case Markets.XRP_USDT: return "XRP/USDT";
       case Markets.DOT_USDT: return "DOT/USDT";
+    }
+  }
+}
+
+enum Assets {
+  BTC,
+  ETH,
+  BIT,
+  ADA,
+  XRP,
+  DOT,
+}
+
+extension AssetsExt on Assets {
+  String get string {
+    switch(this) {
+      case Assets.BTC: return "BTC/USDT";
+      case Assets.ETH: return "ETH/USDT";
+      case Assets.BIT: return "BIT/USDT";
+      case Assets.ADA: return "ADA/USDT";
+      case Assets.XRP: return "XRP/USDT";
+      case Assets.DOT: return "DOT/USDT";
     }
   }
 }

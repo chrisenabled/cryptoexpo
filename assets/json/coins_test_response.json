@@ -1,0 +1,3306 @@
+{
+  "id": "bitcoin",
+  "symbol": "btc",
+  "name": "Bitcoin",
+  "asset_platform_id": null,
+  "platforms": {
+    "": ""
+  },
+  "block_time_in_minutes": 10,
+  "hashing_algorithm": "SHA-256",
+  "categories": [
+    "Cryptocurrency"
+  ],
+  "public_notice": null,
+  "additional_notices": [],
+  "localization": {
+    "en": "Bitcoin",
+    "de": "Bitcoin",
+    "es": "Bitcoin",
+    "fr": "Bitcoin",
+    "it": "Bitcoin",
+    "pl": "Bitcoin",
+    "ro": "Bitcoin",
+    "hu": "Bitcoin",
+    "nl": "Bitcoin",
+    "pt": "Bitcoin",
+    "sv": "Bitcoin",
+    "vi": "Bitcoin",
+    "tr": "Bitcoin",
+    "ru": "биткоин",
+    "ja": "ビットコイン",
+    "zh": "比特币",
+    "zh-tw": "比特幣",
+    "ko": "비트코인",
+    "ar": "بيتكوين",
+    "th": "บิตคอยน์",
+    "id": "Bitcoin"
+  },
+  "description": {
+    "en": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "de": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "es": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "fr": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "it": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "pl": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "ro": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "hu": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "nl": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "pt": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "sv": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "vi": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "tr": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>.",
+    "ru": "",
+    "ja": "",
+    "zh": "",
+    "zh-tw": "",
+    "ko": "비트코인은 2009년 나카모토 사토시가 만든 디지털 통화로, 통화를 발행하고 관리하는 중앙 장치가 존재하지 않는 구조를 가지고 있다. 대신, 비트코인의 거래는 P2P 기반 분산 데이터베이스에 의해 이루어지며, 공개 키 암호 방식 기반으로 거래를 수행한다. 비트코인은 공개성을 가지고 있다. 비트코인은 지갑 파일의 형태로 저장되며, 이 지갑에는 각각의 고유 주소가 부여되며, 그 주소를 기반으로 비트코인의 거래가 이루어진다. 비트코인은 1998년 웨이따이가 사이버펑크 메일링 리스트에 올린 암호통화란 구상을 최초로 구현한 것 중의 하나이다.\r\n\r\n비트코인은 최초로 구현된 가상화폐입니다. 발행 및 유통을 관리하는 중앙권력이나 중간상인 없이, P2P 네트워크 기술을 이용하여 네트워크에 참여하는 사용자들이 주체적으로 화폐를 발행하고 이체내용을 공동으로 관리합니다. 이를 가능하게 한 블록체인 기술을 처음으로 코인에 도입한 것이 바로 비트코인입니다.\r\n\r\n비트코인을 사용하는 개인과 사업자의 수는 꾸준히 증가하고 있으며, 여기에는 식당, 아파트, 법률사무소, 온라인 서비스를 비롯한 소매상들이 포함됩니다. 비트코인은 새로운 사회 현상이지만 아주 빠르게 성장하고 있습니다. 이를 바탕으로 가치 증대는 물론, 매일 수백만 달러의 비트코인이 교환되고 있습니다. \r\n\r\n비트코인은 가상화폐 시장에서 현재 유통시가총액과 코인의 가치가 가장 크고, 거래량 또한 안정적입니다. 이더리움이 빠르게 추격하고 있지만 아직은 가장 견고한 가상화폐라고 볼 수 있습니다. \r\n\r\n코인 특징\r\n1. 중앙주체 없이 사용자들에 의해 거래내용이 관리될 수 있는 비트코인의 운영 시스템은 블록체인 기술에서 기인합니다. 블록체인은 쉽게 말해 다 같이 장부를 공유하고, 항상 서로의 컴퓨터에 있는 장부 파일을 비교함으로써 같은 내용만 인정하는 방식으로 운영됩니다. 따라서 전통적인 금융기관에서 장부에 대한 접근을 튼튼하게 방어하던 것과는 정반대의 작업을 통해 보안을 달성합니다. 장부를 해킹하려면 51%의 장부를 동시에 조작해야 하는데, 이는 사실상 불가능합니다. 왜냐하면, 이를 실행하기 위해서는 컴퓨팅 파워가 어마어마하게 소요되고, 이것이 가능한 슈퍼컴퓨터는 세상에 존재하지 않기 때문입니다. 또한, 장부의 자료들은 줄글로 기록되는 것이 아니라 암호화 해시 함수형태로 블록에 저장되고, 이 블록들은 서로 연결되어 있어서 더 강력한 보안을 제공합니다. \r\n\r\n2. 비트코인은 블록발행보상을 채굴자에게 지급하는 방식으로 신규 코인을 발행합니다. 블록발행보상은 매 21만 블록(약 4년)을 기준으로 발행량이 절반으로 줄어듭니다. 처음에는 50비트코인씩 발행이 되었고, 4년마다 계속 반으로 감소하고 있습니다. 코인의 총량이 2,100만 개에 도달하면 신규 발행은 종료되고, 이후에는 거래 수수료만을 통해 시스템이 지탱될 것입니다. \r\n\r\n핵심 가치\r\n(키워드: 통화로 사용될 수 있는 보편성 및 편의성)\r\n\r\n1. 다양한 알트코인들의 등장에 앞서 비트코인은 가상화폐 시장에서 독보적이었기 때문에, 현재 가장 보편적인 결제수단으로 사용됩니다. 실생활에서 이를 활용할 수 있는 가맹점이 알트코인들보다 압도적으로 많을 뿐만 아니라, 이 또한 증가하고 있습니다. 일례로 일본 업체들이 비트코인 결제 시스템을 도입하면서 곧 비트코인을 오프라인 점포 26만 곳에서 이용할 수 있게 될 것입니다. \r\n\r\n2. 여러 나라에서 비트코인을 정식 결제 수단으로 인정하면서, 실물화폐와 가상화폐를 거래할 때 더는 부가가치세가 부과되지 않게 된다고 합니다. 실제로 일본과 호주에서는 이미 비트코인을 합법적 결제 수단으로 인정하면서 제도권 안으로 들여오고 있고, 미국에서는 비트코인 ETF 승인 노력도 진행되고 있습니다. 각국에 비트코인을 기반으로 한 ATM 기계도 설치되었다고 합니다. ",
+    "ar": "",
+    "th": "",
+    "id": "Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency. It was created by an anonymous individual/group under the name, Satoshi Nakamoto. The source code is available publicly as an open source project, anybody can look at it and be part of the developmental process.\r\n\r\nBitcoin is changing the way we see money as we speak. The idea was to produce a means of exchange, independent of any central authority, that could be transferred electronically in a secure, verifiable and immutable way. It is a decentralized peer-to-peer internet currency making mobile payment easy, very low transaction fees, protects your identity, and it works anywhere all the time with no central authority and banks.\r\n\r\nBitcoin is designed to have only 21 million BTC ever created, thus making it a deflationary currency. Bitcoin uses the <a href=\"https://www.coingecko.com/en?hashing_algorithm=SHA-256\">SHA-256</a> hashing algorithm with an average transaction confirmation time of 10 minutes. Miners today are mining Bitcoin using ASIC chip dedicated to only mining Bitcoin, and the hash rate has shot up to peta hashes.\r\n\r\nBeing the first successful online cryptography currency, Bitcoin has inspired other alternative currencies such as <a href=\"https://www.coingecko.com/en/coins/litecoin\">Litecoin</a>, <a href=\"https://www.coingecko.com/en/coins/peercoin\">Peercoin</a>, <a href=\"https://www.coingecko.com/en/coins/primecoin\">Primecoin</a>, and so on.\r\n\r\nThe cryptocurrency then took off with the innovation of the turing-complete smart contract by <a href=\"https://www.coingecko.com/en/coins/ethereum\">Ethereum</a> which led to the development of other amazing projects such as <a href=\"https://www.coingecko.com/en/coins/eos\">EOS</a>, <a href=\"https://www.coingecko.com/en/coins/tron\">Tron</a>, and even crypto-collectibles such as <a href=\"https://www.coingecko.com/buzz/ethereum-still-king-dapps-cryptokitties-need-1-billion-on-eos\">CryptoKitties</a>."
+  },
+  "links": {
+    "homepage": [
+      "http://www.bitcoin.org",
+      "",
+      ""
+    ],
+    "blockchain_site": [
+      "https://blockchair.com/bitcoin/",
+      "https://btc.com/",
+      "https://btc.tokenview.com/",
+      "",
+      ""
+    ],
+    "official_forum_url": [
+      "https://bitcointalk.org/",
+      "",
+      ""
+    ],
+    "chat_url": [
+      "",
+      "",
+      ""
+    ],
+    "announcement_url": [
+      "",
+      ""
+    ],
+    "twitter_screen_name": "bitcoin",
+    "facebook_username": "bitcoins",
+    "bitcointalk_thread_identifier": null,
+    "telegram_channel_identifier": "",
+    "subreddit_url": "https://www.reddit.com/r/Bitcoin/",
+    "repos_url": {
+      "github": [
+        "https://github.com/bitcoin/bitcoin",
+        "https://github.com/bitcoin/bips"
+      ],
+      "bitbucket": []
+    }
+  },
+  "image": {
+    "thumb": "https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png?1547033579",
+    "small": "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579",
+    "large": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
+  },
+  "country_origin": "",
+  "genesis_date": "2009-01-03",
+  "sentiment_votes_up_percentage": 59.62,
+  "sentiment_votes_down_percentage": 40.38,
+  "market_cap_rank": 1,
+  "coingecko_rank": 1,
+  "coingecko_score": 81.01,
+  "developer_score": 104.016,
+  "community_score": 68.113,
+  "liquidity_score": 100.036,
+  "public_interest_score": 0.282,
+  "community_data": {
+    "facebook_likes": null,
+    "twitter_followers": 3739873,
+    "reddit_average_posts_48h": 6.75,
+    "reddit_average_comments_48h": 1245.917,
+    "reddit_subscribers": 3567644,
+    "reddit_accounts_active_48h": 4656,
+    "telegram_channel_user_count": null
+  },
+  "public_interest_stats": {
+    "alexa_rank": 9440,
+    "bing_matches": null
+  },
+  "status_updates": [],
+  "last_updated": "2021-11-17T02:19:35.299Z",
+  "tickers": [
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Binance",
+        "identifier": "binance",
+        "has_trading_incentive": false
+      },
+      "last": 59531.73,
+      "volume": 70545.0803364589,
+      "converted_last": {
+        "btc": 1.003068,
+        "eth": 14.389985,
+        "usd": 59667
+      },
+      "converted_volume": {
+        "btc": 70761,
+        "eth": 1015143,
+        "usd": 4209208577
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.010017,
+      "timestamp": "2021-11-17T02:21:24+00:00",
+      "last_traded_at": "2021-11-17T02:21:24+00:00",
+      "last_fetch_at": "2021-11-17T02:21:24+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.binance.com/en/trade/BTC_USDT?ref=37754157",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "WBTC",
+      "target": "BTC",
+      "market": {
+        "name": "FTX",
+        "identifier": "ftx_spot",
+        "has_trading_incentive": false
+      },
+      "last": 1.0004,
+      "volume": 172.06295279888045,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59484
+      },
+      "converted_volume": {
+        "btc": 172.132,
+        "eth": 2469,
+        "usd": 10239166
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.019996,
+      "timestamp": "2021-11-17T02:21:26+00:00",
+      "last_traded_at": "2021-11-17T02:21:26+00:00",
+      "last_fetch_at": "2021-11-17T02:21:26+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.com/trade/WBTC/BTC",
+      "token_info_url": null,
+      "coin_id": "wrapped-bitcoin",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "FTX.US",
+        "identifier": "ftx_us",
+        "has_trading_incentive": false
+      },
+      "last": 59466,
+      "volume": 2738.0222342414154,
+      "converted_last": {
+        "btc": 0.99982777,
+        "eth": 14.33511,
+        "usd": 59466
+      },
+      "converted_volume": {
+        "btc": 2738,
+        "eth": 39250,
+        "usd": 162819230
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.02858,
+      "timestamp": "2021-11-17T02:18:28+00:00",
+      "last_traded_at": "2021-11-17T02:18:28+00:00",
+      "last_fetch_at": "2021-11-17T02:18:28+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.us/trade/BTC/USD",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "FTX.US",
+        "identifier": "ftx_us",
+        "has_trading_incentive": false
+      },
+      "last": 59449,
+      "volume": 1770.6555668657168,
+      "converted_last": {
+        "btc": 1.001674,
+        "eth": 14.361575,
+        "usd": 59576
+      },
+      "converted_volume": {
+        "btc": 1774,
+        "eth": 25429,
+        "usd": 105488196
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.023547,
+      "timestamp": "2021-11-17T02:18:27+00:00",
+      "last_traded_at": "2021-11-17T02:18:27+00:00",
+      "last_fetch_at": "2021-11-17T02:18:27+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.us/trade/BTC/USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "GBP",
+      "market": {
+        "name": "Bitfinex",
+        "identifier": "bitfinex",
+        "has_trading_incentive": false
+      },
+      "last": 44302,
+      "volume": 673.60818507,
+      "converted_last": {
+        "btc": 0.99744249,
+        "eth": 14.300911,
+        "usd": 59484
+      },
+      "converted_volume": {
+        "btc": 671.885,
+        "eth": 9633,
+        "usd": 40069109
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.022543,
+      "timestamp": "2021-11-17T02:20:36+00:00",
+      "last_traded_at": "2021-11-17T02:20:36+00:00",
+      "last_fetch_at": "2021-11-17T02:20:36+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.bitfinex.com/t/BTCGBP",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "EUR",
+      "market": {
+        "name": "Bitfinex",
+        "identifier": "bitfinex",
+        "has_trading_incentive": false
+      },
+      "last": 52512,
+      "volume": 701.25806051,
+      "converted_last": {
+        "btc": 0.99689325,
+        "eth": 14.293036,
+        "usd": 59452
+      },
+      "converted_volume": {
+        "btc": 699.079,
+        "eth": 10023,
+        "usd": 41690872
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.019019,
+      "timestamp": "2021-11-17T02:20:22+00:00",
+      "last_traded_at": "2021-11-17T02:20:22+00:00",
+      "last_fetch_at": "2021-11-17T02:20:22+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.bitfinex.com/t/BTCEUR",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Bitfinex",
+        "identifier": "bitfinex",
+        "has_trading_incentive": false
+      },
+      "last": 59487,
+      "volume": 10191.06808338,
+      "converted_last": {
+        "btc": 0.99748784,
+        "eth": 14.301561,
+        "usd": 59487
+      },
+      "converted_volume": {
+        "btc": 10165,
+        "eth": 145748,
+        "usd": 606236067
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.016804,
+      "timestamp": "2021-11-17T02:20:16+00:00",
+      "last_traded_at": "2021-11-17T02:20:16+00:00",
+      "last_fetch_at": "2021-11-17T02:20:16+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.bitfinex.com/t/BTCUSD",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "WhiteBIT",
+        "identifier": "whitebit",
+        "has_trading_incentive": false
+      },
+      "last": 0.069648,
+      "volume": 21110.916,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.341559,
+        "usd": 59559
+      },
+      "converted_volume": {
+        "btc": 1470,
+        "eth": 21087,
+        "usd": 87572007
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.015791,
+      "timestamp": "2021-11-17T02:09:54+00:00",
+      "last_traded_at": "2021-11-17T02:09:54+00:00",
+      "last_fetch_at": "2021-11-17T02:09:54+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://whitebit.com/trade/ETH_BTC",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "JPY",
+      "market": {
+        "name": "Bitfinex",
+        "identifier": "bitfinex",
+        "has_trading_incentive": false
+      },
+      "last": 6831699.99999984,
+      "volume": 343.93791129,
+      "converted_last": {
+        "btc": 0.99748419,
+        "eth": 14.301508,
+        "usd": 59487
+      },
+      "converted_volume": {
+        "btc": 343.073,
+        "eth": 4919,
+        "usd": 20459760
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.014616,
+      "timestamp": "2021-11-17T02:20:42+00:00",
+      "last_traded_at": "2021-11-17T02:20:42+00:00",
+      "last_fetch_at": "2021-11-17T02:20:42+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.bitfinex.com/t/BTCJPY",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Coinbase Exchange",
+        "identifier": "gdax",
+        "has_trading_incentive": false
+      },
+      "last": 59632.07,
+      "volume": 22233.55177533,
+      "converted_last": {
+        "btc": 1.002481,
+        "eth": 14.381577,
+        "usd": 59632
+      },
+      "converted_volume": {
+        "btc": 22289,
+        "eth": 319754,
+        "usd": 1325832716
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.010017,
+      "timestamp": "2021-11-17T02:21:39+00:00",
+      "last_traded_at": "2021-11-17T02:21:39+00:00",
+      "last_fetch_at": "2021-11-17T02:21:39+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://pro.coinbase.com/trade/BTC-USD",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "VCC Exchange",
+        "identifier": "vcc",
+        "has_trading_incentive": false
+      },
+      "last": 59228.47,
+      "volume": 274.75619,
+      "converted_last": {
+        "btc": 0.99795787,
+        "eth": 14.29828,
+        "usd": 59487
+      },
+      "converted_volume": {
+        "btc": 274.195,
+        "eth": 3929,
+        "usd": 16344436
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.010017,
+      "timestamp": "2021-11-17T02:08:10+00:00",
+      "last_traded_at": "2021-11-17T02:08:10+00:00",
+      "last_fetch_at": "2021-11-17T02:08:10+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://vcc.exchange/exchange/basic?currency=usdt&coin=btc",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Crypto.com Exchange",
+        "identifier": "crypto_com",
+        "has_trading_incentive": false
+      },
+      "last": 59372.62,
+      "volume": 47572.86046,
+      "converted_last": {
+        "btc": 1.000387,
+        "eth": 14.333079,
+        "usd": 59632
+      },
+      "converted_volume": {
+        "btc": 47591,
+        "eth": 681866,
+        "usd": 2836856750
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.012291,
+      "timestamp": "2021-11-17T02:07:23+00:00",
+      "last_traded_at": "2021-11-17T02:07:23+00:00",
+      "last_fetch_at": "2021-11-17T02:07:23+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://crypto.com/exchange/trade/spot/BTC_USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Coinsbit",
+        "identifier": "coinsbit",
+        "has_trading_incentive": false
+      },
+      "last": 59419.02,
+      "volume": 754.5220873,
+      "converted_last": {
+        "btc": 0.99745969,
+        "eth": 14.297614,
+        "usd": 59419
+      },
+      "converted_volume": {
+        "btc": 752.605,
+        "eth": 10788,
+        "usd": 44832963
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.011393,
+      "timestamp": "2021-11-17T02:16:39+00:00",
+      "last_traded_at": "2021-11-17T02:16:39+00:00",
+      "last_fetch_at": "2021-11-17T02:16:39+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://coinsbit.io/trade/BTC_USD",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "WOO Network",
+        "identifier": "wootrade",
+        "has_trading_incentive": false
+      },
+      "last": 59328.4,
+      "volume": 4787.91355695,
+      "converted_last": {
+        "btc": 0.99964162,
+        "eth": 14.32889,
+        "usd": 59549
+      },
+      "converted_volume": {
+        "btc": 4786,
+        "eth": 68605,
+        "usd": 285115455
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.013128,
+      "timestamp": "2021-11-17T02:16:12+00:00",
+      "last_traded_at": "2021-11-17T02:16:12+00:00",
+      "last_fetch_at": "2021-11-17T02:16:12+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://x.woo.network/spot",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Coinzoom",
+        "identifier": "coinzoom",
+        "has_trading_incentive": false
+      },
+      "last": 59350.14,
+      "volume": 46.086553,
+      "converted_last": {
+        "btc": 1.000008,
+        "eth": 14.334141,
+        "usd": 59436
+      },
+      "converted_volume": {
+        "btc": 46.086918,
+        "eth": 660.611,
+        "usd": 2739192
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.057758,
+      "timestamp": "2021-11-17T02:15:54+00:00",
+      "last_traded_at": "2021-11-17T02:15:54+00:00",
+      "last_fetch_at": "2021-11-17T02:15:54+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://trade.coinzoom.com/landing",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "BUSD",
+      "market": {
+        "name": "Binance",
+        "identifier": "binance",
+        "has_trading_incentive": false
+      },
+      "last": 59449.12,
+      "volume": 18553.099563990076,
+      "converted_last": {
+        "btc": 0.99610149,
+        "eth": 14.28649,
+        "usd": 59363
+      },
+      "converted_volume": {
+        "btc": 18481,
+        "eth": 265059,
+        "usd": 1101362676
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.018956,
+      "timestamp": "2021-11-17T02:15:00+00:00",
+      "last_traded_at": "2021-11-17T02:15:00+00:00",
+      "last_fetch_at": "2021-11-17T02:15:00+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.binance.com/en/trade/BTC_BUSD?ref=37754157",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "binance-usd"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "FTX",
+        "identifier": "ftx_spot",
+        "has_trading_incentive": false
+      },
+      "last": 59615,
+      "volume": 20999.90066887528,
+      "converted_last": {
+        "btc": 1.002195,
+        "eth": 14.37746,
+        "usd": 59615
+      },
+      "converted_volume": {
+        "btc": 21046,
+        "eth": 301925,
+        "usd": 1251909078
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.011677,
+      "timestamp": "2021-11-17T02:21:24+00:00",
+      "last_traded_at": "2021-11-17T02:21:24+00:00",
+      "last_fetch_at": "2021-11-17T02:21:24+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.com/trade/BTC/USD",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "Bitfinex",
+        "identifier": "bitfinex",
+        "has_trading_incentive": false
+      },
+      "last": 0.069701,
+      "volume": 14434.67860377,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.337579,
+        "usd": 59637
+      },
+      "converted_volume": {
+        "btc": 1006,
+        "eth": 14425,
+        "usd": 60001290
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.028694,
+      "timestamp": "2021-11-17T02:20:19+00:00",
+      "last_traded_at": "2021-11-17T02:20:19+00:00",
+      "last_fetch_at": "2021-11-17T02:20:19+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.bitfinex.com/t/ETHBTC",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Digifinex",
+        "identifier": "digifinex",
+        "has_trading_incentive": false
+      },
+      "last": 59430.04,
+      "volume": 2527.20489447,
+      "converted_last": {
+        "btc": 1.001354,
+        "eth": 14.36098,
+        "usd": 59731
+      },
+      "converted_volume": {
+        "btc": 2531,
+        "eth": 36293,
+        "usd": 150951914
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.034354,
+      "timestamp": "2021-11-17T02:10:02+00:00",
+      "last_traded_at": "2021-11-17T02:10:02+00:00",
+      "last_fetch_at": "2021-11-17T02:10:02+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.digifinex.com/en-ww/trade/USDT/BTC",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "FTX",
+        "identifier": "ftx_spot",
+        "has_trading_incentive": false
+      },
+      "last": 59587,
+      "volume": 4366.610466689043,
+      "converted_last": {
+        "btc": 1.000928,
+        "eth": 14.359296,
+        "usd": 59540
+      },
+      "converted_volume": {
+        "btc": 4371,
+        "eth": 62701,
+        "usd": 259986614
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.011678,
+      "timestamp": "2021-11-17T02:21:26+00:00",
+      "last_traded_at": "2021-11-17T02:21:26+00:00",
+      "last_fetch_at": "2021-11-17T02:21:26+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.com/trade/BTC/USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Coinsbit",
+        "identifier": "coinsbit",
+        "has_trading_incentive": false
+      },
+      "last": 59379.55,
+      "volume": 11532.70311694,
+      "converted_last": {
+        "btc": 1.000503,
+        "eth": 14.341244,
+        "usd": 59600
+      },
+      "converted_volume": {
+        "btc": 11539,
+        "eth": 165393,
+        "usd": 687353007
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.034235,
+      "timestamp": "2021-11-17T02:16:31+00:00",
+      "last_traded_at": "2021-11-17T02:16:31+00:00",
+      "last_fetch_at": "2021-11-17T02:16:31+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://coinsbit.io/trade/BTC_USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "LBank",
+        "identifier": "lbank",
+        "has_trading_incentive": false
+      },
+      "last": 59412.48,
+      "volume": 7253.542,
+      "converted_last": {
+        "btc": 1.001058,
+        "eth": 14.352753,
+        "usd": 59539
+      },
+      "converted_volume": {
+        "btc": 7261,
+        "eth": 104108,
+        "usd": 431869998
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.042761,
+      "timestamp": "2021-11-17T02:18:17+00:00",
+      "last_traded_at": "2021-11-17T02:18:17+00:00",
+      "last_fetch_at": "2021-11-17T02:18:17+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.lbank.info/exchange/btc/usdt",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "Binance",
+        "identifier": "binance",
+        "has_trading_incentive": false
+      },
+      "last": 0.069657,
+      "volume": 89633.06254791335,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.327539,
+        "usd": 59606
+      },
+      "converted_volume": {
+        "btc": 6244,
+        "eth": 89455,
+        "usd": 372153163
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.011427,
+      "timestamp": "2021-11-17T02:06:04+00:00",
+      "last_traded_at": "2021-11-17T02:06:04+00:00",
+      "last_fetch_at": "2021-11-17T02:06:04+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.binance.com/en/trade/ETH_BTC?ref=37754157",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "WhiteBIT",
+        "identifier": "whitebit",
+        "has_trading_incentive": false
+      },
+      "last": 59445.08,
+      "volume": 8913.143234,
+      "converted_last": {
+        "btc": 1.001608,
+        "eth": 14.364614,
+        "usd": 59683
+      },
+      "converted_volume": {
+        "btc": 8927,
+        "eth": 128034,
+        "usd": 531965970
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.052571,
+      "timestamp": "2021-11-17T02:11:17+00:00",
+      "last_traded_at": "2021-11-17T02:11:17+00:00",
+      "last_fetch_at": "2021-11-17T02:11:17+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://whitebit.com/trade/BTC_USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "EUR",
+      "market": {
+        "name": "Coinsbit",
+        "identifier": "coinsbit",
+        "has_trading_incentive": false
+      },
+      "last": 52676.46,
+      "volume": 177.59603374,
+      "converted_last": {
+        "btc": 1.001131,
+        "eth": 14.350242,
+        "usd": 59638
+      },
+      "converted_volume": {
+        "btc": 177.797,
+        "eth": 2549,
+        "usd": 10591425
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.100775,
+      "timestamp": "2021-11-17T02:16:41+00:00",
+      "last_traded_at": "2021-11-17T02:16:41+00:00",
+      "last_fetch_at": "2021-11-17T02:16:41+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://coinsbit.io/trade/BTC_EUR",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "Digifinex",
+        "identifier": "digifinex",
+        "has_trading_incentive": false
+      },
+      "last": 0.069705,
+      "volume": 2573.6498,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.327539,
+        "usd": 59606
+      },
+      "converted_volume": {
+        "btc": 179.396,
+        "eth": 2570,
+        "usd": 10693062
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.196509,
+      "timestamp": "2021-11-17T02:06:21+00:00",
+      "last_traded_at": "2021-11-17T02:06:21+00:00",
+      "last_fetch_at": "2021-11-17T02:06:21+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.digifinex.com/en-ww/trade/BTC/ETH",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "LBank",
+        "identifier": "lbank",
+        "has_trading_incentive": false
+      },
+      "last": 0.06964799,
+      "volume": 41514.5677,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.337579,
+        "usd": 59476
+      },
+      "converted_volume": {
+        "btc": 2891,
+        "eth": 41456,
+        "usd": 171969979
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.1897,
+      "timestamp": "2021-11-17T02:18:21+00:00",
+      "last_traded_at": "2021-11-17T02:18:21+00:00",
+      "last_fetch_at": "2021-11-17T02:18:21+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.lbank.info/exchange/eth/btc",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "OKEx",
+        "identifier": "okex",
+        "has_trading_incentive": false
+      },
+      "last": 59505.6,
+      "volume": 19047.28176936,
+      "converted_last": {
+        "btc": 1.002627,
+        "eth": 14.380086,
+        "usd": 59594
+      },
+      "converted_volume": {
+        "btc": 19097,
+        "eth": 273902,
+        "usd": 1135098255
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.010168,
+      "timestamp": "2021-11-17T02:12:22+00:00",
+      "last_traded_at": "2021-11-17T02:12:22+00:00",
+      "last_fetch_at": "2021-11-17T02:12:22+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.okex.com/markets/spot-info/btc-usdt",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "VCC Exchange",
+        "identifier": "vcc",
+        "has_trading_incentive": false
+      },
+      "last": 0.069693,
+      "volume": 2291.3841,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59478
+      },
+      "converted_volume": {
+        "btc": 159.693,
+        "eth": 2289,
+        "usd": 9498169
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.011436,
+      "timestamp": "2021-11-17T02:17:25+00:00",
+      "last_traded_at": "2021-11-17T02:17:25+00:00",
+      "last_fetch_at": "2021-11-17T02:17:25+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://vcc.exchange/exchange/basic?currency=btc&coin=eth",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "EUR",
+      "market": {
+        "name": "Kraken",
+        "identifier": "kraken",
+        "has_trading_incentive": false
+      },
+      "last": 52569.9,
+      "volume": 3705.06581319,
+      "converted_last": {
+        "btc": 1.000822,
+        "eth": 14.349365,
+        "usd": 59517
+      },
+      "converted_volume": {
+        "btc": 3708,
+        "eth": 53165,
+        "usd": 220514743
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.018835,
+      "timestamp": "2021-11-17T02:19:03+00:00",
+      "last_traded_at": "2021-11-17T02:19:03+00:00",
+      "last_fetch_at": "2021-11-17T02:19:03+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://trade.kraken.com/markets/kraken/btc/eur",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "UST",
+      "market": {
+        "name": "Bitfinex",
+        "identifier": "bitfinex",
+        "has_trading_incentive": false
+      },
+      "last": 59454,
+      "volume": 2314.28416208,
+      "converted_last": {
+        "btc": 1.005579,
+        "eth": 14.41757,
+        "usd": 59970
+      },
+      "converted_volume": {
+        "btc": 2327,
+        "eth": 33366,
+        "usd": 138786548
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.033591,
+      "timestamp": "2021-11-17T02:20:26+00:00",
+      "last_traded_at": "2021-11-17T02:20:26+00:00",
+      "last_fetch_at": "2021-11-17T02:20:26+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.bitfinex.com/t/BTCUST",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "JPY",
+      "market": {
+        "name": "bitFlyer",
+        "identifier": "bitflyer",
+        "has_trading_incentive": false
+      },
+      "last": 6838805,
+      "volume": 3760.93558162,
+      "converted_last": {
+        "btc": 0.99861718,
+        "eth": 14.321727,
+        "usd": 59568
+      },
+      "converted_volume": {
+        "btc": 3756,
+        "eth": 53863,
+        "usd": 224029589
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.030429,
+      "timestamp": "2021-11-17T02:10:20+00:00",
+      "last_traded_at": "2021-11-17T02:10:20+00:00",
+      "last_fetch_at": "2021-11-17T02:10:20+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://bitflyer.com/en-jp/ex/simpleex",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Huobi Global",
+        "identifier": "huobi",
+        "has_trading_incentive": false
+      },
+      "last": 59567.66,
+      "volume": 20362.466540754336,
+      "converted_last": {
+        "btc": 1.003673,
+        "eth": 14.39867,
+        "usd": 59703
+      },
+      "converted_volume": {
+        "btc": 20437,
+        "eth": 293192,
+        "usd": 1215699210
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.010017,
+      "timestamp": "2021-11-17T02:21:14+00:00",
+      "last_traded_at": "2021-11-17T02:21:14+00:00",
+      "last_fetch_at": "2021-11-17T02:21:14+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.huobi.com/en-us/exchange/btc_usdt",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "FMFW.io",
+        "identifier": "bitcoin_com",
+        "has_trading_incentive": false
+      },
+      "last": 59472.64,
+      "volume": 15182.99209,
+      "converted_last": {
+        "btc": 1.002072,
+        "eth": 14.371274,
+        "usd": 59683
+      },
+      "converted_volume": {
+        "btc": 15214,
+        "eth": 218199,
+        "usd": 906162012
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.01676,
+      "timestamp": "2021-11-17T02:09:28+00:00",
+      "last_traded_at": "2021-11-17T02:09:28+00:00",
+      "last_fetch_at": "2021-11-17T02:09:28+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://fmfw.io/BTC-to-USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Kraken",
+        "identifier": "kraken",
+        "has_trading_incentive": false
+      },
+      "last": 59449.3,
+      "volume": 4626.42404347,
+      "converted_last": {
+        "btc": 0.99968205,
+        "eth": 14.333021,
+        "usd": 59449
+      },
+      "converted_volume": {
+        "btc": 4625,
+        "eth": 66311,
+        "usd": 275037671
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.0174,
+      "timestamp": "2021-11-17T02:19:04+00:00",
+      "last_traded_at": "2021-11-17T02:19:04+00:00",
+      "last_fetch_at": "2021-11-17T02:19:04+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://trade.kraken.com/markets/kraken/btc/usd",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "HitBTC",
+        "identifier": "hitbtc",
+        "has_trading_incentive": false
+      },
+      "last": 59590.73,
+      "volume": 15264.78623,
+      "converted_last": {
+        "btc": 1.000991,
+        "eth": 14.360195,
+        "usd": 59826
+      },
+      "converted_volume": {
+        "btc": 15280,
+        "eth": 219205,
+        "usd": 913229534
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.0197,
+      "timestamp": "2021-11-17T02:22:19+00:00",
+      "last_traded_at": "2021-11-17T02:22:19+00:00",
+      "last_fetch_at": "2021-11-17T02:22:19+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://hitbtc.com/BTC-to-USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "FTX.US",
+        "identifier": "ftx_us",
+        "has_trading_incentive": false
+      },
+      "last": 0.069595,
+      "volume": 1574.0796272002299,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59570
+      },
+      "converted_volume": {
+        "btc": 109.548,
+        "eth": 1570,
+        "usd": 6525817
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.017961,
+      "timestamp": "2021-11-17T02:16:22+00:00",
+      "last_traded_at": "2021-11-17T02:16:22+00:00",
+      "last_fetch_at": "2021-11-17T02:16:22+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.us/trade/ETH/BTC",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "ZB",
+        "identifier": "zb",
+        "has_trading_incentive": false
+      },
+      "last": 59371.31,
+      "volume": 20787.4328,
+      "converted_last": {
+        "btc": 1.000365,
+        "eth": 14.342807,
+        "usd": 59498
+      },
+      "converted_volume": {
+        "btc": 20795,
+        "eth": 298150,
+        "usd": 1236809217
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.048203,
+      "timestamp": "2021-11-17T02:18:10+00:00",
+      "last_traded_at": "2021-11-17T02:18:10+00:00",
+      "last_fetch_at": "2021-11-17T02:18:10+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://trans.zb.com/btcusdt",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "EUR",
+      "market": {
+        "name": "Bitvavo",
+        "identifier": "bitvavo",
+        "has_trading_incentive": false
+      },
+      "last": 52455,
+      "volume": 1486.040207,
+      "converted_last": {
+        "btc": 0.99635511,
+        "eth": 14.275317,
+        "usd": 59392
+      },
+      "converted_volume": {
+        "btc": 1481,
+        "eth": 21214,
+        "usd": 88258176
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.011906,
+      "timestamp": "2021-11-17T02:07:23+00:00",
+      "last_traded_at": "2021-11-17T02:07:23+00:00",
+      "last_fetch_at": "2021-11-17T02:07:23+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://account.bitvavo.com/markets/BTC-EUR",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "B2BX",
+        "identifier": "b2bx",
+        "has_trading_incentive": false
+      },
+      "last": 59456.6291088,
+      "volume": 49.11750682,
+      "converted_last": {
+        "btc": 0.99827617,
+        "eth": 14.316837,
+        "usd": 59457
+      },
+      "converted_volume": {
+        "btc": 49.032837,
+        "eth": 703.207,
+        "usd": 2920361
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.014016,
+      "timestamp": "2021-11-17T02:09:18+00:00",
+      "last_traded_at": "2021-11-17T02:09:18+00:00",
+      "last_fetch_at": "2021-11-17T02:09:18+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://advanced.b2bx.exchange/?symbol=BTCUSD",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "EUR",
+      "market": {
+        "name": "Bitstamp",
+        "identifier": "bitstamp",
+        "has_trading_incentive": false
+      },
+      "last": 52326.4,
+      "volume": 1784.31828222,
+      "converted_last": {
+        "btc": 0.9921021,
+        "eth": 14.204907,
+        "usd": 59249
+      },
+      "converted_volume": {
+        "btc": 1770,
+        "eth": 25346,
+        "usd": 105719900
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.054219,
+      "timestamp": "2021-11-17T02:04:55+00:00",
+      "last_traded_at": "2021-11-17T02:04:55+00:00",
+      "last_fetch_at": "2021-11-17T02:04:55+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": null,
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "EUR",
+      "market": {
+        "name": "Coinbase Exchange",
+        "identifier": "gdax",
+        "has_trading_incentive": false
+      },
+      "last": 52704.7,
+      "volume": 2034.54002183,
+      "converted_last": {
+        "btc": 1.003015,
+        "eth": 14.389236,
+        "usd": 59664
+      },
+      "converted_volume": {
+        "btc": 2041,
+        "eth": 29275,
+        "usd": 121388449
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.030275,
+      "timestamp": "2021-11-17T02:21:54+00:00",
+      "last_traded_at": "2021-11-17T02:21:54+00:00",
+      "last_fetch_at": "2021-11-17T02:21:54+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://pro.coinbase.com/trade/BTC-EUR",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Bitstamp",
+        "identifier": "bitstamp",
+        "has_trading_incentive": false
+      },
+      "last": 59566.41,
+      "volume": 4208.91518638,
+      "converted_last": {
+        "btc": 1.001378,
+        "eth": 14.365741,
+        "usd": 59566
+      },
+      "converted_volume": {
+        "btc": 4215,
+        "eth": 60464,
+        "usd": 250709968
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.038327,
+      "timestamp": "2021-11-17T02:21:17+00:00",
+      "last_traded_at": "2021-11-17T02:21:17+00:00",
+      "last_fetch_at": "2021-11-17T02:21:17+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": null,
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Phemex",
+        "identifier": "phemex",
+        "has_trading_incentive": false
+      },
+      "last": 59389.68,
+      "volume": 11416.06933897,
+      "converted_last": {
+        "btc": 1.000674,
+        "eth": 14.34369,
+        "usd": 59611
+      },
+      "converted_volume": {
+        "btc": 11424,
+        "eth": 163749,
+        "usd": 680517669
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.142373,
+      "timestamp": "2021-11-17T02:16:17+00:00",
+      "last_traded_at": "2021-11-17T02:16:17+00:00",
+      "last_fetch_at": "2021-11-17T02:16:17+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://phemex.com/spot/trade/BTCUSDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "EUR",
+      "market": {
+        "name": "Cryptology",
+        "identifier": "cryptology",
+        "has_trading_incentive": false
+      },
+      "last": 52663.33390795,
+      "volume": 92.31632466,
+      "converted_last": {
+        "btc": 0.99749588,
+        "eth": 14.310053,
+        "usd": 59617
+      },
+      "converted_volume": {
+        "btc": 92.085,
+        "eth": 1321,
+        "usd": 5503622
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.012457,
+      "timestamp": "2021-11-17T02:22:12+00:00",
+      "last_traded_at": "2021-11-17T02:22:12+00:00",
+      "last_fetch_at": "2021-11-17T02:22:12+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://cryptology.com/app/next/trading/BTC_EUR",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BNB",
+      "target": "BTC",
+      "market": {
+        "name": "HitBTC",
+        "identifier": "hitbtc",
+        "has_trading_incentive": false
+      },
+      "last": 0.0097596,
+      "volume": 12711.69,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.337579,
+        "usd": 59637
+      },
+      "converted_volume": {
+        "btc": 124.061,
+        "eth": 1779,
+        "usd": 7398604
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.030719,
+      "timestamp": "2021-11-17T02:20:14+00:00",
+      "last_traded_at": "2021-11-17T02:20:14+00:00",
+      "last_fetch_at": "2021-11-17T02:20:14+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://hitbtc.com/BNB-to-BTC",
+      "token_info_url": null,
+      "coin_id": "binancecoin",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "XRP",
+      "target": "BTC",
+      "market": {
+        "name": "FTX",
+        "identifier": "ftx_spot",
+        "has_trading_incentive": false
+      },
+      "last": 0.00001824,
+      "volume": 1410259.707236842,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59484
+      },
+      "converted_volume": {
+        "btc": 25.723137,
+        "eth": 369.024,
+        "usd": 1530127
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.054825,
+      "timestamp": "2021-11-17T02:21:24+00:00",
+      "last_traded_at": "2021-11-17T02:21:24+00:00",
+      "last_fetch_at": "2021-11-17T02:21:24+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.com/trade/XRP/BTC",
+      "token_info_url": null,
+      "coin_id": "ripple",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BNB",
+      "target": "BTC",
+      "market": {
+        "name": "FMFW.io",
+        "identifier": "bitcoin_com",
+        "has_trading_incentive": false
+      },
+      "last": 0.0097613,
+      "volume": 12696.53,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59484
+      },
+      "converted_volume": {
+        "btc": 123.935,
+        "eth": 1778,
+        "usd": 7372185
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.0215,
+      "timestamp": "2021-11-17T02:21:18+00:00",
+      "last_traded_at": "2021-11-17T02:21:18+00:00",
+      "last_fetch_at": "2021-11-17T02:21:18+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://fmfw.io/BNB-to-BTC",
+      "token_info_url": null,
+      "coin_id": "binancecoin",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Cryptology",
+        "identifier": "cryptology",
+        "has_trading_incentive": false
+      },
+      "last": 59549.92,
+      "volume": 42.2814535,
+      "converted_last": {
+        "btc": 0.99637349,
+        "eth": 14.293951,
+        "usd": 59550
+      },
+      "converted_volume": {
+        "btc": 42.128119,
+        "eth": 604.369,
+        "usd": 2517857
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.012013,
+      "timestamp": "2021-11-17T02:22:12+00:00",
+      "last_traded_at": "2021-11-17T02:22:12+00:00",
+      "last_fetch_at": "2021-11-17T02:22:12+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://cryptology.com/app/next/trading/BTC_USD",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "TUSD",
+      "market": {
+        "name": "Coinsbit",
+        "identifier": "coinsbit",
+        "has_trading_incentive": false
+      },
+      "last": 59400.84,
+      "volume": 42.25164238,
+      "converted_last": {
+        "btc": 0.99210967,
+        "eth": 14.220927,
+        "usd": 59100
+      },
+      "converted_volume": {
+        "btc": 41.918263,
+        "eth": 600.858,
+        "usd": 2497085
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.150184,
+      "timestamp": "2021-11-17T02:16:38+00:00",
+      "last_traded_at": "2021-11-17T02:16:38+00:00",
+      "last_fetch_at": "2021-11-17T02:16:38+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://coinsbit.io/trade/BTC_TUSD",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "true-usd"
+    },
+    {
+      "base": "BCH",
+      "target": "BTC",
+      "market": {
+        "name": "FTX.US",
+        "identifier": "ftx_us",
+        "has_trading_incentive": false
+      },
+      "last": 0.009946,
+      "volume": 4005.6380652523626,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.337579,
+        "usd": 59476
+      },
+      "converted_volume": {
+        "btc": 39.840076,
+        "eth": 571.21,
+        "usd": 2369538
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.03016,
+      "timestamp": "2021-11-17T02:18:27+00:00",
+      "last_traded_at": "2021-11-17T02:18:27+00:00",
+      "last_fetch_at": "2021-11-17T02:18:27+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.us/trade/BCH/BTC",
+      "token_info_url": null,
+      "coin_id": "bitcoin-cash",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "B2BX",
+        "identifier": "b2bx",
+        "has_trading_incentive": false
+      },
+      "last": 59390.0577774,
+      "volume": 25.98520003,
+      "converted_last": {
+        "btc": 1.000681,
+        "eth": 14.351319,
+        "usd": 59600
+      },
+      "converted_volume": {
+        "btc": 26.002883,
+        "eth": 372.922,
+        "usd": 1548713
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.014016,
+      "timestamp": "2021-11-17T02:09:15+00:00",
+      "last_traded_at": "2021-11-17T02:09:15+00:00",
+      "last_fetch_at": "2021-11-17T02:09:15+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://advanced.b2bx.exchange/?symbol=BTCUSDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "KuCoin",
+        "identifier": "kucoin",
+        "has_trading_incentive": false
+      },
+      "last": 59341.8,
+      "volume": 11810.00054337,
+      "converted_last": {
+        "btc": 0.9998674,
+        "eth": 14.332126,
+        "usd": 59470
+      },
+      "converted_volume": {
+        "btc": 11808,
+        "eth": 169262,
+        "usd": 702336389
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.010169,
+      "timestamp": "2021-11-17T02:17:04+00:00",
+      "last_traded_at": "2021-11-17T02:17:04+00:00",
+      "last_fetch_at": "2021-11-17T02:17:04+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.kucoin.com/trade/BTC-USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "BUSD",
+      "market": {
+        "name": "LocalTrade",
+        "identifier": "localtrade",
+        "has_trading_incentive": false
+      },
+      "last": 59550,
+      "volume": 18.11510642,
+      "converted_last": {
+        "btc": 0.99779179,
+        "eth": 14.310733,
+        "usd": 59463
+      },
+      "converted_volume": {
+        "btc": 18.075104,
+        "eth": 259.24,
+        "usd": 1077187
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.07525,
+      "timestamp": "2021-11-17T02:14:07+00:00",
+      "last_traded_at": "2021-11-17T02:14:07+00:00",
+      "last_fetch_at": "2021-11-17T02:14:07+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://localtrade.cc/trade/BTC_BUSD",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "binance-usd"
+    },
+    {
+      "base": "WAVES",
+      "target": "BTC",
+      "market": {
+        "name": "Coinsbit",
+        "identifier": "coinsbit",
+        "has_trading_incentive": false
+      },
+      "last": 0.000358,
+      "volume": 24201.66738373,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59570
+      },
+      "converted_volume": {
+        "btc": 8.664197,
+        "eth": 124.193,
+        "usd": 516129
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.122788,
+      "timestamp": "2021-11-17T02:16:40+00:00",
+      "last_traded_at": "2021-11-17T02:16:40+00:00",
+      "last_fetch_at": "2021-11-17T02:16:40+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://coinsbit.io/trade/WAVES_BTC",
+      "token_info_url": null,
+      "coin_id": "waves",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "Coinbase Exchange",
+        "identifier": "gdax",
+        "has_trading_incentive": false
+      },
+      "last": 0.06973,
+      "volume": 17930.18103231,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59484
+      },
+      "converted_volume": {
+        "btc": 1250,
+        "eth": 17936,
+        "usd": 74371726
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.028686,
+      "timestamp": "2021-11-17T02:21:44+00:00",
+      "last_traded_at": "2021-11-17T02:21:44+00:00",
+      "last_fetch_at": "2021-11-17T02:21:44+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://pro.coinbase.com/trade/ETH-BTC",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "HitBTC",
+        "identifier": "hitbtc",
+        "has_trading_incentive": false
+      },
+      "last": 0.06968,
+      "volume": 10975.6371,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59767
+      },
+      "converted_volume": {
+        "btc": 764.782,
+        "eth": 10972,
+        "usd": 45708493
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.012907,
+      "timestamp": "2021-11-17T02:22:32+00:00",
+      "last_traded_at": "2021-11-17T02:22:32+00:00",
+      "last_fetch_at": "2021-11-17T02:22:32+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://hitbtc.com/ETH-to-BTC",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Bitso",
+        "identifier": "bitso",
+        "has_trading_incentive": false
+      },
+      "last": 59323.24,
+      "volume": 66.33059273,
+      "converted_last": {
+        "btc": 0.99525908,
+        "eth": 14.259613,
+        "usd": 59323
+      },
+      "converted_volume": {
+        "btc": 66.016,
+        "eth": 945.849,
+        "usd": 3934946
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.088013,
+      "timestamp": "2021-11-17T02:06:57+00:00",
+      "last_traded_at": "2021-11-17T02:06:57+00:00",
+      "last_fetch_at": "2021-11-17T02:06:57+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": null,
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "EUR",
+      "market": {
+        "name": "B2BX",
+        "identifier": "b2bx",
+        "has_trading_incentive": false
+      },
+      "last": 52589.3617662,
+      "volume": 43.937,
+      "converted_last": {
+        "btc": 0.99973713,
+        "eth": 14.337789,
+        "usd": 59544
+      },
+      "converted_volume": {
+        "btc": 43.92545,
+        "eth": 629.959,
+        "usd": 2616169
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.014017,
+      "timestamp": "2021-11-17T02:09:16+00:00",
+      "last_traded_at": "2021-11-17T02:09:16+00:00",
+      "last_fetch_at": "2021-11-17T02:09:16+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://advanced.b2bx.exchange/?symbol=BTCEUR",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "WBTC",
+      "target": "BTC",
+      "market": {
+        "name": "Binance",
+        "identifier": "binance",
+        "has_trading_incentive": false
+      },
+      "last": 1.0003,
+      "volume": 284.93421916425075,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59435
+      },
+      "converted_volume": {
+        "btc": 285.02,
+        "eth": 4085,
+        "usd": 16940247
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.019992,
+      "timestamp": "2021-11-17T02:15:07+00:00",
+      "last_traded_at": "2021-11-17T02:15:07+00:00",
+      "last_fetch_at": "2021-11-17T02:15:07+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.binance.com/en/trade/WBTC_BTC?ref=37754157",
+      "token_info_url": null,
+      "coin_id": "wrapped-bitcoin",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "FMFW.io",
+        "identifier": "bitcoin_com",
+        "has_trading_incentive": false
+      },
+      "last": 0.069605,
+      "volume": 10941.2594,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.341559,
+        "usd": 59559
+      },
+      "converted_volume": {
+        "btc": 761.566,
+        "eth": 10922,
+        "usd": 45358359
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.011437,
+      "timestamp": "2021-11-17T02:09:28+00:00",
+      "last_traded_at": "2021-11-17T02:09:28+00:00",
+      "last_fetch_at": "2021-11-17T02:09:28+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://fmfw.io/ETH-to-BTC",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "KRW",
+      "market": {
+        "name": "Upbit",
+        "identifier": "upbit",
+        "has_trading_incentive": false
+      },
+      "last": 73251000,
+      "volume": 11938.84211938,
+      "converted_last": {
+        "btc": 1.040904,
+        "eth": 14.924039,
+        "usd": 61901
+      },
+      "converted_volume": {
+        "btc": 12427,
+        "eth": 178176,
+        "usd": 739022413
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.018191,
+      "timestamp": "2021-11-17T02:19:17+00:00",
+      "last_traded_at": "2021-11-17T02:19:17+00:00",
+      "last_fetch_at": "2021-11-17T02:19:17+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Exrates",
+        "identifier": "exrates",
+        "has_trading_incentive": false
+      },
+      "last": 59440.79,
+      "volume": 294.69545628,
+      "converted_last": {
+        "btc": 1.001535,
+        "eth": 14.359592,
+        "usd": 59560
+      },
+      "converted_volume": {
+        "btc": 295.148,
+        "eth": 4232,
+        "usd": 17551917
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.246836,
+      "timestamp": "2021-11-17T02:19:49+00:00",
+      "last_traded_at": "2021-11-17T02:19:49+00:00",
+      "last_fetch_at": "2021-11-17T02:19:49+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://exrates.me/trading/BTCUSDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "BigONE",
+        "identifier": "bigone",
+        "has_trading_incentive": false
+      },
+      "last": 59389.13,
+      "volume": 7448.703132,
+      "converted_last": {
+        "btc": 1.000665,
+        "eth": 14.347112,
+        "usd": 59516
+      },
+      "converted_volume": {
+        "btc": 7454,
+        "eth": 106867,
+        "usd": 443315435
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.010016,
+      "timestamp": "2021-11-17T02:18:11+00:00",
+      "last_traded_at": "2021-11-17T02:18:11+00:00",
+      "last_fetch_at": "2021-11-17T02:18:11+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://big.one/trade/BTC-USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "JPY",
+      "market": {
+        "name": "GMO Japan",
+        "identifier": "gmo_japan",
+        "has_trading_incentive": false
+      },
+      "last": 6836050,
+      "volume": 535.2292,
+      "converted_last": {
+        "btc": 0.99923305,
+        "eth": 14.323034,
+        "usd": 59525
+      },
+      "converted_volume": {
+        "btc": 534.819,
+        "eth": 7666,
+        "usd": 31859336
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.019336,
+      "timestamp": "2021-11-17T02:16:07+00:00",
+      "last_traded_at": "2021-11-17T02:16:07+00:00",
+      "last_fetch_at": "2021-11-17T02:16:07+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://coin.z.com/jp/corp/information/btc-market/",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Currency.com",
+        "identifier": "currency",
+        "has_trading_incentive": false
+      },
+      "last": 59217.3,
+      "volume": 2181.31225116,
+      "converted_last": {
+        "btc": 0.99425784,
+        "eth": 14.259208,
+        "usd": 59217
+      },
+      "converted_volume": {
+        "btc": 2169,
+        "eth": 31104,
+        "usd": 129171422
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.010924,
+      "timestamp": "2021-11-17T02:09:33+00:00",
+      "last_traded_at": "2021-11-17T02:09:33+00:00",
+      "last_fetch_at": "2021-11-17T02:09:33+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://exchange.currency.com/btc-to-usd",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "XRP",
+      "target": "BTC",
+      "market": {
+        "name": "FMFW.io",
+        "identifier": "bitcoin_com",
+        "has_trading_incentive": false
+      },
+      "last": 0.00001822,
+      "volume": 38989045.1,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.327539,
+        "usd": 59557
+      },
+      "converted_volume": {
+        "btc": 710.38,
+        "eth": 10178,
+        "usd": 42308007
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.016465,
+      "timestamp": "2021-11-17T02:08:22+00:00",
+      "last_traded_at": "2021-11-17T02:08:22+00:00",
+      "last_fetch_at": "2021-11-17T02:08:22+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://fmfw.io/XRP-to-BTC",
+      "token_info_url": null,
+      "coin_id": "ripple",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "AAX",
+        "identifier": "aax",
+        "has_trading_incentive": false
+      },
+      "last": 59310.8,
+      "volume": 6990.066278682806,
+      "converted_last": {
+        "btc": 0.99934507,
+        "eth": 14.324639,
+        "usd": 59531
+      },
+      "converted_volume": {
+        "btc": 6985,
+        "eth": 100130,
+        "usd": 416127961
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.01846,
+      "timestamp": "2021-11-17T02:16:24+00:00",
+      "last_traded_at": "2021-11-17T02:16:24+00:00",
+      "last_fetch_at": "2021-11-17T02:16:24+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.aax.com/spot/trade/BTC:USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Binance US",
+        "identifier": "binance_us",
+        "has_trading_incentive": false
+      },
+      "last": 59360.31,
+      "volume": 1866.3793908808764,
+      "converted_last": {
+        "btc": 0.99583165,
+        "eth": 14.267817,
+        "usd": 59360
+      },
+      "converted_volume": {
+        "btc": 1859,
+        "eth": 26629,
+        "usd": 110788859
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.040332,
+      "timestamp": "2021-11-17T02:07:20+00:00",
+      "last_traded_at": "2021-11-17T02:07:20+00:00",
+      "last_fetch_at": "2021-11-17T02:07:20+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.binance.us/en/trade/BTC_USD",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "XRP",
+      "target": "BTC",
+      "market": {
+        "name": "HitBTC",
+        "identifier": "hitbtc",
+        "has_trading_incentive": false
+      },
+      "last": 0.0000182,
+      "volume": 38947056.3,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59570
+      },
+      "converted_volume": {
+        "btc": 708.836,
+        "eth": 10160,
+        "usd": 42225632
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.032962,
+      "timestamp": "2021-11-17T02:16:13+00:00",
+      "last_traded_at": "2021-11-17T02:16:13+00:00",
+      "last_fetch_at": "2021-11-17T02:16:13+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://hitbtc.com/XRP-to-BTC",
+      "token_info_url": null,
+      "coin_id": "ripple",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "LocalTrade",
+        "identifier": "localtrade",
+        "has_trading_incentive": false
+      },
+      "last": 59441.01,
+      "volume": 54.13877118,
+      "converted_last": {
+        "btc": 1.001539,
+        "eth": 14.363631,
+        "usd": 59742
+      },
+      "converted_volume": {
+        "btc": 54.222,
+        "eth": 777.629,
+        "usd": 3234348
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.209056,
+      "timestamp": "2021-11-17T02:10:02+00:00",
+      "last_traded_at": "2021-11-17T02:10:02+00:00",
+      "last_fetch_at": "2021-11-17T02:10:02+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://localtrade.cc/trade/BTC_USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "JPY",
+      "market": {
+        "name": "Coincheck",
+        "identifier": "coincheck",
+        "has_trading_incentive": false
+      },
+      "last": 6857756,
+      "volume": 4399.0806691,
+      "converted_last": {
+        "btc": 0.99903491,
+        "eth": 14.332132,
+        "usd": 59709
+      },
+      "converted_volume": {
+        "btc": 4395,
+        "eth": 63048,
+        "usd": 262664640
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.02404,
+      "timestamp": "2021-11-17T02:22:09+00:00",
+      "last_traded_at": "2021-11-17T02:22:09+00:00",
+      "last_fetch_at": "2021-11-17T02:22:09+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": null,
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Kraken",
+        "identifier": "kraken",
+        "has_trading_incentive": false
+      },
+      "last": 59409.7,
+      "volume": 406.961582,
+      "converted_last": {
+        "btc": 1.001011,
+        "eth": 14.352081,
+        "usd": 59528
+      },
+      "converted_volume": {
+        "btc": 407.373,
+        "eth": 5841,
+        "usd": 24225755
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.01733,
+      "timestamp": "2021-11-17T02:19:03+00:00",
+      "last_traded_at": "2021-11-17T02:19:03+00:00",
+      "last_fetch_at": "2021-11-17T02:19:03+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://trade.kraken.com/markets/kraken/btc/usdt",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "Coineal",
+        "identifier": "coineal",
+        "has_trading_incentive": false
+      },
+      "last": 0.069672,
+      "volume": 4049.0679,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59570
+      },
+      "converted_volume": {
+        "btc": 282.107,
+        "eth": 4044,
+        "usd": 16805192
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.014286,
+      "timestamp": "2021-11-17T02:16:26+00:00",
+      "last_traded_at": "2021-11-17T02:16:26+00:00",
+      "last_fetch_at": "2021-11-17T02:16:26+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": null,
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "Crypto.com Exchange",
+        "identifier": "crypto_com",
+        "has_trading_incentive": false
+      },
+      "last": 0.069654,
+      "volume": 35411.19923,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.327539,
+        "usd": 59609
+      },
+      "converted_volume": {
+        "btc": 2467,
+        "eth": 35339,
+        "usd": 147026944
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.012919,
+      "timestamp": "2021-11-17T02:07:23+00:00",
+      "last_traded_at": "2021-11-17T02:07:23+00:00",
+      "last_fetch_at": "2021-11-17T02:07:23+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://crypto.com/exchange/trade/spot/ETH_BTC",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDC",
+      "market": {
+        "name": "FMFW.io",
+        "identifier": "bitcoin_com",
+        "has_trading_incentive": false
+      },
+      "last": 59451.93198,
+      "volume": 1943.24886,
+      "converted_last": {
+        "btc": 1.000601,
+        "eth": 14.354602,
+        "usd": 59520
+      },
+      "converted_volume": {
+        "btc": 1944,
+        "eth": 27895,
+        "usd": 115662604
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.022982,
+      "timestamp": "2021-11-17T02:21:21+00:00",
+      "last_traded_at": "2021-11-17T02:21:21+00:00",
+      "last_fetch_at": "2021-11-17T02:21:21+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://fmfw.io/BTC-to-USDC",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "usd-coin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "CoinTiger",
+        "identifier": "cointiger",
+        "has_trading_incentive": false
+      },
+      "last": 59374.73,
+      "volume": 2045.63109465,
+      "converted_last": {
+        "btc": 1.000422,
+        "eth": 14.343633,
+        "usd": 59501
+      },
+      "converted_volume": {
+        "btc": 2046,
+        "eth": 29342,
+        "usd": 121717826
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.011178,
+      "timestamp": "2021-11-17T02:18:23+00:00",
+      "last_traded_at": "2021-11-17T02:18:23+00:00",
+      "last_fetch_at": "2021-11-17T02:18:23+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": null,
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BNB",
+      "target": "BTC",
+      "market": {
+        "name": "WhiteBIT",
+        "identifier": "whitebit",
+        "has_trading_incentive": false
+      },
+      "last": 0.009771,
+      "volume": 35476.67,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.341559,
+        "usd": 59588
+      },
+      "converted_volume": {
+        "btc": 346.643,
+        "eth": 4971,
+        "usd": 20655572
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.030678,
+      "timestamp": "2021-11-17T02:11:13+00:00",
+      "last_traded_at": "2021-11-17T02:11:13+00:00",
+      "last_fetch_at": "2021-11-17T02:11:13+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://whitebit.com/trade/BNB_BTC",
+      "token_info_url": null,
+      "coin_id": "binancecoin",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDC",
+      "market": {
+        "name": "HitBTC",
+        "identifier": "hitbtc",
+        "has_trading_incentive": false
+      },
+      "last": 59451.93198,
+      "volume": 1937.45398,
+      "converted_last": {
+        "btc": 1.000601,
+        "eth": 14.354602,
+        "usd": 59803
+      },
+      "converted_volume": {
+        "btc": 1939,
+        "eth": 27811,
+        "usd": 115864780
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.027547,
+      "timestamp": "2021-11-17T02:22:07+00:00",
+      "last_traded_at": "2021-11-17T02:22:07+00:00",
+      "last_fetch_at": "2021-11-17T02:22:07+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://hitbtc.com/BTC-to-USDC",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "usd-coin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "BKEX",
+        "identifier": "bkex",
+        "has_trading_incentive": false
+      },
+      "last": 59295.82,
+      "volume": 6125.0579,
+      "converted_last": {
+        "btc": 0.99909267,
+        "eth": 14.314539,
+        "usd": 59552
+      },
+      "converted_volume": {
+        "btc": 6120,
+        "eth": 87677,
+        "usd": 364757879
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.035101,
+      "timestamp": "2021-11-17T02:06:51+00:00",
+      "last_traded_at": "2021-11-17T02:06:51+00:00",
+      "last_fetch_at": "2021-11-17T02:06:51+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.bkex.com/#/trade/BTC_USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "BTC",
+      "target": "EUR",
+      "market": {
+        "name": "Binance",
+        "identifier": "binance",
+        "has_trading_incentive": false
+      },
+      "last": 52484.49,
+      "volume": 3792.0281810684605,
+      "converted_last": {
+        "btc": 0.99696466,
+        "eth": 14.28405,
+        "usd": 59425
+      },
+      "converted_volume": {
+        "btc": 3781,
+        "eth": 54166,
+        "usd": 225340906
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.013724,
+      "timestamp": "2021-11-17T02:06:45+00:00",
+      "last_traded_at": "2021-11-17T02:06:45+00:00",
+      "last_fetch_at": "2021-11-17T02:06:45+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.binance.com/en/trade/BTC_EUR?ref=37754157",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "WAVES",
+      "target": "BTC",
+      "market": {
+        "name": "Waves.Exchange",
+        "identifier": "waves",
+        "has_trading_incentive": false
+      },
+      "last": 0.00035875,
+      "volume": 114233.57964893,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.337579,
+        "usd": 59476
+      },
+      "converted_volume": {
+        "btc": 40.981297,
+        "eth": 587.573,
+        "usd": 2437414
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.297578,
+      "timestamp": "2021-11-17T02:18:45+00:00",
+      "last_traded_at": "2021-11-17T02:18:45+00:00",
+      "last_fetch_at": "2021-11-17T02:18:45+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": null,
+      "token_info_url": null,
+      "coin_id": "waves",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDC",
+      "market": {
+        "name": "Cryptology",
+        "identifier": "cryptology",
+        "has_trading_incentive": false
+      },
+      "last": 59399.88,
+      "volume": 77.35556219,
+      "converted_last": {
+        "btc": 0.99390055,
+        "eth": 14.254083,
+        "usd": 59196
+      },
+      "converted_volume": {
+        "btc": 76.884,
+        "eth": 1103,
+        "usd": 4579141
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.01951,
+      "timestamp": "2021-11-17T02:09:13+00:00",
+      "last_traded_at": "2021-11-17T02:09:13+00:00",
+      "last_fetch_at": "2021-11-17T02:09:13+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://cryptology.com/app/next/trading/BTC_USDC",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "usd-coin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDC",
+      "market": {
+        "name": "Binance",
+        "identifier": "binance",
+        "has_trading_incentive": false
+      },
+      "last": 59416.21,
+      "volume": 3945.2988965981185,
+      "converted_last": {
+        "btc": 0.99417379,
+        "eth": 14.258842,
+        "usd": 59091
+      },
+      "converted_volume": {
+        "btc": 3922,
+        "eth": 56255,
+        "usd": 233132671
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.026791,
+      "timestamp": "2021-11-17T02:12:48+00:00",
+      "last_traded_at": "2021-11-17T02:12:48+00:00",
+      "last_fetch_at": "2021-11-17T02:12:48+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.binance.com/en/trade/BTC_USDC?ref=37754157",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "usd-coin"
+    },
+    {
+      "base": "LTC",
+      "target": "BTC",
+      "market": {
+        "name": "FTX.US",
+        "identifier": "ftx_us",
+        "has_trading_incentive": false
+      },
+      "last": 0.00384375,
+      "volume": 10824.832846829268,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.337579,
+        "usd": 59476
+      },
+      "converted_volume": {
+        "btc": 41.607951,
+        "eth": 596.557,
+        "usd": 2474685
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.103943,
+      "timestamp": "2021-11-17T02:18:28+00:00",
+      "last_traded_at": "2021-11-17T02:18:28+00:00",
+      "last_fetch_at": "2021-11-17T02:18:28+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.us/trade/LTC/BTC",
+      "token_info_url": null,
+      "coin_id": "litecoin",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "LINK",
+      "target": "BTC",
+      "market": {
+        "name": "FMFW.io",
+        "identifier": "bitcoin_com",
+        "has_trading_incentive": false
+      },
+      "last": 0.00048332,
+      "volume": 330266.16,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59484
+      },
+      "converted_volume": {
+        "btc": 159.624,
+        "eth": 2290,
+        "usd": 9495162
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.066159,
+      "timestamp": "2021-11-17T02:21:21+00:00",
+      "last_traded_at": "2021-11-17T02:21:21+00:00",
+      "last_fetch_at": "2021-11-17T02:21:21+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://fmfw.io/LINK-to-BTC",
+      "token_info_url": null,
+      "coin_id": "chainlink",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BNB",
+      "target": "BTC",
+      "market": {
+        "name": "Binance",
+        "identifier": "binance",
+        "has_trading_incentive": false
+      },
+      "last": 0.009763,
+      "volume": 259518.81463382157,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59435
+      },
+      "converted_volume": {
+        "btc": 2534,
+        "eth": 36318,
+        "usd": 150590298
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.010192,
+      "timestamp": "2021-11-17T02:15:07+00:00",
+      "last_traded_at": "2021-11-17T02:15:07+00:00",
+      "last_fetch_at": "2021-11-17T02:15:07+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.binance.com/en/trade/BNB_BTC?ref=37754157",
+      "token_info_url": null,
+      "coin_id": "binancecoin",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "Cryptology",
+        "identifier": "cryptology",
+        "has_trading_incentive": false
+      },
+      "last": 59399.8,
+      "volume": 67.66193807,
+      "converted_last": {
+        "btc": 1.000845,
+        "eth": 14.353673,
+        "usd": 59610
+      },
+      "converted_volume": {
+        "btc": 67.719,
+        "eth": 971.197,
+        "usd": 4033301
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.016726,
+      "timestamp": "2021-11-17T02:09:12+00:00",
+      "last_traded_at": "2021-11-17T02:09:12+00:00",
+      "last_fetch_at": "2021-11-17T02:09:12+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://cryptology.com/app/next/trading/BTC_USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "ETH",
+      "target": "BTC",
+      "market": {
+        "name": "Coinsbit",
+        "identifier": "coinsbit",
+        "has_trading_incentive": false
+      },
+      "last": 0.069693,
+      "volume": 24311.22985531,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59570
+      },
+      "converted_volume": {
+        "btc": 1694,
+        "eth": 24286,
+        "usd": 100931382
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.109759,
+      "timestamp": "2021-11-17T02:16:39+00:00",
+      "last_traded_at": "2021-11-17T02:16:39+00:00",
+      "last_fetch_at": "2021-11-17T02:16:39+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://coinsbit.io/trade/ETH_BTC",
+      "token_info_url": null,
+      "coin_id": "ethereum",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "DOT",
+      "target": "BTC",
+      "market": {
+        "name": "HitBTC",
+        "identifier": "hitbtc",
+        "has_trading_incentive": false
+      },
+      "last": 0.00067366,
+      "volume": 122252.36,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59570
+      },
+      "converted_volume": {
+        "btc": 82.357,
+        "eth": 1181,
+        "usd": 4906007
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.031179,
+      "timestamp": "2021-11-17T02:16:22+00:00",
+      "last_traded_at": "2021-11-17T02:16:22+00:00",
+      "last_fetch_at": "2021-11-17T02:16:22+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://hitbtc.com/DOT-to-BTC",
+      "token_info_url": null,
+      "coin_id": "polkadot",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USD",
+      "market": {
+        "name": "Okcoin",
+        "identifier": "okcoin",
+        "has_trading_incentive": false
+      },
+      "last": 59594.73,
+      "volume": 414.3921,
+      "converted_last": {
+        "btc": 0.99712324,
+        "eth": 14.304707,
+        "usd": 59595
+      },
+      "converted_volume": {
+        "btc": 413.2,
+        "eth": 5928,
+        "usd": 24695585
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.030169,
+      "timestamp": "2021-11-17T02:22:45+00:00",
+      "last_traded_at": "2021-11-17T02:22:45+00:00",
+      "last_fetch_at": "2021-11-17T02:22:45+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.okcoin.com/market#product=btc_usd",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDC",
+      "market": {
+        "name": "Coinsbit",
+        "identifier": "coinsbit",
+        "has_trading_incentive": false
+      },
+      "last": 59399.3,
+      "volume": 73.89008874,
+      "converted_last": {
+        "btc": 0.9997154,
+        "eth": 14.329948,
+        "usd": 59553
+      },
+      "converted_volume": {
+        "btc": 73.869,
+        "eth": 1059,
+        "usd": 4400406
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.018186,
+      "timestamp": "2021-11-17T02:16:31+00:00",
+      "last_traded_at": "2021-11-17T02:16:31+00:00",
+      "last_fetch_at": "2021-11-17T02:16:31+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://coinsbit.io/trade/BTC_USDC",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "usd-coin"
+    },
+    {
+      "base": "BTC",
+      "target": "GBP",
+      "market": {
+        "name": "Coinbase Exchange",
+        "identifier": "gdax",
+        "has_trading_incentive": false
+      },
+      "last": 44489.62,
+      "volume": 1266.67600724,
+      "converted_last": {
+        "btc": 1.004232,
+        "eth": 14.406693,
+        "usd": 59736
+      },
+      "converted_volume": {
+        "btc": 1272,
+        "eth": 18249,
+        "usd": 75666428
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.016989,
+      "timestamp": "2021-11-17T02:21:41+00:00",
+      "last_traded_at": "2021-11-17T02:21:41+00:00",
+      "last_fetch_at": "2021-11-17T02:21:41+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://pro.coinbase.com/trade/BTC-GBP",
+      "token_info_url": null,
+      "coin_id": "bitcoin"
+    },
+    {
+      "base": "BTC",
+      "target": "USDT",
+      "market": {
+        "name": "BitMart",
+        "identifier": "bitmart",
+        "has_trading_incentive": false
+      },
+      "last": 59308.54,
+      "volume": 1478.4882,
+      "converted_last": {
+        "btc": 0.99930699,
+        "eth": 14.327643,
+        "usd": 59435
+      },
+      "converted_volume": {
+        "btc": 1477,
+        "eth": 21183,
+        "usd": 87873984
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.01037,
+      "timestamp": "2021-11-17T02:18:27+00:00",
+      "last_traded_at": "2021-11-17T02:18:27+00:00",
+      "last_fetch_at": "2021-11-17T02:18:27+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://www.bitmart.com/trade/en?symbol=BTC_USDT",
+      "token_info_url": null,
+      "coin_id": "bitcoin",
+      "target_coin_id": "tether"
+    },
+    {
+      "base": "ADA",
+      "target": "BTC",
+      "market": {
+        "name": "FMFW.io",
+        "identifier": "bitcoin_com",
+        "has_trading_incentive": false
+      },
+      "last": 0.000031163,
+      "volume": 6443811,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.327539,
+        "usd": 59557
+      },
+      "converted_volume": {
+        "btc": 200.808,
+        "eth": 2877,
+        "usd": 11959517
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.025666,
+      "timestamp": "2021-11-17T02:08:17+00:00",
+      "last_traded_at": "2021-11-17T02:08:17+00:00",
+      "last_fetch_at": "2021-11-17T02:08:17+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://fmfw.io/ADA-to-BTC",
+      "token_info_url": null,
+      "coin_id": "cardano",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "LTC",
+      "target": "BTC",
+      "market": {
+        "name": "FMFW.io",
+        "identifier": "bitcoin_com",
+        "has_trading_incentive": false
+      },
+      "last": 0.0038571,
+      "volume": 38308.058,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59484
+      },
+      "converted_volume": {
+        "btc": 147.758,
+        "eth": 2120,
+        "usd": 8789305
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.041449,
+      "timestamp": "2021-11-17T02:21:19+00:00",
+      "last_traded_at": "2021-11-17T02:21:19+00:00",
+      "last_fetch_at": "2021-11-17T02:21:19+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://fmfw.io/LTC-to-BTC",
+      "token_info_url": null,
+      "coin_id": "litecoin",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "LTC",
+      "target": "BTC",
+      "market": {
+        "name": "FTX",
+        "identifier": "ftx_spot",
+        "has_trading_incentive": false
+      },
+      "last": 0.0038585,
+      "volume": 6129.283605675781,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59484
+      },
+      "converted_volume": {
+        "btc": 23.649841,
+        "eth": 339.28,
+        "usd": 1406798
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.097056,
+      "timestamp": "2021-11-17T02:21:24+00:00",
+      "last_traded_at": "2021-11-17T02:21:24+00:00",
+      "last_fetch_at": "2021-11-17T02:21:24+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.com/trade/LTC/BTC",
+      "token_info_url": null,
+      "coin_id": "litecoin",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "ADA",
+      "target": "BTC",
+      "market": {
+        "name": "HitBTC",
+        "identifier": "hitbtc",
+        "has_trading_incentive": false
+      },
+      "last": 0.00003113,
+      "volume": 6470195,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.334027,
+        "usd": 59570
+      },
+      "converted_volume": {
+        "btc": 201.417,
+        "eth": 2887,
+        "usd": 11998491
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.04496,
+      "timestamp": "2021-11-17T02:16:19+00:00",
+      "last_traded_at": "2021-11-17T02:16:19+00:00",
+      "last_fetch_at": "2021-11-17T02:16:19+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://hitbtc.com/ADA-to-BTC",
+      "token_info_url": null,
+      "coin_id": "cardano",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "LINK",
+      "target": "BTC",
+      "market": {
+        "name": "HitBTC",
+        "identifier": "hitbtc",
+        "has_trading_incentive": false
+      },
+      "last": 0.00048375,
+      "volume": 330647.22,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59767
+      },
+      "converted_volume": {
+        "btc": 159.951,
+        "eth": 2295,
+        "usd": 9559713
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.049601,
+      "timestamp": "2021-11-17T02:22:28+00:00",
+      "last_traded_at": "2021-11-17T02:22:28+00:00",
+      "last_fetch_at": "2021-11-17T02:22:28+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://hitbtc.com/LINK-to-BTC",
+      "token_info_url": null,
+      "coin_id": "chainlink",
+      "target_coin_id": "bitcoin"
+    },
+    {
+      "base": "BNB",
+      "target": "BTC",
+      "market": {
+        "name": "FTX",
+        "identifier": "ftx_spot",
+        "has_trading_incentive": false
+      },
+      "last": 0.0097693,
+      "volume": 3116.7618547900056,
+      "converted_last": {
+        "btc": 1,
+        "eth": 14.345977,
+        "usd": 59484
+      },
+      "converted_volume": {
+        "btc": 30.448582,
+        "eth": 436.815,
+        "usd": 1811217
+      },
+      "trust_score": "green",
+      "bid_ask_spread_percentage": 0.113549,
+      "timestamp": "2021-11-17T02:21:26+00:00",
+      "last_traded_at": "2021-11-17T02:21:26+00:00",
+      "last_fetch_at": "2021-11-17T02:21:26+00:00",
+      "is_anomaly": false,
+      "is_stale": false,
+      "trade_url": "https://ftx.com/trade/BNB/BTC",
+      "token_info_url": null,
+      "coin_id": "binancecoin",
+      "target_coin_id": "bitcoin"
+    }
+  ]
+}

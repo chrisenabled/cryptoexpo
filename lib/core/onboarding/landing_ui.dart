@@ -17,51 +17,58 @@ class Landing extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              child: Stack(
-                children: [
-                  SvgPicture.asset(
-                    'assets/images/cx-landing.svg',
-                    semanticsLabel: 'Landing Page Svg',
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  SafeArea(
-                    child: Align(
-                      alignment: Alignment(0.8, 0),
-                      child: GestureDetector(
-                        onTap: () => Get.to(() => SelectLanguage()),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: Colors.blue.shade100,
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            border: Border.all(width: 2.0, color: const Color(0xFFFFFFFF))
-                          ),
-                          child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                    'lang.code'.tr.toString().toUpperCase(),
-                                    style: Theme.of(context).textTheme.caption?.copyWith(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold
-                                    )
-                                ),
-                                SizedBox(width: 5,),
-                                Icon(
-                                  Icons.keyboard_arrow_down_sharp,
-                                  size: 16,
-                                )
-                              ],
-                            ),
-                        ),
-                      ),
+            Expanded(
+              flex: 4,
+              child: Container(
+                child: Stack(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/images/cx-landing.svg',
+                      semanticsLabel: 'Landing Page Svg',
+                      width: MediaQuery.of(context).size.width,
                     ),
-                  )
-                ],
+                    _buildLanguageSelector(context)
+                  ],
+                ),
               ),
             ),
-            Column(
+            Expanded(
+              flex: 1,
+              child: _buildWelcomeMsg(context),
+            ),
+            Expanded(
+              flex: 2,
+              child: _buildButtons(),
+            ),
+          ],
+        ),
+
+      );
+  }
+
+  Column _buildButtons() {
+    return Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                SimpleButton(
+                  text: 'landing.GetStartedButtonText'.tr,
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  onPressed: () {},
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('question.haveAccount'.tr),
+                    TextButton(onPressed: (){}, child: Text('auth.signInButton'.tr))
+                  ],
+                )
+              ],
+            );
+  }
+
+  Column _buildWelcomeMsg(BuildContext context) {
+    return Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                   'landing.WelcomeMsg'.tr,
@@ -76,34 +83,54 @@ class Landing extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 50),
                   child: Text(
                     'landing.WelcomeMsgSubtitle'.tr,
-                    style: TextStyle(
-                        color: Colors.black54
-                    ),
+                    style: Theme.of(context).textTheme.subtitle1,
                     textAlign: TextAlign.center,
                   ),
                 ),
               ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SimpleButton(
-                  text: 'landing.GetStartedButtonText'.tr,
-                  onPressed: () {},
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('question.haveAccount'.tr),
-                    TextButton(onPressed: (){}, child: Text('auth.signInButton'.tr))
-                  ],
-                )
-              ],
-            ),
-          ],
-        ),
+            );
+  }
 
-      );
+  SafeArea _buildLanguageSelector(BuildContext context) {
+    return SafeArea(
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Transform.translate(
+                      offset: Offset(-10, 20),
+                      child: GestureDetector(
+                        onTap: () => Get.to(() => SelectLanguage()),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.secondary.withOpacity(0.7),
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(
+                                width: 2.0,
+                                color: Theme.of(context).colorScheme.primary
+                            )
+                          ),
+                          child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                    'lang.code'.tr.toString().toUpperCase(),
+                                    style: Theme.of(context).textTheme.caption?.copyWith(
+                                        color: Theme.of(context).colorScheme.onPrimary,
+                                        fontWeight: FontWeight.bold
+                                    )
+                                ),
+                                SizedBox(width: 5,),
+                                Icon(
+                                  Icons.keyboard_arrow_down_sharp,
+                                  size: 16,
+                                )
+                              ],
+                            ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
   }
 
 }

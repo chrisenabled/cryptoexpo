@@ -10,8 +10,8 @@ class AppBottomNav extends StatelessWidget {
   final Function(int) selectedCallback;
 
   static const List<LottieTabItem> tabItems = [
-    const LottieTabItem('assets/lottie/signal_on_light.json',
-        'assets/lottie/signal_on_dark.json', "Signals"),
+    const LottieTabItem('assets/lottie/home_on_light.json',
+        'assets/lottie/home_on_dark.json', "Home"),
     const LottieTabItem('assets/lottie/markets_on_light.json',
         'assets/lottie/markets_on_dark.json', "Markets"),
     const LottieTabItem(
