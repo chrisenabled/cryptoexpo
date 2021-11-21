@@ -1,5 +1,6 @@
 import 'package:cryptoexpo/constants/test_data.dart';
 import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
+import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data_model.dart' as Coin;
 import 'package:cryptoexpo/modules/services/coin_coingecko_service.dart';
 import 'package:cryptoexpo/widgets/loading.dart';
@@ -43,9 +44,11 @@ void main() async {
 
   final coinMetas = await readJsonCoinIds();
 
+  Get.put<List<CoinMetaData>>(coinMetas);
+
   coinMetas.sublist(0, 30).forEach((coinMeta) {
     print('i am looping coin metas sublist now @: ${coinMeta.id}');
-    Get.lazyPut<CoinController>(() =>
+    Get.put<CoinController>(
         CoinController(coinMeta: coinMeta), tag: coinMeta.id);
   });
 

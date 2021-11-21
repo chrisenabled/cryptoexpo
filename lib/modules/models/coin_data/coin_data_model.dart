@@ -102,6 +102,7 @@ class CoinDataModel {
   }
 
   static CoinDataModel fromJson(dynamic _json) {
+
     final json = _json as Map<String, dynamic>;
     return CoinDataModel(
       id: json['id'],
@@ -113,11 +114,21 @@ class CoinDataModel {
       publicNotice: json['public_notice'],
       additionalNotices:
           ((json['additional_notices']) as List<dynamic>).cast<String>(),
-      localization: CoinLocalization.fromJson(json['localization']),
-      description: CoinDescription.fromJson(json['description']),
-      tickers: CoinTickerModel.listFromJson(json['tickers']),
-      coinCommunityData: CoinCommunityData.fromJson(json['community_data']),
-      coinMarketData: CoinMarketData.fromJson(json['market_data']),
+      localization: json['localization'] == null
+          ? null
+          : CoinLocalization.fromJson(json['localization']),
+      description: json['description'] == null
+          ? null
+          :  CoinDescription.fromJson(json['description']),
+      tickers: json['tickers'] == null
+          ? null
+          : CoinTickerModel.listFromJson(json['tickers']),
+      coinCommunityData: json['community_data'] == null
+          ? null
+          : CoinCommunityData.fromJson(json['community_data']),
+      coinMarketData: json['market_data'] == null
+          ? null
+          : CoinMarketData.fromJson(json['market_data']),
     );
   }
 }

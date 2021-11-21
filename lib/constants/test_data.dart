@@ -51,75 +51,7 @@ final List<Asset> myAssets = [
   Asset(assetName: 'Flux', assetTicker: 'FLUX', iconAsset: 'assets/images/flux.png'),
 ];
 
-final List<SignalsTabBarViewModel> myTabBarViewModels = [
-  SignalsTabBarViewModel('Derivative', [
-    SignalListItemModel(
-        'BTC/USDT',
-        'Sell',
-        Colors.redAccent,
-        Colors.green,
-        getRandomPrice(),
-        getRandomPrice(),
-        getFreq()
-    ),
-    SignalListItemModel(
-        'ETH/USDT',
-        'Buy',
-        Colors.green,
-        Colors.green,
-        getRandomPrice(),
-        getRandomPrice(),
-        getFreq()
-    ),
-    SignalListItemModel(
-        'BIT/USDT',
-        'Sell',
-        Colors.redAccent,
-        Colors.redAccent,
-        getRandomPrice(),
-        getRandomPrice(),
-        getFreq()
-    ),
-    SignalListItemModel('ADA', 'Buy', Colors.green, Colors.green,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('XRP/USDT', 'Sell', Colors.redAccent, Colors.redAccent,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('DOT/USDT', 'Sell', Colors.redAccent, Colors.redAccent,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('BTC/USDT', 'Buy', Colors.green, Colors.green,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('ETH/USDT', 'Buy', Colors.green, Colors.green,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('BIT/USDT', 'Sell', Colors.redAccent, Colors.redAccent,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('ADA', 'Buy', Colors.green, Colors.green,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('XRP/USDT', 'Sell', Colors.redAccent, Colors.redAccent,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('DOT/USDT', 'Sell', Colors.redAccent, Colors.redAccent,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('BTC/USDT', 'Buy', Colors.green, Colors.green,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('ETH/USDT', 'Buy', Colors.green, Colors.green,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('BIT/USDT', 'Sell', Colors.redAccent, Colors.redAccent,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-  ]),
-  SignalsTabBarViewModel('Spot', [
-    SignalListItemModel('ADA', 'Bull', Colors.green, Colors.green,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('XRP/USDT', 'Bear', Colors.redAccent, Colors.redAccent,
-        getRandomPrice(), getRandomPrice(), getFreq()),
-    SignalListItemModel('DOT/USDT', 'Bear', Colors.redAccent, Colors.redAccent,
-        getRandomPrice(), getRandomPrice(), getFreq())
-  ]),
-];
-
-const CoinUrls = [
-  '/coins/bitcoin?market_data=false&developer_data=false'
-];
-
-Future<CoinDataModel> readJsonTestData() async {
+Future<CoinDataModel?> readJsonTestData() async {
   final String response = await rootBundle.loadString('assets/json/coins_test_response.json');
   final data = await json.decode(response);
   print(data);

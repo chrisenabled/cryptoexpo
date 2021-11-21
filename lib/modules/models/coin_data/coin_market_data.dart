@@ -4,10 +4,10 @@ class CoinMarketData {
   final num? currentPrice;
   final num? ath;
   final num? athChangePercentage;
-  final num? athDate;
+  final String? athDate;
   final num? atl;
   final num? atlChangePercentage;
-  final num? atlDate;
+  final String? atlDate;
   final num? marketCap;
   final num? marketCapRank;
   final num? totalVolume;

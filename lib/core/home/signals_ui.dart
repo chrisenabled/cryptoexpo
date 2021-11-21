@@ -25,31 +25,19 @@ import '../../widgets/my_nested_scroll_view.dart' as nested;
 class Signals extends StatelessWidget {
   const Signals({
     Key? key,
-    required this.tabCount,
-    required this.tabBar,
-    required this.tabBarView,
   }) : super(key: key);
-
-  final PreferredSizeWidget tabBar;
-  final Widget tabBarView;
-  final int tabCount;
 
   @override
   Widget build(BuildContext context) {
+
+    final RxBool isBackgroundBar = false.obs;
+
+    final RxNum currentDuration = RxNum(5);
+
     print('app_tab_bar has been created');
 
-    // final cd = CountdownTimer(Duration(seconds: 70), Duration(seconds: 5));
-    //
-    // cd.listen((data) {
-    //   news.value = '${news.value} ${cd.elapsed.inSeconds}';
-    // }, onDone: () {
-    //   cd.cancel();
-    // });
-
-    CoinController coinCtrl = Get.find<CoinController>(tag: '01coin');
-
     return DefaultTabController(
-        length: tabCount,
+        length: Globals.AlertTypes.length,
         child: NestedScrollView(
           // floatHeaderSlivers: true,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -58,7 +46,11 @@ class Signals extends StatelessWidget {
                 flexibleSpace: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    TradeDurationGroup()
+                    TradeDurationGroup(
+                      onPressed: (duration) {
+                        currentDuration.value = duration;
+                      },
+                    )
                   ],
                 ),
                 expandedHeight: 60,
@@ -94,17 +86,6 @@ class Signals extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 20,),
-                      Obx(() {
-                        final priceData = coinCtrl.coinData.value?.priceData;
-                        // final  ticker = tickers != null?
-                        //     tickers.first : null;
-                        // tickers.lastWhere((ticker) =>
-                        // ticker.base == 'BTC' && ticker.target == 'USDT')
-                        //     : null;
-
-                        return Text('${priceData?.usd?? 'No price yet'}');
-                      }),
-                      const SizedBox(height: 20,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -132,12 +113,22 @@ class Signals extends StatelessWidget {
                 sliver: SliverAppBar(
                   toolbarHeight: 32,
                   pinned: true,
-                  bottom: tabBar,
+                  bottom: MyTabBar(
+                    tabs: Globals.AlertTypes,
+                    rightButtonText: 'All Orders',
+                    rightButtonIcon: Icons.article_outlined,
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                  ),
                 ),
               )
             ];
           },
-          body: tabBarView,
+          body: Obx(() => SignalsTabBarView(
+            isBackgroundBar: isBackgroundBar.value,
+            alertTypes: Globals.AlertTypes,
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            duration: currentDuration.value,
+          )),
         ));
   }
 }

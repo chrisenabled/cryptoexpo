@@ -1,4 +1,5 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
+import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/constants/test_data.dart';
 import 'package:cryptoexpo/core/home/assets_ui.dart';
 import 'package:cryptoexpo/core/home/home_controller.dart';
@@ -28,7 +29,7 @@ class HomeUI extends StatelessWidget {
             body: BottomNavViewHolder(
                 selectedPos: controller.selectedPos.value,
                 views: [
-                  _buildHomeWidget(),
+                  const Signals(),
                   const MarketsUI(),
                   const AssetsUI()
                 ]
@@ -69,29 +70,6 @@ class HomeUI extends StatelessWidget {
       ],
     ); //
   }
-
-  Widget _buildHomeWidget() {
-    List<String> tabs = ['MacD', 'Trend'];
-
-    PreferredSizeWidget myTabBar = MyTabBar(
-      tabs: tabs,
-      rightButtonText: 'All Orders',
-      rightButtonIcon: Icons.article_outlined,
-      padding: EdgeInsets.symmetric(horizontal: 15),
-    );
-
-    Widget myTabBarView = Obx(() => SignalsTabBarView(
-          isBackgroundBar: isBackgroundBar.value,
-          models: myTabBarViewModels,
-          padding: EdgeInsets.symmetric(horizontal: 15),
-        ));
-
-    return Signals(
-      tabBar: myTabBar,
-      tabBarView: myTabBarView,
-      tabCount: tabs.length,
-    );
-  }
 }
 
 class BottomNavViewHolder extends StatelessWidget {
@@ -102,13 +80,6 @@ class BottomNavViewHolder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // if (selectedPos > (views.length - 1)) {
-    //   return Center(
-    //     child: Text('Position $selectedPos does not have a view'),
-    //   );
-    // }
-    // return views[selectedPos];
-
     switch(selectedPos) {
       case 0: return views[0];
       case 1: return views[1];

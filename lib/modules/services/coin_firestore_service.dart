@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 List<Map<String, List<String>>> alertList = [
   {'MacD': ['buy', 'sell']},
-  {'Trendy': ['bull', 'bear']},
+  {'Trend': ['bull', 'bear']},
 ];
 
 List<num> durations = [5, 15, 240, 10080];
@@ -17,7 +17,7 @@ class CoinFirestoreService {
   static CoinFirestoreService to = Get.find();
 
   Stream<SignalAlert> signalStream(String coinId) =>
-      Stream.periodic(Duration(seconds: 30))
+      Stream.periodic(Duration(seconds: 10))
           .asyncMap((event) => _fakeSignalAlert(coinId))
           .asBroadcastStream(onCancel: (sub) => sub.cancel()) ;
 

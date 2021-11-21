@@ -1,5 +1,6 @@
 
 class CoinPriceData {
+  final String? coinId;
   final num? usd;
   final num? usdMarketCap;
   final num? usd24hVol;
@@ -7,6 +8,7 @@ class CoinPriceData {
   final int? lastUpdatedAt;
 
   CoinPriceData({
+    this.coinId,
     this.usd,
     this.usdMarketCap,
     this.usd24hVol,
@@ -15,11 +17,12 @@ class CoinPriceData {
   });
 
   static CoinPriceData fromJson(dynamic _json) {
-    print(_json.toString());
     final json = _json as Map<String, dynamic>;
     final priceJson = json.values.first;
+    final coinId = json.keys.first;
 
     return CoinPriceData(
+      coinId: coinId,
       usd: priceJson['usd'],
       usdMarketCap: priceJson['usd_market_cap'],
       usd24hVol: priceJson['usd_24_vol'],

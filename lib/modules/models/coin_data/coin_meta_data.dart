@@ -7,7 +7,9 @@ class CoinMetaData {
 
   String get assetPath => ApiPathLinks.coinIconPath(symbol!);
 
-  String get coinUri => ApiPathLinks.coinDataUriNoMarket(id!);
+  String get coinUriNoMarket => ApiPathLinks.coinDataUriNoMarket(id!);
+
+  String get coinUriNoTickers => ApiPathLinks.coinDataUriNoTickers(id!);
 
   String get priceUri => ApiPathLinks.coinUsdPriceUri(id!);
 

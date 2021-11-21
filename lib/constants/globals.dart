@@ -1,6 +1,8 @@
 
 class Globals {
   static final String defaultLanguage = Lang.english.code;
+  static final num zeroMoney = 0.00;
+  static  const AlertTypes = ['MacD', 'Trend'];
 //List of languages that are supported.  Used in selector.
 //Follow this plugin for translating a google sheet to languages
 //https://github.com/aloisdeniel/flutter_sheet_localization
@@ -22,6 +24,15 @@ extension TradePeriodExtension on TradePeriod {
       case TradePeriod.FifteenMin: return '15m';
       case TradePeriod.FourHours: return '4h';
       case TradePeriod.OneWeek: return '1w';
+    }
+  }
+
+  int get number {
+    switch(this) {
+      case TradePeriod.FiveMin: return 5;
+      case TradePeriod.FifteenMin: return 15;
+      case TradePeriod.FourHours: return 240;
+      case TradePeriod.OneWeek: return 10080;
     }
   }
 }

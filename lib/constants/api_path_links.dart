@@ -12,7 +12,7 @@ class ApiPathLinks {
   }
 
   static String coinDataUriNoTickers(String coinId) {
-    return '/coins/bitcoin?tickers=false';
+    return '/coins/$coinId?tickers=false';
   }
 
   static String coinUsdPriceUri(String coinId) {
