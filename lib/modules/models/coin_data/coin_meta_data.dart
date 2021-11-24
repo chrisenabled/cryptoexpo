@@ -25,6 +25,16 @@ class CoinMetaData {
     return tickers.map((j) => CoinMetaData.fromJson(j)).toList();
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'symbol': symbol,
+      'name': name,
+      'platforms': platforms
+
+    };
+  }
+
   static CoinMetaData fromJson(dynamic _json) {
     final json = _json as Map<String, dynamic>;
     return CoinMetaData(

@@ -53,13 +53,13 @@ class SignInUI extends StatelessWidget {
                     maxLines: 1,
                   ),
                   FormVerticalSpace(),
-                  // PrimaryButton(
-                  //     labelText: 'auth.signInButton'.tr,
-                  //     onPressed: () async {
-                  //       if (_formKey.currentState!.validate()) {
-                  //         authController.signInWithEmailAndPassword(context);
-                  //       }
-                  //     }),
+                  PrimaryButton(
+                      labelText: 'auth.signInButton'.tr,
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          authController.signInWithEmailAndPassword(context);
+                        }
+                      }),
                   FormVerticalSpace(),
                   LabelButton(
                     labelText: 'auth.resetPasswordLabelButton'.tr,

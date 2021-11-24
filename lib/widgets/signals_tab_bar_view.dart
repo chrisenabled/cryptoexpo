@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:cryptoexpo/constants/test_data.dart';
+import 'package:cryptoexpo/core/home/signals_screen/signals_controller.dart';
 import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data_model.dart';
 import 'package:cryptoexpo/modules/models/trading_pair_list_item_model.dart';
+import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
 import 'package:cryptoexpo/widgets/trading_pair_list_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -42,15 +44,18 @@ class SignalsTabBarView extends StatelessWidget {
           bottom: false,
           child: Builder(
             builder: (BuildContext context) {
-              return buildCustomScrollView(type, context);
+              return GetBuilder<SignalsController>(
+                  builder: (controller) =>
+                      buildCustomScrollView(type, context, controller)
+              );
             },
           ));
     }).toList());
   }
 
-  Widget buildCustomScrollView(String type, BuildContext context) {
-    List<CoinMetaData> coinMetas = Get.find();
-    int count = coinMetas.length;
+  Widget buildCustomScrollView(String type, BuildContext context,
+      SignalsController controller ) {
+    List<CoinMetaData> coinMetas = controller.followedMarkets.value!;
     return Container(
       padding: padding,
       child: CustomScrollView(
@@ -65,6 +70,7 @@ class SignalsTabBarView extends StatelessWidget {
               delegate:
                   SliverChildBuilderDelegate((BuildContext context, int index) {
                 final coinMeta = coinMetas[index];
+                print('signals tabview has ${coinMeta.id}');
                 return TradingPairListItem(
                   key: Key(coinMeta.id!),
                   alertType: type,
@@ -72,7 +78,7 @@ class SignalsTabBarView extends StatelessWidget {
                   coinId: coinMeta.id!,
                   alertDuration: duration,
                 );
-              }, childCount: count),
+              }, childCount: coinMetas.length),
             ),
           ),
         ],

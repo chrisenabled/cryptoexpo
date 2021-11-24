@@ -55,12 +55,16 @@ class Landing extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 15),
                   onPressed: () {},
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('question.haveAccount'.tr),
-                    TextButton(onPressed: (){}, child: Text('auth.signInButton'.tr))
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('question.haveAccount'.tr),
+                      SizedBox(width: 10,),
+                      TextButton(onPressed: (){}, child: Text('auth.signInButton'.tr))
+                    ],
+                  ),
                 )
               ],
             );

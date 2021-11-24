@@ -167,18 +167,17 @@ class TradingPairListItem extends StatelessWidget {
 
   Expanded _xAmount(BuildContext context, CoinController controller) {
     final percentage = _getPercentageDiff(controller);
-    final getPercentageProgress =
-        getPercentageChangeProgress(percentage: percentage);
+    final percentageX = (percentage/100);
     return Expanded(
         flex: 2,
-        child: getPercentageProgress.abs() < 1
+        child: percentageX.abs() < 1
             ? Text(
-                '. . .',
+                Globals.emptyText,
                 textAlign: TextAlign.start,
                 style: Theme.of(context).textTheme.caption,
               )
             : Text(
-                '${getPercentageProgress}x',
+                '${percentageX}x',
                 textAlign: TextAlign.start,
                 style: Theme.of(context).textTheme.caption!.copyWith(
                       fontWeight: FontWeight.bold,
@@ -193,9 +192,11 @@ class TradingPairListItem extends StatelessWidget {
 
     String? msg = '';
 
-    if (alert.signalAlerts.length > 0) {
-      final signalAlerts = alert.signalAlerts;
-      msg = signalAlerts[signalAlerts.length - 1].alertMsg;
+    if(alert.signalAlerts != null) {
+      if (alert.signalAlerts!.length > 0) {
+        final signalAlerts = alert.signalAlerts;
+        msg = signalAlerts![signalAlerts.length - 1].alertMsg;
+      }
     }
     printInfo(info: 'the alert msg received by $coinId is  $msg');
     bool isAlternateDecoration() {
@@ -217,7 +218,7 @@ class TradingPairListItem extends StatelessWidget {
                         : MyColors.downTrendColor,
           ),
           child: msg.isEmpty
-              ? Text('. . .')
+              ? Text(Globals.emptyText)
               : isWidget(msg)
                   ? Lottie.asset(
                       'assets/lottie/${msg}_run.json',
@@ -305,15 +306,23 @@ class TradingPairListItem extends StatelessWidget {
 
   Column _priceColumn(BuildContext context, CoinController controller) {
     CoinDataModel coin = controller.coinData.value!;
+    num price = (coin.priceData?.usd) ?? Globals.zeroMoney;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
-          '${(coin.priceData?.usd) ?? Globals.zeroMoney}',
+          '$price',
           style: Theme.of(context)
               .textTheme
               .bodyText1!
-              .copyWith(letterSpacing: 0.5),
+              .copyWith(
+              letterSpacing: 0.5,
+            color: price - controller.oldPrice == 0
+                ? Theme.of(context).colorScheme.onPrimary
+                : price - controller.oldPrice > 0
+                ? MyColors.upTrendColor
+                : MyColors.downTrendColor
+          ),
         ),
         RichText(
           text: TextSpan(

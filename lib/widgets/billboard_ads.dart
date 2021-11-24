@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 
 class BillboardAds extends StatelessWidget {
 
-  final List<Widget> views;
+  final List<ImageProvider> views;
 
   const BillboardAds({
     Key? key,
@@ -37,14 +37,15 @@ class BillboardAds extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 decoration: BoxDecoration(
                     color: MyColors.trueBlue,
-                    borderRadius: BorderRadius.circular(15)
+                    borderRadius: BorderRadius.circular(15),
+                    image: new DecorationImage(
+                        fit: BoxFit.fill,
+                        image: view
+                    )
                 ),
-                key: view.key,
-                height: 130,
+                key: Key((view as AssetImage).assetName),
+                height: 140,
                 width: double.infinity,
-                child: Center(
-                    child: view
-                )
             )).toList()
         ),
         SizedBox(height: 6,),

@@ -3,6 +3,7 @@ import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data_model.dart' as Coin;
 import 'package:cryptoexpo/modules/services/coin_coingecko_service.dart';
+import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
 import 'package:cryptoexpo/widgets/loading.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -42,17 +43,30 @@ void main() async {
   Get.put<ThemeController>(ThemeController());
   Get.put<LanguageController>(LanguageController());
 
-  final coinMetas = await readJsonCoinIds();
+  final coinMetaDatas = (await readJsonCoinIds()).sublist(0,30);
 
-  Get.put<List<CoinMetaData>>(coinMetas);
+  Get.put<List<CoinMetaData>>(coinMetaDatas);
 
-  coinMetas.sublist(0, 30).forEach((coinMeta) {
-    print('i am looping coin metas sublist now @: ${coinMeta.id}');
-    Get.put<CoinController>(
-        CoinController(coinMeta: coinMeta), tag: coinMeta.id);
-  });
+  final List<CoinMetaData>? followedMarkets = SharedPref.getOrSetMarkets();
 
-
+  if(followedMarkets != null && followedMarkets.length > 0) {
+    followedMarkets.forEach((coinMeta) {
+      print('i am looping coin metas sublist now @: ${coinMeta.id}');
+      Get.put<CoinController>(
+          CoinController(coinMeta: coinMeta), tag: coinMeta.id);
+    });
+  } else {
+    List<CoinMetaData> coinMetas = [];
+    coinMetaDatas.forEach((coinMeta) {
+      if(['zoc','algohalf', 'bchhalf','adahalf'].contains(coinMeta.symbol?.toLowerCase())) {
+        print('i am looping coin metas sublist now @: ${coinMeta.id}');
+        Get.put<CoinController>(
+            CoinController(coinMeta: coinMeta), tag: coinMeta.id);
+        coinMetas.add(coinMeta);
+      }
+    });
+    SharedPref.getOrSetMarkets(markets: coinMetas);
+  }
 
   //load CoinDataControllers
   // CoinUrls.forEach((uri) {
