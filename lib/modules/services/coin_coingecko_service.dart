@@ -21,8 +21,11 @@
 //   }
 // }
 
+import 'dart:convert';
+
 import 'package:cryptoexpo/constants/api_path_links.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class CoinCoinGeckoService extends GetConnect {
@@ -36,9 +39,19 @@ class CoinCoinGeckoService extends GetConnect {
     httpClient.baseUrl = ApiPathLinks.coinGeckoApiV3Url;
   }
 
-  Future<CoinDataModel> readJsonTestData() => readJsonTestData();
+  Future <List<CoinMetaData>> readJsonCoinIds() async {
+    final String response = await rootBundle.loadString('assets/json/coin_ids.json');
+    final data = await json.decode(response);
+    print(data);
+    return CoinMetaData.listFromJson(data);
+  }
 
-  Future<CoinMetaData> readJsonCoinIds() => readJsonCoinIds();
+  Future<CoinDataModel?> readJsonTestData() async {
+    final String response = await rootBundle.loadString('assets/json/coins_test_response.json');
+    final data = await json.decode(response);
+    print(data);
+    return CoinDataModel.fromJson(data);
+  }
 
   Stream<CoinDataModel?> coinDataChanges(String path) {
     return _getCoinDataStream(path).map((response) {

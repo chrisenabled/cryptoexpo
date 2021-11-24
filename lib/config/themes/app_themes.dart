@@ -16,7 +16,7 @@ class MyColors {
   static const Color papayaWhip = Color.fromRGBO(249, 236, 204, 1);
   static const Color janquil = Color.fromRGBO(241, 196, 15, 1);
   static const Color lightSteelBlue = Color.fromRGBO(180, 197, 228, 1);
-  static const Color babyBlue = Color.fromRGBO(108, 212, 255, 1);
+  static const Color babyBlue = Color.fromRGBO(108, 212, 255, 0.05);
   static const Color blueYonder = Color.fromRGBO(96, 113, 150, 1);
   static const Color starCommandBlue = Color.fromRGBO(34, 116, 165, 1);
   static const Color trueBlue = Color.fromRGBO(48, 102, 190, 1);
@@ -76,7 +76,6 @@ class AppThemes {
   //Background Colors
   static const Color _lightBackgroundColor = _lightPrimaryColor;
   static const Color _lightBackgroundAppBarColor = _lightPrimaryColor;
-  static const Color _lightBackgroundSecondaryColor = white;
   static const Color _lightBackgroundAlertColor = blackPearl;
   static const Color _lightBackgroundActionTextColor = white;
   static const Color _lightDividerColor = Color(0x11000000);
@@ -85,16 +84,9 @@ class AppThemes {
   static const Color _lightTextColor = Colors.black;
 
   //Border Color
-  static const Color _lightBorderColor = nevada;
 
   //Icon Color
   static const Color _lightIconColor = ebonyClay;
-  static Color _lightBottomNavigationBarUnselectedIconColor = nevada;
-  static Color _lightBottomNavigationBarSelectedIconColor = mustard;
-
-  //form input colors
-  static const Color _lightBorderActiveColor = _lightPrimaryColor;
-  static const Color _lightBorderErrorColor = brinkPink;
 
 
 // Dark theme
@@ -114,7 +106,6 @@ class AppThemes {
   //Background Colors
   static const Color _darkBackgroundColor = _darkPrimaryColor;
   static const Color _darkBackgroundAppBarColor = _darkPrimaryColor;
-  static const Color _darkBackgroundSecondaryColor = Color.fromRGBO(0, 0, 0, .6);
   static const Color _darkBackgroundAlertColor = blackPearl;
   static const Color _darkBackgroundActionTextColor = white;
   static const Color _darkDividerColor = Colors.white12;
@@ -123,16 +114,9 @@ class AppThemes {
   static const Color _darkTextColor = Colors.white;
 
   //Border Color
-  static const Color _darkBorderColor = nevada;
 
   //Icon Color
   static const Color _darkIconColor = whiteLilac;
-  static Color _darkBottomNavigationBarUnselectedLabelColor = nevada;
-  static Color _darkBottomNavigationBarSelectedLabelColor = mustard;
-
-  static const Color _darkInputFillColor = _darkBackgroundSecondaryColor;
-  static const Color _darkBorderActiveColor = _darkPrimaryColor;
-  static const Color _darkBorderErrorColor = brinkPink;
 
   //text theme for light theme
   static final TextTheme _lightTextTheme = GoogleFonts.barlowTextTheme(TextTheme(
@@ -164,7 +148,7 @@ class AppThemes {
     // onError: null,
     surface: MyColors.dirtyWhite,
     // onSurface: MyColors.spanishGray,
-    background: MyColors.fadedWhite,
+    background: MyColors.babyBlue,
     onBackground: MyColors.spanishGray,
     // brightness: null,
   );
@@ -208,7 +192,7 @@ class AppThemes {
       unselectedLabelStyle: _lightTextTheme.caption!.copyWith(
           height: 1.5
       ),
-      backgroundColor: _lightColorScheme.primary,
+      backgroundColor: _lightColorScheme.background,
       elevation: 0
     ),
     tabBarTheme: TabBarTheme(

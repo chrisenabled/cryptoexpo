@@ -4,7 +4,7 @@ import 'package:cryptoexpo/core/auth/sign_in_ui.dart';
 import 'package:cryptoexpo/core/auth/sign_up_ui.dart';
 import 'package:cryptoexpo/core/auth/update_profile_ui.dart';
 import 'package:cryptoexpo/core/home/home_ui.dart';
-import 'package:cryptoexpo/core/home/markets_ui.dart';
+import 'package:cryptoexpo/core/home/markets_screen/markets_ui.dart';
 import 'package:cryptoexpo/core/onboarding/landing_ui.dart';
 import 'package:cryptoexpo/core/onboarding/terms_of_use_ui.dart';
 import 'package:cryptoexpo/core/settings/settings_ui.dart';

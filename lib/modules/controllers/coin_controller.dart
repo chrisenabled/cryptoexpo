@@ -21,9 +21,9 @@ class CoinController extends GetxController {
 
   Rxn<SignalAlert> signalAlertStream = Rxn<SignalAlert>();
 
-  // final alerts = Map<String, Map<int, RxList<SignalAlert>>>();
-
   final alerts = <Rx<AlertModel>>[];
+
+  num oldPrice = 0.00;
 
 
 
@@ -62,7 +62,8 @@ class CoinController extends GetxController {
     coinDataStream.bindStream(coinGeckoService.priceDataChanges(
         coinMeta.priceUri));
 
-    signalAlertStream.bindStream(coinFirestoreService.signalStream(coinMeta.symbol!));
+    signalAlertStream.bindStream(
+        coinFirestoreService.signalStream(coinMeta.symbol!));
   }
 
   _loadFullData() async {
@@ -81,6 +82,7 @@ class CoinController extends GetxController {
     if(_coinData != null) {
       final priceData = (_coinData as CoinDataModel).priceData;
       if(coinData.value?.priceData?.usd != priceData?.usd) {
+        oldPrice = coinData.value!.priceData?.usd!?? oldPrice;
         coinData.value = coinData.value!.copyWith(priceData: priceData);
         update();
       }
@@ -92,13 +94,12 @@ class CoinController extends GetxController {
     => alert.value.type == newAlert.alertType
         && alert.value.duration == newAlert.duration,
     );
-    alert.value.signalAlerts.add(newAlert);
+    alert.value = alert.value.copyWith(alerts: [newAlert]);
   }
 
   _handleSignalAlert(alert) {
     if(alert != null) {
       _addNewAlert(alert);
-      // update();
     }
   }
 

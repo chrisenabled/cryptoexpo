@@ -15,7 +15,9 @@ Widget circularImage(
             image: new AssetImage(
               asset,
               package: package,
-            ))),
+            )
+        )
+    ),
   );
 }
 

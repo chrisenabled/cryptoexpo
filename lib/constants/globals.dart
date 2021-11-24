@@ -1,13 +1,18 @@
 
 class Globals {
   static final String defaultLanguage = Lang.english.code;
-  static final num zeroMoney = 0.00;
-  static  const AlertTypes = ['MacD', 'Trend'];
-//List of languages that are supported.  Used in selector.
-//Follow this plugin for translating a google sheet to languages
-//https://github.com/aloisdeniel/flutter_sheet_localization
-//Flutter App translations google sheet
-//https://docs.google.com/spreadsheets/d/1oS7iJ6ocrZBA53SxRfKF0CG9HAaXeKtzvsTBhgG4Zzk/edit?usp=sharing
+  static const num zeroMoney = 0.00;
+  static const AlertTypes = ['MacD', 'Trend'];
+  static const emptyText = '. . .';
+  static const List<Map<String, List<String>>> alertList = [
+    {'MacD': ['buy', 'sell']},
+    {'Trend': ['bull', 'bear']},
+  ];
+
+  static const String imgPlaceHolder64Path = 'assets/images/placeholder_64.png';
+
+  static const List<num> durations = [5, 15, 240, 10080];
+
 }
 
 enum TradePeriod {
