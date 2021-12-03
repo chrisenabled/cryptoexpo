@@ -1,6 +1,8 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/constants/constants.dart';
+import 'package:cryptoexpo/utils/helpers/helpers.dart';
 import 'package:cryptoexpo/core/home/markets_screen/markets_controller.dart';
+import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/widgets/my_tab_bar.dart';
 import 'package:cryptoexpo/widgets/simple_check_box.dart';
@@ -15,8 +17,8 @@ class MarketsUI extends StatelessWidget {
     return GetBuilder<MarketsController>(
         init: MarketsController(),
         builder: (controller) => SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 15.0),
                 child: DefaultTabController(
                     length: 2,
                     child: Column(
@@ -72,9 +74,9 @@ class MarketsGridView extends StatelessWidget {
 
   GridView _buildGridView(List<CoinMetaData> markets) {
     return GridView.count(
-      mainAxisSpacing: 15,
-      crossAxisSpacing: 15,
-      childAspectRatio: 2.4,
+      mainAxisSpacing: 5,
+      crossAxisSpacing: 5,
+      childAspectRatio: 1.3,
       // Create a grid with 2 columns. If you change the scrollDirection to
       // horizontal, this produces 2 rows.
       crossAxisCount: 2,
@@ -114,64 +116,130 @@ class MarketTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final RxBool isSelectedRx = isSelected.obs;
 
-    return GestureDetector(
-      onTap: () {
-        isSelectedRx.toggle();
-        onPressed!();
-      },
-      child: Obx(() => Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            // margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            decoration: BoxDecoration(
+    return GetBuilder<CoinController>(
+        tag: market.id,
+        builder: (controller) {
+
+          var percentage24Change = controller.coinData.value
+              ?.coinMarketData
+              ?.priceChangePercentage24h;
+          percentage24Change = percentage24Change?.toDecimalNumber(2);
+
+          Color getPercentageColor() {
+            if(percentage24Change == null || percentage24Change == 0.00) {
+              return Theme.of(context).colorScheme.onPrimary;
+            }
+            if(percentage24Change > 0) {
+              return MyColors.upTrendColor;
+            } else {
+              return MyColors.downTrendColor;
+            }
+          }
+
+          return GestureDetector(
+            onTap: () {
+              isSelectedRx.toggle();
+              onPressed!();
+            },
+            child: Obx(() => Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              // margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surface,
-                borderRadius: BorderRadius.circular(5)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  flex: 8,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                // borderRadius: BorderRadius.circular(5)
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                              text: '${market.symbol!.toUpperCase()}',
+                              style:
+                              Theme.of(context).textTheme.bodyText1!.copyWith(
+                                shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(0.1, 0.1),
+                                    blurRadius: 0.1,
+                                    color: MyColors.richBlack,
+                                  )
+                                ],
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: ' /USD',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .caption!
+                                      .copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 0.5
+                                  ),
+                                )
+                              ]),
+                        ),
+                        FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Text(
+                            market.name!,
+                            style: Theme.of(context).textTheme.caption!.copyWith(
+                                color: Theme.of(context).colorScheme.secondaryVariant,
+                                overflow: TextOverflow.ellipsis
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text('${controller.coinData.value?.priceData?.usd}',
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.5
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        market.symbol!.toUpperCase(),
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          shadows: <Shadow>[
-                            Shadow(
-                              offset: Offset(0.1, 0.1),
-                              blurRadius: 0.1,
-                              color: MyColors.richBlack,
-                            )
-                          ],
+                      Flexible(
+                        flex: 8,
+                        child: Text(percentage24Change != null
+                            ? '$percentage24Change%' : '. . .',
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                            color: getPercentageColor(),
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(0.1, 0.1),
+                                blurRadius: 0.1,
+                                color: MyColors.richBlack,
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                      FractionallySizedBox(
-                        widthFactor: 0.8,
-                        child: Text(
-                          market.name!,
-                          style: Theme.of(context).textTheme.caption!.copyWith(
-                            color: Theme.of(context).colorScheme.secondaryVariant,
-                            overflow: TextOverflow.ellipsis
-                          ),
+                      Flexible(
+                        flex: 1,
+                        child: SimpleCheckBox(
+                          size: 18,
+                          isRound: true,
+                          isChecked: isSelectedRx.value,
                         ),
                       ),
                     ],
                   ),
-                ),
-                Flexible(
-                  flex: 1,
-                  child: SimpleCheckBox(
-                    size: 12.5,
-                    isRound: true,
-                    isChecked: isSelectedRx.value,
-                  ),
-                ),
-              ],
-            ),
-          )),
+                ],
+              ),
+            )),
+          );
+        }
     );
   }
 }

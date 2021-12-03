@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyColors {
   MyColors._();
+  static const Color whitish = Color(0xFFFAFAFA);
   static const Color whyte = Color.fromRGBO(252, 252, 252, 1);
   static const Color sweetWhite = Color.fromRGBO(250, 250, 250, 1);
   static const Color fadedWhite = Color(0xFFF7F9FC);
@@ -140,7 +141,7 @@ class AppThemes {
   static final ColorScheme _lightColorScheme = ColorScheme.light().copyWith(
     primary: MyColors.whyte,
     onPrimary: MyColors.xiketic,
-    // primaryVariant: null,
+    primaryVariant: MyColors.fadedWhite,
     secondary: Colors.blueAccent,
     onSecondary: MyColors.xiketic,
     secondaryVariant: MyColors.spanishGray,
@@ -148,7 +149,7 @@ class AppThemes {
     // onError: null,
     surface: MyColors.dirtyWhite,
     // onSurface: MyColors.spanishGray,
-    background: MyColors.babyBlue,
+    background: MyColors.whitish,
     onBackground: MyColors.spanishGray,
     // brightness: null,
   );
@@ -162,7 +163,7 @@ class AppThemes {
   static final ThemeData lightTheme = ThemeData(
     primaryTextTheme: _lightTextTheme,
     colorScheme: _lightColorScheme,
-    scaffoldBackgroundColor: _lightBackgroundColor,
+    scaffoldBackgroundColor: _lightColorScheme.primary,
     dividerTheme: DividerThemeData(
         color: _lightDividerColor,
         thickness: 0.5,
@@ -271,7 +272,7 @@ class AppThemes {
   static final ColorScheme _darkColorScheme = ColorScheme.dark().copyWith(
     primary: MyColors.richBlack,
     onPrimary: MyColors.ivory,
-    // primaryVariant: null,
+    primaryVariant: blackRoot,
     background: MyColors.xiketic,
     secondary: MyColors.purplePallor,
     onSecondary: MyColors.whyte,

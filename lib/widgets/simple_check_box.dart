@@ -41,8 +41,10 @@ class SimpleCheckBox extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      child: isCheckedRx.isTrue? Icon(Icons.check, size: size - 1,
-        color: Theme.of(context).colorScheme.primary,
+      child: isCheckedRx.isTrue? FittedBox(
+        child: Icon(Icons.check,
+          color: Theme.of(context).colorScheme.primary,
+        ),
       ) : null,
       decoration: BoxDecoration(
           shape: isRound? BoxShape.circle : BoxShape.rectangle ,

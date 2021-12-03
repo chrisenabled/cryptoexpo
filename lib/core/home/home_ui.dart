@@ -1,6 +1,7 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/constants/test_data.dart';
+import 'package:cryptoexpo/core/home/assets_screen/asset_detail.dart';
 import 'package:cryptoexpo/core/home/assets_screen/assets_ui.dart';
 import 'package:cryptoexpo/core/home/home_controller.dart';
 import 'package:cryptoexpo/core/home/markets_screen/markets_ui.dart';
@@ -32,14 +33,14 @@ class HomeUI extends StatelessWidget {
                 views: [
                   const Signals(),
                   const MarketsUI(),
-                  const AssetsUI()
+                  AssetDetail(coinId: controller.selectedDerivative!),
+                  const AssetsUI(),
                 ]
             ),
             bottomNavigationBar:
             AppBottomNav(
-                selectedCallback: (int selectedPos) {
-                  controller.setSelectedPos(selectedPos);
-                })
+              controller: controller.bottomNavigationController,
+            )
         )
     );
   }
@@ -87,9 +88,9 @@ class BottomNavViewHolder extends StatelessWidget {
     switch(selectedPos) {
       case 0: return views[0];
       case 1: return views[1];
-      case 2: return Center(child: Text('Position $selectedPos does not have a view'),);
-      case 3: return views[2];
-      default: return Center(child: Text('Nothing to show'),);
+      case 2: return views[2];
+      case 3: return views[3];
+      default: return Center(child: Text('This page does not exist'),);
     }
   }
 }

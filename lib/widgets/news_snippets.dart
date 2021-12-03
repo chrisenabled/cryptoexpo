@@ -35,23 +35,18 @@ class NewsSnippets extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(20)
-      ),
+      // decoration: BoxDecoration(
+      //   color: Theme.of(context).colorScheme.surface,
+      //   borderRadius: BorderRadius.circular(20)
+      // ),
       child: Row(
         children: [
           Icon(
-            CupertinoIcons.news_solid,
-            size: 15,
+            CupertinoIcons.bolt,
+            size: 18,
             color: Theme.of(context).colorScheme.secondary,
           ),
-          SizedBox(width: 5,),
-          Text('News', style: Theme.of(context).textTheme.caption!.copyWith(
-            fontWeight: FontWeight.bold,
-            fontSize: 12,
-          )),
-          SizedBox(width: 10,),
+          SizedBox(width: 15,),
           Expanded(
               child: SimpleCarousel(
                 isUpDownAnimation: true,
@@ -59,11 +54,16 @@ class NewsSnippets extends StatelessWidget {
                   news,
                   maxLines: 1,
                   style: Theme.of(context).textTheme.caption!.copyWith(
-                      fontSize: 13
+                      fontSize: 16
                   ),
                   overflow: TextOverflow.ellipsis,
                 )).toList(),
               )
+          ),
+          Icon(
+            CupertinoIcons.list_dash,
+            size: 15,
+            color: Theme.of(context).colorScheme.secondary,
           )
         ],
       ),

@@ -27,9 +27,11 @@ class CoinFirestoreService {
 
     final signal =  SignalAlert(
       coinId: coinId,
-      alertType: alertType,
+      signalType: alertType,
       alertMsg: alertMsg,
       duration: duration,
+      volume: null,
+      price: null,
     );
 
     print(signal.toString());

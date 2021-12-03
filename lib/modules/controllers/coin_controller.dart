@@ -1,32 +1,40 @@
 
 
 import 'package:cryptoexpo/constants/constants.dart';
-import 'package:cryptoexpo/modules/models/alert_model.dart';
+import 'package:cryptoexpo/modules/models/signal_alert_store.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/signal_alert.dart';
 import 'package:cryptoexpo/modules/services/coin_coingecko_service.dart';
 import 'package:cryptoexpo/modules/services/coin_firestore_service.dart';
+import 'package:cryptoexpo/utils/helpers/converters.dart';
 import 'package:get/get.dart';
 
 
 class CoinController extends GetxController {
 
-  final CoinCoinGeckoService coinGeckoService = CoinCoinGeckoService.to;
+  final CoinCoinGeckoService _coinGeckoService = CoinCoinGeckoService.to;
 
-  final CoinFirestoreService coinFirestoreService = CoinFirestoreService.to;
+  final CoinFirestoreService _coinFirestoreService = CoinFirestoreService.to;
 
-  Rxn<CoinDataModel> coinDataStream = Rxn<CoinDataModel>();
+  Rxn<CoinDataModel> _coinDataStream = Rxn<CoinDataModel>();
 
-  Rxn<CoinDataModel> coinData = Rxn<CoinDataModel>();
+  Rxn<CoinDataModel> _coinData = Rxn<CoinDataModel>();
 
-  Rxn<SignalAlert> signalAlertStream = Rxn<SignalAlert>();
+  Rxn<CoinDataModel> get coinData => _coinData;
 
-  final alerts = <Rx<AlertModel>>[];
+  Rxn<SignalAlert> _signalAlertStream = Rxn<SignalAlert>();
 
-  num oldPrice = 0.00;
+  final _alerts = <Rx<SignalAlertStore>>[];
 
+  List<Rx<SignalAlertStore>> get alerts => _alerts;
 
+  num _oldPrice = 0.00;
 
+  num get oldPrice => _oldPrice;
+
+  num _priceDifference = 0.0;
+
+  num get priceDifference => _priceDifference;
 
   CoinMetaData coinMeta;
 
@@ -39,12 +47,12 @@ class CoinController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     Globals.AlertTypes.forEach((type) {
-      alerts.add(AlertModel(type: type, duration: 5).obs,);
-      alerts.add(AlertModel(type: type, duration: 15).obs,);
-      alerts.add(AlertModel(type: type, duration: 240).obs,);
-      alerts.add(AlertModel(type: type, duration: 10080).obs,);
+      _alerts.add(SignalAlertStore(type: type, duration: 5).obs,);
+      _alerts.add(SignalAlertStore(type: type, duration: 15).obs,);
+      _alerts.add(SignalAlertStore(type: type, duration: 240).obs,);
+      _alerts.add(SignalAlertStore(type: type, duration: 10080).obs,);
     });
-    coinData.value = CoinDataModel(metaData: coinMeta);
+    _coinData.value = CoinDataModel(metaData: coinMeta);
   }
 
   @override
@@ -53,24 +61,38 @@ class CoinController extends GetxController {
     super.onReady();
 
     //run every time auth state changes
-    ever(coinDataStream, _handleCoinChanged);
+    ever(_coinDataStream, _handleCoinChanged);
 
-    ever(signalAlertStream, _handleSignalAlert);
+    ever(_signalAlertStream, _handleSignalAlert);
 
     _loadFullData();
 
-    coinDataStream.bindStream(coinGeckoService.priceDataChanges(
+    _coinDataStream.bindStream(_coinGeckoService.priceDataChanges(
         coinMeta.priceUri));
 
-    signalAlertStream.bindStream(
-        coinFirestoreService.signalStream(coinMeta.symbol!));
+    _signalAlertStream.bindStream(
+        _coinFirestoreService.signalStream(coinMeta.symbol!));
   }
 
   _loadFullData() async {
-    CoinDataModel? c = await coinGeckoService.getCoinData(coinMeta);
+    CoinDataModel? c = await _coinGeckoService.getCoinData(coinMeta);
     if (c != null) {
-      coinData.value = coinData.value?.copyWith(other: c);
-      print('current price from initial is ${c.coinMarketData?.currentPrice}');
+      final priceData = CoinPriceData(
+        coinId: c.id,
+        usd: c.coinMarketData?.currentPrice,
+        usdMarketCap: c.coinMarketData?.marketCap,
+        usd24hChange: c.coinMarketData?.priceChange24h,
+        usd24hVol: c.coinMarketData?.totalVolume
+      );
+      _coinData.value = _coinData.value?.copyWith(
+          priceData: priceData,
+          other: c
+      );
+      printInfo(info: 'current price from initial is'
+          ' ${c.coinMarketData?.currentPrice}');
+      printInfo(info: 'sparkLine is: '
+          '${c.coinMarketData!.sparkLineIn7d?.length} ');
+      update();
     } else {
       await Future.delayed(Duration(seconds: 10), (){
         _loadFullData();
@@ -78,20 +100,21 @@ class CoinController extends GetxController {
     }
   }
 
-  _handleCoinChanged(_coinData) {
-    if(_coinData != null) {
-      final priceData = (_coinData as CoinDataModel).priceData;
-      if(coinData.value?.priceData?.usd != priceData?.usd) {
-        oldPrice = coinData.value!.priceData?.usd!?? oldPrice;
-        coinData.value = coinData.value!.copyWith(priceData: priceData);
+  _handleCoinChanged(_coin) {
+    if(_coin != null) {
+      final priceData = (_coin as CoinDataModel).priceData;
+      if(_coinData.value?.priceData?.usd != priceData?.usd) {
+        _oldPrice = _coinData.value!.priceData?.usd!?? _oldPrice;
+        _coinData.value = _coinData.value!.copyWith(priceData: priceData);
+        _priceDifference = (priceData!.usd! - _oldPrice);
         update();
       }
     }
   }
 
   _addNewAlert(SignalAlert newAlert) {
-    final alert = alerts.firstWhere((alert)
-    => alert.value.type == newAlert.alertType
+    final alert = _alerts.firstWhere((alert)
+    => alert.value.type == newAlert.signalType
         && alert.value.duration == newAlert.duration,
     );
     alert.value = alert.value.copyWith(alerts: [newAlert]);
@@ -101,6 +124,25 @@ class CoinController extends GetxController {
     if(alert != null) {
       _addNewAlert(alert);
     }
+  }
+
+  // useful calculations
+  num getPercentageDifference() {
+    final marketData = _coinData.value?.coinMarketData;
+    final priceData = _coinData.value?.priceData;
+    return getPercentageDiff(
+        initial: marketData?.currentPrice ?? 0.00,
+        current: priceData?.usd ?? 0.00);
+  }
+
+  num getPercentageX() {
+    return getPercentageDifference() / 100;
+  }
+
+  num getPercentageProgress() {
+    return getPercentageChangeProgress(
+        percentage: getPercentageDifference()
+    );
   }
 
   @override

@@ -19,13 +19,15 @@ class LottieBottomNavigation extends StatefulWidget {
   final List<LottieTabItem> tabItems;
   final double itemsSize;
   final Color backgroundColor;
-  final LottieBottomNavigationSelectedCallback selectedCallback;
+  final LottieBottomNavigationSelectedCallback? selectedCallback;
+  final LottieBottomNavigationController? controller;
 
   LottieBottomNavigation({
     required this.tabItems,
     this.backgroundColor = Colors.white,
-    required this.selectedCallback,
+    this.selectedCallback,
     this.itemsSize = 24,
+    this.controller,
   });
 
   @override
@@ -34,7 +36,9 @@ class LottieBottomNavigation extends StatefulWidget {
 
 class _LottieBottomNavigationState extends State<LottieBottomNavigation>
     with TickerProviderStateMixin {
+
   late AnimationController idleAnimation;
+
   late AnimationController onSelectedAnimation;
 
   // late AnimationController onChangedAnimation; for reverse animation
@@ -42,6 +46,7 @@ class _LottieBottomNavigationState extends State<LottieBottomNavigation>
   late LottieBottomNavigationController _controller;
 
   var selectedIndex = 0;
+
   var previousIndex;
 
   Duration animationDuration = Duration(milliseconds: 700);
@@ -52,7 +57,7 @@ class _LottieBottomNavigationState extends State<LottieBottomNavigation>
 
     previousIndex = selectedIndex;
 
-    _controller = LottieBottomNavigationController(selectedIndex);
+    _controller = widget.controller?? LottieBottomNavigationController(selectedIndex);
 
     idleAnimation = AnimationController(vsync: this);
     onSelectedAnimation =
@@ -93,12 +98,15 @@ class _LottieBottomNavigationState extends State<LottieBottomNavigation>
   }
 
   _setSelectedIndex(int index) {
+
     _makeSelectedIndexAnimate();
 
     // onChangedAnimation.value = 1;
     // onChangedAnimation.reverse();
 
-    widget.selectedCallback(index);
+    if(widget.selectedCallback != null) {
+      widget.selectedCallback!(index);
+    }
 
     setState(() {
       previousIndex = selectedIndex;
@@ -112,8 +120,10 @@ class _LottieBottomNavigationState extends State<LottieBottomNavigation>
   }
 
   void _newSelectedPosNotify() {
-    print(
-        "This tab has been selected: ${widget.tabItems[_controller.value].label}");
+    printInfo(
+        info: "This tab has been selected:"
+            " ${widget.tabItems[_controller.value].label}"
+    );
     _setSelectedIndex(_controller.value);
   }
 
