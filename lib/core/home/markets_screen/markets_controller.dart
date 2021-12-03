@@ -1,6 +1,4 @@
 
-
-import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
 import 'package:get/get.dart';
@@ -27,9 +25,6 @@ class MarketsController extends GetxController {
 
     List<CoinMetaData> newMarkets = [...?_followedMarkets.value, market];
 
-    Get.put<CoinController>(
-        CoinController(coinMeta: market), tag: market.id);
-
     SharedPref.getOrSetMarkets(markets: newMarkets);
 
     _followedMarkets.value = List.from(newMarkets);
@@ -45,7 +40,6 @@ class MarketsController extends GetxController {
 
     if(mk.symbol != null) {
       markets.removeWhere((m) => m.id == mk.id);
-      Get.delete<CoinController>(tag: mk.id);
       SharedPref.getOrSetMarkets(markets: markets);
       _followedMarkets.value = [...markets];
     }

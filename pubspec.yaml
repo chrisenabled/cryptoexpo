@@ -36,22 +36,24 @@ dependencies:
 
   # GetX Flutter solution for DI, Routing, State, Navigation, MVC
   get: ^4.3.8
-  get_storage: ^2.0.3
+  get_storage: ^2.0.3 # key-value storage with memory and disk persistence
 
   # Cryptographic hashing
   crypto: ^3.0.1
 
   http: ^0.13.3
   csv: ^5.0.0
-  device_preview: ^0.7.4
-  flutter_svg: ^0.22.0
-  lottie: ^1.2.1
+  device_preview: ^0.7.4 # used to preview app on different screen types of (phones, tabs, OS)
+  flutter_svg: ^0.22.0 # to display svg images
+  lottie: ^1.2.1 # lottie for animated icons
   google_fonts: ^2.1.0
   font_awesome_flutter: ^9.2.0
   quiver: ^3.0.1+1
-  country_icons: ^2.0.2
-  alphabet_scroll_view: ^0.3.1
-  country_codes: ^2.1.1
+  country_icons: ^2.0.2 # has all country flags as icons
+  alphabet_scroll_view: ^0.3.1 # used to quickly scroll to alphabet in a list
+  country_codes: ^2.1.1 # used for getting country phone codes
+  auto_size_text: ^3.0.0 #used for auto scaling of font size to fixed maxlines
+  syncfusion_flutter_charts: ^19.3.56 # for drawing crypto charts
 
 dev_dependencies:
   flutter_native_splash: ^1.2.4

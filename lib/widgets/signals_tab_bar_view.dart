@@ -24,13 +24,16 @@ class SignalsTabBarView extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final bool isBackgroundBar;
   final num duration;
+  final Function(String)? onPressed;
 
   const SignalsTabBarView(
       {Key? key,
       required this.alertTypes,
       this.padding,
       this.isBackgroundBar = false,
-      this.duration = 5})
+      this.duration = 5,
+        this.onPressed,
+      })
       : super(key: key);
 
   @override
@@ -77,6 +80,7 @@ class SignalsTabBarView extends StatelessWidget {
                   isBackgroundBar: isBackgroundBar,
                   coinId: coinMeta.id!,
                   alertDuration: duration,
+                  onPressed: onPressed,
                 );
               }, childCount: coinMetas.length),
             ),

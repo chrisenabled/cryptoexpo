@@ -13,19 +13,34 @@ class Globals {
 
   static const List<num> durations = [5, 15, 240, 10080];
 
+  static const List<String> upTrendMsgList = ['buy', 'bull', 'long'];
+
+  static const List<String> downTrendMsgList = ['sell', 'bear', 'short'];
+
+  static const String usdDerivative = 'USD';
+
+  static const String bottomNavHome = 'Home';
+
+  static const String BottomNavMarkets = 'Markets';
+
+  static const String bottomNavDerivative = 'Derivative';
+
+  static const String bottomNavAssets = 'Assets';
+
+
 }
 
 enum TradePeriod {
-  FiveMin,
   FifteenMin,
   FourHours,
+  OneDay,
   OneWeek,
 }
 
 extension TradePeriodExtension on TradePeriod {
   String get string {
     switch(this) {
-      case TradePeriod.FiveMin: return '5m';
+      case TradePeriod.OneDay: return '1d';
       case TradePeriod.FifteenMin: return '15m';
       case TradePeriod.FourHours: return '4h';
       case TradePeriod.OneWeek: return '1w';
@@ -34,7 +49,7 @@ extension TradePeriodExtension on TradePeriod {
 
   int get number {
     switch(this) {
-      case TradePeriod.FiveMin: return 5;
+      case TradePeriod.OneDay: return 5;
       case TradePeriod.FifteenMin: return 15;
       case TradePeriod.FourHours: return 240;
       case TradePeriod.OneWeek: return 10080;

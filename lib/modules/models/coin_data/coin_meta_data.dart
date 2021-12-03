@@ -1,5 +1,6 @@
 
 import 'package:cryptoexpo/constants/constants.dart';
+import 'package:quiver/core.dart';
 
 class CoinMetaData {
   final String? id, symbol, name;
@@ -19,6 +20,13 @@ class CoinMetaData {
     this.name,
     this.platforms,
   });
+
+  bool operator ==(o) => o is CoinMetaData
+      && id == o.id
+      && symbol == o.symbol
+      && name == o.name;
+
+  int get hashCode => hash2(name.hashCode, id.hashCode);
 
   static List<CoinMetaData> listFromJson(List<dynamic> json) {
     final tickers = json.cast<Map<String, dynamic>>();

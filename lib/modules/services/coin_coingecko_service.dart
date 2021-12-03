@@ -25,6 +25,7 @@ import 'dart:convert';
 
 import 'package:cryptoexpo/constants/api_path_links.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
+import 'package:cryptoexpo/utils/helpers/helpers.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -95,7 +96,7 @@ class CoinCoinGeckoService extends GetConnect {
   }
 
   Stream<Response<CoinPriceData?>> _getPriceDataStream(String path) =>
-      Stream.periodic(Duration(seconds: 30))
+      Stream.periodic(Duration(seconds: getRandomNum(45, 120)))
           .asyncMap((event) => getPriceData(path))
           .asBroadcastStream(onCancel: (sub) => sub.cancel()) ;
 
@@ -108,8 +109,82 @@ class CoinCoinGeckoService extends GetConnect {
         return null;
       });
 
+  Stream<CoinDataModel?> marketDataChanges(String path) {
+    return _getMarketDataStream(path).map((response) {
+      if(response.hasError) {
+        printError(info: 'error: ${response.statusCode}');
+        return null;
+      } else {
+        printInfo(info:'${response.statusCode} coinId: ${response.body?.id}'
+            ' price: ${response.body?.currentPrice}');
+        return CoinDataModel(coinMarketData: response.body);
+      }
+    });
+  }
+
+  Stream<Response<CoinMarketData?>> _getMarketDataStream(String path) =>
+      onceAndPeriodic<Response<CoinMarketData?>>
+        (Duration(hours: 24), getMarketData, path);
+
+  Future<Response<CoinMarketData?>> getMarketData(String path) =>
+      get(path,
+          decoder: (marketData) {
+            if (marketData is List<Map<String, dynamic>>) {
+              return CoinMarketData.fromJson(marketData[0]);
+            }
+            return null;
+          });
+
+  Stream<List<CoinMetaData>?> trendingCoinMetaDataChanges(String path) {
+    return _getTrendingCoinMetaDataStream(path).map((response) {
+      if(response.hasError) {
+        printError(info: 'error: ${response.statusCode}');
+        return null;
+      } else {
+        printInfo(info:'${response.statusCode} '
+            'coinId: ${response.body?[0].id}');
+        return response.body;
+      }
+    });
+  }
+
+  Stream<Response<List<CoinMetaData>?>> _getTrendingCoinMetaDataStream(String path) =>
+      onceAndPeriodic<Response<List<CoinMetaData>?>>
+        (Duration(minutes: 24), getTrendingCoinMetaData, path);
+
+  Future<Response<List<CoinMetaData>?>> getTrendingCoinMetaData(String path) =>
+      get(path,
+          decoder: (trendingCoin) {
+            if (trendingCoin is Map<String, dynamic>) {
+              if( trendingCoin['coins'] is List) {
+                final tc = (trendingCoin['coins']) as List;
+                final coins = <CoinMetaData>[];
+                var hasCoins = false;
+                tc.forEach((map) {
+                  if(map['item'] is Map<String, dynamic>) {
+                    if(hasCoins == false) hasCoins = true;
+                    final item = map['item'];
+                    final coin = CoinMetaData(
+                      id: item['id'],
+                      symbol: item['symbol'],
+                      name: item['name'],
+                    );
+                    coins.add(coin);
+                  }
+                });
+                return coins;
+              }
+            }
+            return null;
+          });
+
+  Stream<T> onceAndPeriodic<T>(
+      Duration period,
+      Future<T> Function(String) computation,
+      String path
+      ) async* {
+    yield  await computation(path);
+    yield* Stream.periodic(period).asyncMap((event) => computation(path));
+  }
+
 }
-
-typedef StreamData =  Response<T> Function<T>(String);
-
-typedef F<T> = T Function(T);

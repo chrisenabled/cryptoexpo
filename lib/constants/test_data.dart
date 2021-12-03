@@ -21,11 +21,6 @@ final int minFreq = 1;
 
 final int maxFreq = 20;
 
-double getRandomPrice() {
-  return double.parse((minPrice + new Random().nextInt(maxPrice - minPrice))
-      .toStringAsFixed(2));
-}
-
 int getFreq() {
   return minFreq + new Random().nextInt(maxFreq - minFreq);
 }

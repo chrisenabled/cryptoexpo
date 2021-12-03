@@ -2,21 +2,21 @@
 
 import 'package:cryptoexpo/modules/models/signal_alert.dart';
 
-class AlertModel {
+class SignalAlertStore {
   final String type;
   final num duration;
   List<SignalAlert>? signalAlerts  = <SignalAlert>[] ;
 
-  AlertModel({
+  SignalAlertStore({
     required this.type,
     required this.duration,
     this.signalAlerts
   });
 
-  AlertModel copyWith({
+  SignalAlertStore copyWith({
     required List<SignalAlert> alerts
 }) {
-    return AlertModel(
+    return SignalAlertStore(
         type: this.type,
         duration: this.duration,
       signalAlerts: [...?(this.signalAlerts), ...alerts]
