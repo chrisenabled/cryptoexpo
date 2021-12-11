@@ -25,7 +25,9 @@ import 'dart:convert';
 
 import 'package:cryptoexpo/constants/api_path_links.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
+import 'package:cryptoexpo/modules/models/signal_indicator.dart';
 import 'package:cryptoexpo/utils/helpers/helpers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -44,14 +46,19 @@ class CoinCoinGeckoService extends GetConnect {
     final String response = await rootBundle.loadString('assets/json/coin_ids.json');
     final data = await json.decode(response);
     print(data);
-    return CoinMetaData.listFromJson(data);
+    return CoinMetaData().listFromJson(data);
   }
 
   Future<CoinDataModel?> readJsonTestData() async {
     final String response = await rootBundle.loadString('assets/json/coins_test_response.json');
     final data = await json.decode(response);
-    print(data);
     return CoinDataModel.fromJson(data);
+  }
+
+  Future<List<SignalIndicator>?> readJsonIndicators() async {
+    final String response =
+    await rootBundle.loadString('assets/json/signal_indicators.json');
+    return deserialize<SignalIndicator>(response, SignalIndicator());
   }
 
   Stream<CoinDataModel?> coinDataChanges(String path) {
@@ -60,7 +67,7 @@ class CoinCoinGeckoService extends GetConnect {
         printError(info: '${response.statusCode}');
         return null;
       }
-      printInfo(info: '${response.statusCode}');
+      // printInfo(info: '${response.statusCode}');
       return response.body;
     });
   }
@@ -88,8 +95,8 @@ class CoinCoinGeckoService extends GetConnect {
         printError(info: 'error: ${response.statusCode}');
         return null;
       } else {
-        printInfo(info:'${response.statusCode} coinId: ${response.body?.coinId}'
-            ' price: ${response.body?.usd.toString()}');
+        // printInfo(info:'${response.statusCode} coinId: ${response.body?.coinId}'
+        //     ' price: ${response.body?.usd.toString()}');
         return CoinDataModel(priceData: response.body);
       }
     });

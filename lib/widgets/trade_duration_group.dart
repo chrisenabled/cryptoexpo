@@ -1,5 +1,6 @@
 
 import 'package:cryptoexpo/constants/constants.dart';
+import 'package:cryptoexpo/modules/models/signal_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,28 +10,37 @@ class TradeDurationGroup extends StatelessWidget implements PreferredSizeWidget 
 
   const TradeDurationGroup({
     this.selectedIndex = 0,
-    required this.onPressed,
+    required this.onPressed, 
+    required this.durations,
   });
 
   final int selectedIndex;
   final  Function(int) onPressed;
+  final List<int> durations;
 
   @override
   Widget build(BuildContext context) {
 
+    final periodMap = {
+      15: '15m',
+      240: '4h',
+      1440: '1d',
+      10080: '1w'
+    };
+    
     RxInt _selectedPos = selectedIndex.obs;
 
     List<Widget> generateList(int selectedIndex) {
       List<Widget> list = [];
-      for (var value in TradePeriod.values) {
-        if(value.index != 0) list.add(SizedBox(width: 10,));
+      for (var value in durations) {
+        list.add(SizedBox(width: 10,));
         list.add(
             TradeDuration(
-              duration: value.string,
-              isSelected: value.index == selectedIndex,
+              duration: periodMap[value]!,
+              isSelected: durations.indexOf(value) == selectedIndex,
               onSelected: (duration) {
-                onPressed(value.number);
-                _selectedPos.value = value.index;
+                _selectedPos.value = durations.indexOf(value);
+                onPressed(durations.indexOf(value));
               },
             ));
       }

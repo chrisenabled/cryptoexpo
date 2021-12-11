@@ -4,7 +4,7 @@ import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/signal_alert_store.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
-import 'package:cryptoexpo/utils/helpers/converters.dart';
+import 'package:cryptoexpo/utils/helpers/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -13,7 +13,7 @@ import 'package:lottie/lottie.dart';
 import 'animated_flip_counter.dart';
 
 class TradingPairListItem extends StatelessWidget {
-  final String alertType;
+  final String indicatorName;
   final bool isBackgroundBar;
   final String coinId;
   final num alertDuration;
@@ -21,7 +21,7 @@ class TradingPairListItem extends StatelessWidget {
 
   const TradingPairListItem({
     Key? key,
-    required this.alertType,
+    required this.indicatorName,
     this.isBackgroundBar = true,
     required this.coinId,
     this.alertDuration = 5,
@@ -49,7 +49,7 @@ class TradingPairListItem extends StatelessWidget {
       builder: (controller) {
         return GestureDetector(
           onTap: () {
-            if(onPressed != null) {
+            if (onPressed != null) {
               onPressed!(coinId);
             }
           },
@@ -62,7 +62,8 @@ class TradingPairListItem extends StatelessWidget {
                       child: _fullPriceProgressIndicator(controller),
                     ),
                   Container(
-                    color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                    color:
+                        Theme.of(context).colorScheme.primary.withOpacity(0.8),
                     padding: const EdgeInsets.only(
                         left: 4, top: 2, bottom: 2, right: 4),
                     child: Column(
@@ -72,27 +73,28 @@ class TradingPairListItem extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                                child: _pairInfoColumn(context, controller),
+                              child: _pairInfoColumn(context, controller),
                               flex: 4,
                             ),
                             Expanded(
-                              flex: 4,
-                                child: _priceColumn(context, controller)
-                            ),
+                                flex: 4,
+                                child: _priceColumn(context, controller)),
                             Expanded(
-                              flex: 2,
+                                flex: 2,
                                 child: Obx(() {
-                              final alert =
-                              controller.alerts.firstWhere(
-                                      (alert) => (alert.value.duration - alertDuration == 0
-                                      && alert.value.type == alertType),
-                                  orElse: () =>
-                                      SignalAlertStore(type: alertType,
-                                          duration: alertDuration).obs
-                              );
-                              return _signalContainer(context, alert.value);
-                            })
-                            ),
+                                  final alertStore =
+                                  controller.alertStores.firstWhereOrNull((store)
+                                  => (store.value.duration == alertDuration
+                                      && store.value.indicatorName == indicatorName
+                                  ));
+
+                                  printInfo(info:
+                                      "${alertStore?.value.indicatorName}"
+                                      "${alertStore?.value.duration}");
+
+                                  return _signalContainer(context,
+                                      alertStore?.value);
+                                })),
                           ],
                         ),
                         SizedBox(
@@ -195,19 +197,20 @@ class TradingPairListItem extends StatelessWidget {
   }
 
   Widget _signalContainer(
-      BuildContext context,
-      SignalAlertStore alert
-      ) {
-
+      BuildContext context, SignalAlertStore? alertStore) {
     String? msg = '';
 
-    if(alert.signalAlerts != null) {
-      if (alert.signalAlerts!.length > 0) {
-        final signalAlerts = alert.signalAlerts;
+    if (alertStore?.signalAlerts != null) {
+      if (alertStore!.signalAlerts!.length > 0) {
+        final signalAlerts = alertStore.signalAlerts;
         msg = signalAlerts![signalAlerts.length - 1].alertMsg;
       }
     }
+    // printInfo(info: 'alertStore:  ${alertStore?.type}'
+    //     ' ${alertStore?.duration} ${alertStore?.signalAlerts?.length}');
+
     printInfo(info: 'the alert msg received by $coinId is  $msg');
+
     bool isAlternateDecoration() {
       return isBackgroundBar || msg == 'bull' || msg == 'bear';
     }
@@ -239,30 +242,33 @@ class TradingPairListItem extends StatelessWidget {
                       : Text(
                           '${msg.isNotEmpty ? msg : 'No signal'}',
                           textScaleFactor: !isBackgroundBar ? 1 : 1.2,
-                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                                color: !isBackgroundBar
-                                    ? Globals.upTrendMsgList.contains(msg)
-                                        ? Colors.white
-                                        : Colors.black
-                                    : Globals.upTrendMsgList.contains(msg)
-                                        ? MyColors.upTrendColor
-                                        : MyColors.downTrendColor,
-                                shadows: !isBackgroundBar
-                                    ? null
-                                    : <Shadow>[
-                                        Shadow(
-                                          offset: Offset(0.5, 0.5),
-                                          blurRadius: 0.5,
-                                          color: MyColors.richBlack,
-                                        )
-                                      ],
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    color: !isBackgroundBar
+                                        ? Globals.upTrendMsgList.contains(msg)
+                                            ? Colors.white
+                                            : Colors.black
+                                        : Globals.upTrendMsgList.contains(msg)
+                                            ? MyColors.upTrendColor
+                                            : MyColors.downTrendColor,
+                                    shadows: !isBackgroundBar
+                                        ? null
+                                        : <Shadow>[
+                                            Shadow(
+                                              offset: Offset(0.5, 0.5),
+                                              blurRadius: 0.5,
+                                              color: MyColors.richBlack,
+                                            )
+                                          ],
+                                  ),
                         ),
             ),
             Transform.translate(
               offset: Offset(isAlternateDecoration() ? -3 : -13,
                   isAlternateDecoration() ? 6 : 2),
-              child: Container(
+              child: alertStore != null && alertStore.signalAlerts != null
+                  && alertStore.signalAlerts!.length > 0
+                  ? Container(
                 width: 11,
                 height: 11,
                 decoration: new BoxDecoration(
@@ -273,7 +279,7 @@ class TradingPairListItem extends StatelessWidget {
                 ),
                 child: Center(
                     child: Text(
-                  '${10}',
+                  '${alertStore.signalAlerts!.length}',
                   style: Theme.of(context).textTheme.caption!.copyWith(
                     fontSize: 8,
                     color: Theme.of(context).colorScheme.primary,
@@ -286,7 +292,8 @@ class TradingPairListItem extends StatelessWidget {
                     ],
                   ),
                 )),
-              ),
+              )
+                  : null,
             )
           ],
         ),
@@ -331,27 +338,23 @@ class TradingPairListItem extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              '$price',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(
+            Text('$price',
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     letterSpacing: 0.5,
                     fontWeight: FontWeight.bold,
                     color: price - controller.oldPrice == 0
                         ? Theme.of(context).colorScheme.onPrimary
                         : price - controller.oldPrice > 0
-                        ? MyColors.upTrendColor
-                        : MyColors.downTrendColor
-                )
-            ),
+                            ? MyColors.upTrendColor
+                            : MyColors.downTrendColor)),
             RichText(
               text: TextSpan(
-                  text: '${coin.coinMarketData?.currentPrice ?? Globals.zeroMoney}',
-                  style:
-                      Theme.of(context).textTheme.bodyText2!
-                          .copyWith(fontSize: 11, letterSpacing: 0.5),
+                  text:
+                      '${coin.coinMarketData?.currentPrice ?? Globals.zeroMoney}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2!
+                      .copyWith(fontSize: 11, letterSpacing: 0.5),
                   children: [
                     TextSpan(
                       text: ' USD',

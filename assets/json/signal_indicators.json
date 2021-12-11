@@ -1,0 +1,26 @@
+[
+  {
+    "name": "MacD",
+    "messages": ["bear", "bull"],
+    "durations": [15, 240],
+    "description": "This is used to know the moment trend"
+  },
+  {
+    "name": "Steve 21",
+    "messages": ["sell", "buy"],
+    "durations": [15, 240],
+    "description": "This is used to know if its good time to buy or sell"
+  },
+  {
+    "name": "Cypher",
+    "messages": ["sell", "buy"],
+    "durations": [15, 240],
+    "description": "This is comprehensive analysis of when to buy or sell"
+  },
+  {
+    "name": "Heat Warm",
+    "messages": ["bearish", "bullish"],
+    "durations": [1440, 10080],
+    "description": "This is used to know new market trend"
+  }
+]
