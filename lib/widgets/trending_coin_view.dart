@@ -90,7 +90,7 @@ class TrendingCoinView extends StatelessWidget {
           //Enable data label
           xValueMapper: (int index) => data[index],
           yValueMapper: (int index) => data.keys.elementAt(index),
-          dataCount: 5,
+          dataCount: data.length,
           axisLineColor: Colors.transparent,
           color: getTrendColor(
               data[data.length - 1]! - data[0]!, context),

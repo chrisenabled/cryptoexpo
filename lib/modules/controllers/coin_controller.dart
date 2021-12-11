@@ -6,7 +6,8 @@ import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/signal_alert.dart';
 import 'package:cryptoexpo/modules/services/coin_coingecko_service.dart';
 import 'package:cryptoexpo/modules/services/coin_firestore_service.dart';
-import 'package:cryptoexpo/utils/helpers/converters.dart';
+import 'package:cryptoexpo/utils/helpers/helpers.dart';
+import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
 import 'package:get/get.dart';
 
 
@@ -24,9 +25,9 @@ class CoinController extends GetxController {
 
   Rxn<SignalAlert> _signalAlertStream = Rxn<SignalAlert>();
 
-  final _alerts = <Rx<SignalAlertStore>>[];
+  final _alertStores = <Rx<SignalAlertStore>>[];
 
-  List<Rx<SignalAlertStore>> get alerts => _alerts;
+  List<Rx<SignalAlertStore>> get alertStores => _alertStores;
 
   num _oldPrice = 0.00;
 
@@ -36,7 +37,7 @@ class CoinController extends GetxController {
 
   num get priceDifference => _priceDifference;
 
-  CoinMetaData coinMeta;
+  final CoinMetaData coinMeta;
 
   CoinController({
     required this.coinMeta
@@ -46,12 +47,9 @@ class CoinController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    Globals.AlertTypes.forEach((type) {
-      _alerts.add(SignalAlertStore(type: type, duration: 5).obs,);
-      _alerts.add(SignalAlertStore(type: type, duration: 15).obs,);
-      _alerts.add(SignalAlertStore(type: type, duration: 240).obs,);
-      _alerts.add(SignalAlertStore(type: type, duration: 10080).obs,);
-    });
+
+    _setUpSignalAlertStores();
+
     _coinData.value = CoinDataModel(metaData: coinMeta);
   }
 
@@ -71,7 +69,28 @@ class CoinController extends GetxController {
         coinMeta.priceUri));
 
     _signalAlertStream.bindStream(
-        _coinFirestoreService.signalStream(coinMeta.symbol!));
+        _coinFirestoreService.signalStream(coinMeta.id!));
+  }
+
+  _setUpSignalAlertStores() {
+    final indicators = SharedPref.getOrSetSignalIndicator();
+
+    if(indicators != null && indicators.length > 0) {
+      indicators.forEach((indicator) {
+        indicator.durationsInMin!.forEach((duration) {
+          _alertStores.add(SignalAlertStore(
+              indicatorName: indicator.name!, duration: duration).obs,);
+        });
+      });
+    } else {
+      Globals.AlertTypes.forEach((type) {
+        _alertStores.add(SignalAlertStore(indicatorName: type, duration: 5).obs,);
+        _alertStores.add(SignalAlertStore(indicatorName: type, duration: 15).obs,);
+        _alertStores.add(SignalAlertStore(indicatorName: type, duration: 240).obs,);
+        _alertStores.add(SignalAlertStore(indicatorName: type, duration: 10080).obs,);
+      });
+
+    }
   }
 
   _loadFullData() async {
@@ -88,13 +107,10 @@ class CoinController extends GetxController {
           priceData: priceData,
           other: c
       );
-      printInfo(info: 'current price from initial is'
-          ' ${c.coinMarketData?.currentPrice}');
-      printInfo(info: 'sparkLine is: '
-          '${c.coinMarketData!.sparkLineIn7d?.length} ');
+
       update();
     } else {
-      await Future.delayed(Duration(seconds: 10), (){
+      await Future.delayed(Duration(seconds: 10), () {
         _loadFullData();
       });
     }
@@ -112,12 +128,18 @@ class CoinController extends GetxController {
     }
   }
 
-  _addNewAlert(SignalAlert newAlert) {
-    final alert = _alerts.firstWhere((alert)
-    => alert.value.type == newAlert.signalType
-        && alert.value.duration == newAlert.duration,
+  _addNewAlert(SignalAlert _newAlert) {
+    final newAlert = _newAlert
+        .copyWith(price: coinData.value?.priceData?.usd);
+
+    final Rx<SignalAlertStore>? alertStore = _alertStores.firstWhereOrNull((store)
+    => store.value.indicatorName == newAlert.indicatorName
+        && store.value.duration == newAlert.duration,
     );
-    alert.value = alert.value.copyWith(alerts: [newAlert]);
+
+    if(alertStore != null) {
+      alertStore.value = alertStore.value.copyWith(alerts: [newAlert]);
+    }
   }
 
   _handleSignalAlert(alert) {
@@ -130,6 +152,7 @@ class CoinController extends GetxController {
   num getPercentageDifference() {
     final marketData = _coinData.value?.coinMarketData;
     final priceData = _coinData.value?.priceData;
+
     return getPercentageDiff(
         initial: marketData?.currentPrice ?? 0.00,
         current: priceData?.usd ?? 0.00);

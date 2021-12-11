@@ -1,49 +1,28 @@
 
+import 'package:cryptoexpo/core/home/home_controller.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
 import 'package:get/get.dart';
 
 class MarketsController extends GetxController {
 
-  Rx<List<CoinMetaData>?> _followedMarkets = SharedPref.getOrSetMarkets().obs;
+  final HomeController _homeController = HomeController.to;
 
-  Rx<List<CoinMetaData>?> get followedMarkets => _followedMarkets;
+  Rx<List<CoinMetaData>?> get followedMarkets => _homeController.followedMarkets;
 
-  final List<CoinMetaData> allCoinMetas = Get.find();
+  List<CoinMetaData> get allCoinMetas => _homeController.allCoinMetas;
 
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
   saveFollowedMarket(CoinMetaData market) {
-
-    List<CoinMetaData> markets = [...?_followedMarkets.value];
-
-    CoinMetaData mk = markets.firstWhere(
-            (m) => m.symbol == market.symbol, orElse: () => CoinMetaData());
-
-    if(mk.id != null) {
-      return;
-    }
-
-    List<CoinMetaData> newMarkets = [...?_followedMarkets.value, market];
-
-    SharedPref.getOrSetMarkets(markets: newMarkets);
-
-    _followedMarkets.value = List.from(newMarkets);
+    _homeController.saveFollowedMarket(market);
   }
 
   removeFollowedMarket(CoinMetaData market) {
-
-    List<CoinMetaData> markets = [...?_followedMarkets.value];
-
-    CoinMetaData mk = markets.firstWhere(
-            (m) => m.symbol == market.symbol, orElse: () => CoinMetaData()
-    );
-
-    if(mk.symbol != null) {
-      markets.removeWhere((m) => m.id == mk.id);
-      SharedPref.getOrSetMarkets(markets: markets);
-      _followedMarkets.value = [...markets];
-    }
-
+    _homeController.removeFollowedMarket(market);
   }
 
 }

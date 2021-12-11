@@ -2,6 +2,11 @@
 
 import 'dart:math';
 import 'dart:ui';
+import 'dart:convert';
+
+
+import 'package:cryptoexpo/modules/interfaces/json_serialized.dart';
+import 'package:flutter/foundation.dart';
 
 class HexColor extends Color {
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
@@ -15,26 +20,59 @@ class HexColor extends Color {
   }
 }
 
-num getPercentageDiff({required num initial, required num current}) {
-  if(initial <= 0 || current <= 0) {
-    return 0.0;
+class _DeserializeAction<T> {
+  final String json;
+  final T instance;
+  _DeserializeAction(this.json, this.instance);
+
+  List<T>? _invoke() {
+    if(instance is JsonSerialized) {
+      final _instance = instance as JsonSerialized;
+    var decode = jsonDecode(json);
+      if(decode is List) {
+
+        return _instance.listFromJson(decode).cast<T>();
+      }
+      return _instance.listFromJson([json]).cast<T>();
+    }
+    return null;
   }
-  num end = current > initial ? current : initial;
-  num start = current > initial ? initial : current;
-  num percentage = double.parse((((end - start) / start)  * 100).toStringAsFixed(2));
-  return current >= initial ? percentage : -(percentage);
+
+  static List<T>? invoke<T>
+      (_DeserializeAction<T> a) => a._invoke();
 }
 
-num  getPercentageChangeProgress ({required num percentage}) {
-  return (percentage % 100).abs() == 0
-      ? (percentage.abs() / 100).floor() > 0
-      ? 100
-      : 0
-      : double.parse((percentage.abs() % 100).toStringAsFixed(2));
-}
+Future<List<T>?> deserialize<T>(
+    String json,
+    T instance
+    ) => compute(
+    _DeserializeAction.invoke,
+    _DeserializeAction<T>(json, instance)
+);
 
-int getRandomNumber(int min, int max, {bool includeMax: false}) {
-  final random = new Random();
-  final int diff = !includeMax? max - min : (max - min) + 1;
-  return min + random.nextInt(diff);
+
+// we use this outer function to process an object's fromJson method
+// so that we can do the expensive conversion in an isolate
+T? fromJson<T>(Map map) {
+
+  JsonSerialized obj = map['obj'] as JsonSerialized;
+  dynamic data = map['data'];
+
+  var converted;
+
+  var _json = data;
+
+  if(data is String) {
+    _json = json.decode(data);
+  }
+
+  if(_json is List) {
+    converted = obj.listFromJson(_json);
+  } else {
+    converted = obj.fromJson(_json);
+  }
+
+  if(converted is T) return converted;
+
+  return null;
 }

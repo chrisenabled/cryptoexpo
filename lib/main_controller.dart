@@ -1,6 +1,8 @@
 
 
 
+import 'dart:ui';
+
 import 'package:cryptoexpo/core/home/trending_coins_widget/trending_coins_controller.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -15,7 +17,7 @@ import 'modules/models/coin_data/coin_data.dart';
 import 'modules/services/services.dart';
 import 'utils/helpers/shared_pref.dart';
 
-class MainController extends GetxController {
+class MainController extends FullLifeCycleController {
 
   static MainController to = Get.find();
 
@@ -28,10 +30,19 @@ class MainController extends GetxController {
     _preCacheImages();
   }
 
+  // Since foreground brightness reverted after changing the app lifecycle,
+  // we use flutter's WidgetsBindingObserver mixin.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    useAppropriateThemeMode();
+  }
+
   void _initAppWideInstances() {
     _initAppWideServices();
     _initAppWideControllers();
     _initCoinMetaDatas();
+    _setUpSignalIndicators();
   }
 
   void _initAppWideServices() {
@@ -43,6 +54,12 @@ class MainController extends GetxController {
     Get.put<AuthController>(AuthController(), permanent: true);
     Get.put<ThemeController>(ThemeController(), permanent: true);
     Get.put<LanguageController>(LanguageController(), permanent: true);
+  }
+
+  Future<void> _setUpSignalIndicators() async {
+   CoinCoinGeckoService.to.readJsonIndicators()
+       .then((value) =>
+       SharedPref.getOrSetSignalIndicator(indicators: value));
   }
 
   Future<void> _initCoinMetaDatas()  async {
@@ -84,7 +101,6 @@ class MainController extends GetxController {
       AppThemes.darkSystemUiOverlayStyle();
     } else {
       AppThemes.lightSystemUiOverlayStyle();
-
     }
   }
 

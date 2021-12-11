@@ -62,16 +62,6 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
     super.dispose();
   }
 
-  // late AppLifecycleState _notification;
-
-  // Since foreground brightness reverted after changing the app lifecycle,
-  // we use flutter's WidgetsBindingObserver mixin.
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    mainController.useAppropriateThemeMode();
-  }
-
-
   @override
   Widget build(BuildContext context) {
     ThemeController.to.getThemeModeFromStore();
