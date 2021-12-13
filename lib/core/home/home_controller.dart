@@ -1,7 +1,7 @@
 
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/signal_indicator.dart';
-import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
+import 'package:cryptoexpo/utils/helpers/local_store.dart';
 import 'package:cryptoexpo/widgets/lottie_buttom_navigation.dart';
 
 import 'package:get/get.dart';
@@ -18,13 +18,13 @@ class HomeController extends GetxController {
 
   String? get selectedDerivative => _selectedDerivative ;
 
-  List<SignalIndicator>? get indicators => SharedPref.getOrSetSignalIndicator();
+  List<SignalIndicator>? get indicators => LocalStore.getOrSetSignalIndicator();
 
   late LottieBottomNavigationController bottomNavigationController;
 
 
   final Rx<List<CoinMetaData>?> _followedMarkets =
-      SharedPref.getOrSetMarkets().obs;
+      LocalStore.getOrSetMarkets().obs;
 
   Rx<List<CoinMetaData>?> get followedMarkets => _followedMarkets;
 
@@ -58,7 +58,7 @@ class HomeController extends GetxController {
 
     List<CoinMetaData> newMarkets = [...?_followedMarkets.value, market];
 
-    SharedPref.getOrSetMarkets(markets: newMarkets);
+    LocalStore.getOrSetMarkets(markets: newMarkets);
 
     _followedMarkets.value = List.from(newMarkets);
   }
@@ -73,7 +73,7 @@ class HomeController extends GetxController {
 
     if(mk.symbol != null) {
       markets.removeWhere((m) => m.id == mk.id);
-      SharedPref.getOrSetMarkets(markets: markets);
+      LocalStore.getOrSetMarkets(markets: markets);
       _followedMarkets.value = [...markets];
     }
 

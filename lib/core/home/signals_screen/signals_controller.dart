@@ -4,7 +4,7 @@ import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/core/home/home_controller.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_meta_data.dart';
 import 'package:cryptoexpo/modules/models/signal_indicator.dart';
-import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
+import 'package:cryptoexpo/utils/helpers/local_store.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +12,7 @@ class SignalsController extends GetxController {
 
   HomeController _homeController = HomeController.to;
 
-  final RxBool _isBackgroundBar = SharedPref.getOrSetIsBackGroundBar().obs;
+  final RxBool _isBackgroundBar = LocalStore.getOrSetIsBackGroundBar().obs;
   
   RxBool get isBackgroundBar => _isBackgroundBar;
 
@@ -47,8 +47,8 @@ class SignalsController extends GetxController {
   void onReady() {
     super.onReady();
 
-    SharedPref.box.listenKey(
-        SharedPref.isBackGroundBarKey, onSetIsBackGroundBar);
+    LocalStore.box.listenKey(
+        LocalStore.isBackGroundBarKey, onSetIsBackGroundBar);
   }
 
   @override

@@ -3,9 +3,13 @@
 import 'dart:math';
 
 import 'package:cryptoexpo/config/themes/app_themes.dart';
+import 'package:cryptoexpo/modules/models/coin_data/coin_meta_data.dart';
 import 'package:cryptoexpo/modules/models/signal_alert.dart';
+import 'package:cryptoexpo/utils/helpers/local_store.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 Future<String?> myLoadAsset(String path) async {
   try {
@@ -64,6 +68,48 @@ int getRandomNumber(int min, int max, {bool includeMax: false}) {
   final random = new Random();
   final int diff = !includeMax? max - min : (max - min) + 1;
   return min + random.nextInt(diff);
+}
+
+List<SignalAlert> updateTradingCalls(SignalAlert signalAlert) {
+
+  return _updateTradeCall(signalAlert);
+
+  // return compute(_updateTradeCall, signalAlert);
+}
+
+List<SignalAlert> _updateTradeCall(SignalAlert signalAlert) {
+
+  final halfKey = signalAlert.coinId!
+      + signalAlert.indicatorName!
+      + '${signalAlert.duration!}';
+
+  final _call = LocalStore.getOrSetUnitTradeCall(halfKey: halfKey)
+      ?? <SignalAlert>[];
+
+  final List<SignalAlert> call = List.from(_call);
+
+  // print('updateTradeCall: for '
+  //     '${signalAlert.coinId}:''${call.length}:'
+  //     '${signalAlert.alertMsg}:${signalAlert.duration}'
+  //     ':${signalAlert.indicatorName}'
+  // );
+
+  if(call.length == 0) {
+    if(signalAlert.alertCode == 1) {
+      call.add(signalAlert);
+    }
+  } else {
+    if(call.last.alertCode == 0 && signalAlert.alertCode == 1) {
+      LocalStore.updateTradeCalls(List.from(call), halfKey);
+      call.clear();
+    }
+    call.add(signalAlert);
+  }
+
+  LocalStore.getOrSetUnitTradeCall(halfKey: halfKey,
+      signalAlerts: List.from(call));
+
+  return call;
 }
 
 List<List<SignalAlert>> getTradeCalls(List<SignalAlert> signalAlerts) {

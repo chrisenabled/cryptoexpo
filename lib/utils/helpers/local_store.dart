@@ -1,10 +1,11 @@
 
 import 'package:cryptoexpo/modules/interfaces/json_serialized.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
+import 'package:cryptoexpo/modules/models/signal_alert.dart';
 import 'package:cryptoexpo/modules/models/signal_indicator.dart';
 import 'package:get_storage/get_storage.dart';
 
-class SharedPref {
+class LocalStore {
 
   static final box = GetStorage();
 
@@ -16,8 +17,67 @@ class SharedPref {
 
   static const indicatorsKey = 'indicators';
 
-  static List<SignalIndicator>? getOrSetSignalIndicator
-      ({List<SignalIndicator>? indicators}) {
+  static const tradeCallsPreKey = 'trade_calls_key_';
+
+  static const unitTradeCallPreKey = 'unit_trade_call_key_';
+
+  static List<List<SignalAlert>>? getTradeCalls(
+      String indicatorAndDurationKey) {
+
+    final String key = tradeCallsPreKey + indicatorAndDurationKey;
+
+    final lists = _readOrWrite<List<List<Map<String, dynamic>>>>(
+        key, null, null);
+
+    if(lists != null) {
+      return lists.map((e) =>
+          e.map((e) =>
+              SignalAlert().fromJson(e))
+              .cast<SignalAlert>()
+              .toList()
+      ).toList();
+    }
+
+    return null;
+  }
+
+  static updateTradeCalls(List<SignalAlert> signalAlerts,
+      String indicatorAndDurationKey) {
+
+    final String key = tradeCallsPreKey + indicatorAndDurationKey;
+
+    List<List<SignalAlert>>? tradeCalls = getTradeCalls(key);
+
+    if(tradeCalls != null) {
+      tradeCalls.add(signalAlerts);
+    }
+    else {
+      tradeCalls = [signalAlerts];
+    }
+
+    final lists = tradeCalls.map((e) =>
+        e.map((e) =>
+            e.toJson()).toList()).toList();
+
+    _readOrWrite<List<List<Map<String, dynamic>>>>(
+        indicatorAndDurationKey, lists, null);
+  }
+
+  static List<SignalAlert>? getOrSetUnitTradeCall({
+    List<SignalAlert>? signalAlerts,
+    required String halfKey
+  }) {
+    final String key = unitTradeCallPreKey + halfKey;
+
+    if(_saveListObjectsToStorage(list: signalAlerts, key: key)) {
+      return signalAlerts;
+    } else {
+      return _getListObjectsFromStorage(key, SignalAlert());
+    }
+  }
+
+  static List<SignalIndicator>? getOrSetSignalIndicator({
+    List<SignalIndicator>? indicators}) {
 
     if(_saveListObjectsToStorage(list: indicators, key: indicatorsKey)) {
       return indicators;

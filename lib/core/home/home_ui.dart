@@ -6,7 +6,7 @@ import 'package:cryptoexpo/core/home/assets_screen/assets_ui.dart';
 import 'package:cryptoexpo/core/home/home_controller.dart';
 import 'package:cryptoexpo/core/home/markets_screen/markets_ui.dart';
 import 'package:cryptoexpo/core/settings/settings_ui.dart';
-import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
+import 'package:cryptoexpo/utils/helpers/local_store.dart';
 import 'package:cryptoexpo/widgets/app_buttom_nav.dart';
 import 'package:cryptoexpo/widgets/my_tab_bar.dart';
 import 'package:cryptoexpo/widgets/signals_tab_bar_view.dart';
@@ -63,7 +63,7 @@ class HomeUI extends StatelessWidget {
             icon: Icon(Icons.share_arrival_time_outlined),
             onPressed: () {
               isBackgroundBar.toggle();
-              SharedPref.getOrSetIsBackGroundBar(
+              LocalStore.getOrSetIsBackGroundBar(
                   isBackgroundBar: isBackgroundBar.value
               );
             }),
