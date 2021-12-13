@@ -2,15 +2,16 @@
 import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/signal_alert.dart';
+import 'package:cryptoexpo/modules/models/signal_indicator.dart';
 import 'package:cryptoexpo/utils/helpers/helpers.dart';
-import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
+import 'package:cryptoexpo/utils/helpers/local_store.dart';
 import 'package:get/get.dart';
 
 class CoinFirestoreService {
 
   static CoinFirestoreService to = Get.find();
 
-  var indicators;
+  List<SignalIndicator>? indicators;
 
   Stream<SignalAlert> signalStream(String coinId) =>
       Stream.periodic(Duration(seconds: 45))
@@ -19,16 +20,17 @@ class CoinFirestoreService {
 
   Future<SignalAlert> _fakeSignalAlert(String coinId) async {
     if(indicators == null) {
-      indicators = SharedPref.getOrSetSignalIndicator()!;
+      indicators = LocalStore.getOrSetSignalIndicator()!;
     }
 
-    final indicator = indicators[getRandomNumber(0, indicators.length)];
+    final indicator = indicators![getRandomNumber(0, indicators!.length)];
 
     final indicatorName = indicator.name!;
 
-    final alertCode = getRandomNumber(0, indicator.messages!.length);
+    final alertMsg = indicator.messages![
+      getRandomNumber(0, indicator.messages!.length)];
 
-    final alertMsg = indicator.messages![alertCode];
+    final alertCode = indicator.messages!.indexOf(alertMsg);
 
     final duration = indicator.durationsInMin![
       getRandomNumber(0, indicator.durationsInMin!.length)];

@@ -83,7 +83,7 @@ class TradingPairListItem extends StatelessWidget {
                                 flex: 2,
                                 child: Obx(() {
                                   final alertStore =
-                                  controller.alertStores.firstWhereOrNull((store)
+                                  controller.tradeCallStores.firstWhereOrNull((store)
                                   => (store.value.duration == alertDuration
                                       && store.value.indicatorName == indicatorName
                                   ));

@@ -1,5 +1,7 @@
 
-class SignalAlert {
+import 'package:cryptoexpo/modules/interfaces/json_serialized.dart';
+
+class SignalAlert implements JsonSerialized {
   final String? coinId;
   final String? indicatorName;
   final String? alertMsg;
@@ -10,13 +12,13 @@ class SignalAlert {
   DateTime? time;
 
   SignalAlert({
-    required this.coinId,
-    required this.indicatorName,
-    required this.alertMsg,
-    required this.alertCode,
-    required this.duration,
-    required this.price,
-    required this.volume,
+     this.coinId,
+     this.indicatorName,
+     this.alertMsg,
+     this.alertCode,
+     this.duration,
+     this.price,
+     this.volume,
     this.time,
   });
 
@@ -61,5 +63,41 @@ class SignalAlert {
       volume: volume?? this.volume,
       time: time?? this.time,
     );
+  }
+
+  @override
+  fromJson(Map map) {
+    final json = map as Map<String, dynamic>;
+
+    return SignalAlert(
+      coinId: json['coinId'],
+      indicatorName: json['indicatorName'],
+      alertMsg: json['alertMsg'],
+      alertCode: json['alertCode'],
+      duration: json['duration'],
+      price: json['price'],
+      volume: json['volume'],
+      time: DateTime.parse(json['time']),
+    );
+  }
+
+  @override
+  List listFromJson(List<dynamic> json) {
+    final list = json.cast<Map<String, dynamic>>();
+    return list.map((j) => SignalAlert().fromJson(j)).toList();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'coinId': coinId,
+      'indicatorName': indicatorName,
+      'alertMsg': alertMsg,
+      'alertCode': alertCode,
+      'duration': duration,
+      'price': price,
+      'volume': volume,
+      'time': time.toString(),
+    };
   }
 }

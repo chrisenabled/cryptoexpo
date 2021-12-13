@@ -7,7 +7,7 @@ import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data_model.dart';
 import 'package:cryptoexpo/modules/models/signal_indicator.dart';
 import 'package:cryptoexpo/modules/models/trading_pair_list_item_model.dart';
-import 'package:cryptoexpo/utils/helpers/shared_pref.dart';
+import 'package:cryptoexpo/utils/helpers/local_store.dart';
 import 'package:cryptoexpo/widgets/trading_pair_list_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

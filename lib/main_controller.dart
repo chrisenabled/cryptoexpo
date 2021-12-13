@@ -15,7 +15,7 @@ import 'core/auth/auth_controller.dart';
 import 'modules/controllers/controllers.dart';
 import 'modules/models/coin_data/coin_data.dart';
 import 'modules/services/services.dart';
-import 'utils/helpers/shared_pref.dart';
+import 'utils/helpers/local_store.dart';
 
 class MainController extends FullLifeCycleController {
 
@@ -40,9 +40,9 @@ class MainController extends FullLifeCycleController {
 
   void _initAppWideInstances() {
     _initAppWideServices();
+    _setUpSignalIndicators();
     _initAppWideControllers();
     _initCoinMetaDatas();
-    _setUpSignalIndicators();
   }
 
   void _initAppWideServices() {
@@ -59,7 +59,7 @@ class MainController extends FullLifeCycleController {
   Future<void> _setUpSignalIndicators() async {
    CoinCoinGeckoService.to.readJsonIndicators()
        .then((value) =>
-       SharedPref.getOrSetSignalIndicator(indicators: value));
+       LocalStore.getOrSetSignalIndicator(indicators: value));
   }
 
   Future<void> _initCoinMetaDatas()  async {
@@ -76,7 +76,7 @@ class MainController extends FullLifeCycleController {
       );
     });
 
-    final List<CoinMetaData>? followedMarkets = SharedPref.getOrSetMarkets();
+    final List<CoinMetaData>? followedMarkets = LocalStore.getOrSetMarkets();
 
     if(followedMarkets == null || followedMarkets.length == 0) {
       List<CoinMetaData> coinMetas = [];
@@ -86,7 +86,7 @@ class MainController extends FullLifeCycleController {
           coinMetas.add(coinMeta);
         }
       });
-      SharedPref.getOrSetMarkets(markets: coinMetas);
+      LocalStore.getOrSetMarkets(markets: coinMetas);
     }
   }
 
