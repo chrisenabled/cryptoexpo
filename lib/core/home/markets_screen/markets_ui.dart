@@ -200,7 +200,7 @@ class MarketTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Text('${controller.coinData.value?.priceData?.usd}',
+                  Text('\$${controller.coinData.value?.priceData?.usd}',
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 0.5

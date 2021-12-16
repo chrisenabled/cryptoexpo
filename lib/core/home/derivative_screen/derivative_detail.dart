@@ -1,15 +1,15 @@
 
 import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
+import 'package:cryptoexpo/modules/models/trade_calls_store.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AssetDetail extends StatelessWidget {
-
+class DerivativeDetail extends StatelessWidget {
 
   final String coinId;
 
-  const AssetDetail({Key? key,
-    required this.coinId
+  const DerivativeDetail({Key? key,
+    required this.coinId,
   }) : super(key: key);
 
   @override

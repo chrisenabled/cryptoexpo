@@ -57,7 +57,7 @@ class TrendingCoinView extends StatelessWidget {
                 ),
                 SizedBox(height: 3,),
                 Text(
-                  '${controller.coinData.value?.priceData?.usd?? '- - -'}',
+                  '\$${controller.coinData.value?.priceData?.usd?? '- - -'}',
                   style: Theme.of(context).textTheme.bodyText2!.copyWith(
                     color: getTrendColor(controller.priceDifference, context)
                   ),

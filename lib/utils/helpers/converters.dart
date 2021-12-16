@@ -31,9 +31,9 @@ class _DeserializeAction<T> {
     var decode = jsonDecode(json);
       if(decode is List) {
 
-        return _instance.listFromJson(decode).cast<T>();
+        return _instance.listFromJson(decode)?.cast<T>();
       }
-      return _instance.listFromJson([json]).cast<T>();
+      return _instance.listFromJson([json])?.cast<T>();
     }
     return null;
   }

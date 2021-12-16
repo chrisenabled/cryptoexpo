@@ -6,6 +6,6 @@ abstract class JsonSerialized<T> {
 
   T fromJson(Map map);
 
-  List<T> listFromJson(List<dynamic> json);
+  List<T>? listFromJson(List<dynamic>? json);
 
 }

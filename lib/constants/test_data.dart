@@ -20,5 +20,5 @@ Future <List<CoinMetaData>> readJsonCoinIds() async {
   final String response = await rootBundle.loadString('assets/json/coin_ids.json');
   final data = await json.decode(response);
   print(data);
-  return CoinMetaData().listFromJson(data);
+  return CoinMetaData().listFromJson(data)!;
 }

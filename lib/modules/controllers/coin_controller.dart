@@ -3,7 +3,7 @@
 import 'dart:async';
 
 import 'package:cryptoexpo/constants/constants.dart';
-import 'package:cryptoexpo/modules/models/signal_alert_store.dart';
+import 'package:cryptoexpo/modules/models/trade_calls_store.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/signal_alert.dart';
 import 'package:cryptoexpo/modules/services/coin_coingecko_service.dart';
@@ -27,9 +27,9 @@ class CoinController extends GetxController {
 
   Rxn<SignalAlert> _signalAlertStream = Rxn<SignalAlert>();
 
-  final _tradeCallStores = <Rx<SignalAlertStore>>[];
+  final _tradeCallStores = <Rx<TradeCallStore>>[];
 
-  List<Rx<SignalAlertStore>> get tradeCallStores => _tradeCallStores;
+  List<Rx<TradeCallStore>> get tradeCallStores => _tradeCallStores;
 
   num _oldPrice = 0.00;
 
@@ -115,35 +115,30 @@ class CoinController extends GetxController {
       indicators.forEach((indicator) {
         indicator.durationsInMin!.forEach((duration) {
 
-          final tradeCall = SignalAlertStore(
-              indicatorName: indicator.name!, duration: duration).obs;
+          final tradeCallStore = TradeCallStore(
+            coinId: coinMeta.id,
+              indicatorName: indicator.name!,
+              duration: duration).obs;
 
-          _tradeCallStores.add(tradeCall);
+          _tradeCallStores.add(tradeCallStore);
 
-          final key = LocalStore.unitTradeCallPreKey
-              + coinMeta.id!
-              + indicator.name!
-              + '$duration';
+          final key = LocalStore.tradeCallPreKey
+              + tradeCallStore.value.halfKey;
 
           LocalStore.box.listenKey(key, (value) {
-            printInfo(info: 'value updated in storage: $key');
-            if(value is List<Map<String, dynamic>>) {
-               final signals = value.map((e) => SignalAlert().fromJson(e))
-                      .cast<SignalAlert>()
-                      .toList();
-
-               tradeCall.value =
-                   tradeCall.value.copyWith(alerts: signals);
+            // printInfo(info: 'value updated in storage: $key');
+            if(value is Map<String, dynamic>) {
+               tradeCallStore.value = TradeCallStore().fromJson(value);
             }
           });
         });
       });
     } else {
       Globals.AlertTypes.forEach((type) {
-        _tradeCallStores.add(SignalAlertStore(indicatorName: type, duration: 5).obs,);
-        _tradeCallStores.add(SignalAlertStore(indicatorName: type, duration: 15).obs,);
-        _tradeCallStores.add(SignalAlertStore(indicatorName: type, duration: 240).obs,);
-        _tradeCallStores.add(SignalAlertStore(indicatorName: type, duration: 10080).obs,);
+        _tradeCallStores.add(TradeCallStore(indicatorName: type, duration: 5).obs,);
+        _tradeCallStores.add(TradeCallStore(indicatorName: type, duration: 15).obs,);
+        _tradeCallStores.add(TradeCallStore(indicatorName: type, duration: 240).obs,);
+        _tradeCallStores.add(TradeCallStore(indicatorName: type, duration: 10080).obs,);
       });
 
     }
@@ -185,8 +180,19 @@ class CoinController extends GetxController {
   }
 
   _handleSignalAlert(alert) {
-    if(alert != null) {
-      updateTradingCalls(alert);
+    if(alert != null && alert is SignalAlert) {
+      final Rx<TradeCallStore>? store =
+      _tradeCallStores.firstWhereOrNull((store) =>
+      store.value.indicatorName == alert.indicatorName
+          && store.value.duration == alert.duration
+      );
+
+      if (store != null) {
+        final newAlert = alert.copyWith(price: alert.price
+            ?? coinData.value?.priceData?.usd);
+
+        updateTradingCalls(store.value, newAlert);
+      }
     }
   }
 
@@ -208,6 +214,45 @@ class CoinController extends GetxController {
     return getPercentageChangeProgress(
         percentage: getPercentageDifference()
     );
+  }
+
+  Future<void> historyUpdate(String historyKey,
+      void Function(num) callback) async {
+
+    final stores = LocalStore.getOrUpdateTradeCallsHistory(
+        historyKey: historyKey);
+
+    var percentage = 0.0;
+
+    if(stores.length > 0) {
+      stores.forEach((element) => percentage += element.percentageProfit);
+      percentage /= stores.length;
+    }
+
+    callback(num.parse(percentage.toStringAsFixed(3)));
+
+    LocalStore.box.listenKey(historyKey, (value) {
+      if(value is List<Map<String, dynamic>>) {
+        percentage = 0.0;
+
+        final stores = value.map((e) => TradeCallStore().fromJson(e)).toList();
+
+        stores.forEach(
+                (element) {
+                  printInfo(info: '${element.storeKey} '
+                      'profit : ${element.percentageProfit}');
+                  percentage += element.percentageProfit;
+                }
+        );
+
+        printInfo(info: 'aggregate for: $historyKey: $percentage.'
+            ' No. of store: ${stores.length}');
+
+        percentage /= stores.length;
+
+        callback(num.parse(percentage.toStringAsFixed(3)));
+      }
+    });
   }
 
   @override
