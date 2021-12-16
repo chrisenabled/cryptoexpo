@@ -2,7 +2,9 @@
 import 'package:cryptoexpo/modules/interfaces/json_serialized.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/signal_alert.dart';
+import 'package:cryptoexpo/modules/models/trade_calls_store.dart';
 import 'package:cryptoexpo/modules/models/signal_indicator.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class LocalStore {
@@ -17,63 +19,38 @@ class LocalStore {
 
   static const indicatorsKey = 'indicators';
 
-  static const tradeCallsPreKey = 'trade_calls_key_';
+  static const tradeCallsHistoryPreKey = 'trade_calls_key_';
 
-  static const unitTradeCallPreKey = 'unit_trade_call_key_';
+  static const tradeCallPreKey = 'trade_call_key_';
 
-  static List<List<SignalAlert>>? getTradeCalls(
-      String indicatorAndDurationKey) {
+  static List<TradeCallStore> getOrUpdateTradeCallsHistory({
+      TradeCallStore? tradeCallsStore, String? historyKey}) {
 
-    final String key = tradeCallsPreKey + indicatorAndDurationKey;
+    final String key = '${tradeCallsStore?.historyKey?? historyKey}';
 
-    final lists = _readOrWrite<List<List<Map<String, dynamic>>>>(
-        key, null, null);
+    final stores = _getListObjectsFromStorage(
+        key, TradeCallStore())?? <TradeCallStore>[];
 
-    if(lists != null) {
-      return lists.map((e) =>
-          e.map((e) =>
-              SignalAlert().fromJson(e))
-              .cast<SignalAlert>()
-              .toList()
-      ).toList();
+    if(tradeCallsStore != null) {
+      stores.add(tradeCallsStore);
+      _saveListObjectsToStorage(list: stores, key: key);
     }
-
-    return null;
+    return stores;
   }
 
-  static updateTradeCalls(List<SignalAlert> signalAlerts,
-      String indicatorAndDurationKey) {
-
-    final String key = tradeCallsPreKey + indicatorAndDurationKey;
-
-    List<List<SignalAlert>>? tradeCalls = getTradeCalls(key);
-
-    if(tradeCalls != null) {
-      tradeCalls.add(signalAlerts);
-    }
-    else {
-      tradeCalls = [signalAlerts];
-    }
-
-    final lists = tradeCalls.map((e) =>
-        e.map((e) =>
-            e.toJson()).toList()).toList();
-
-    _readOrWrite<List<List<Map<String, dynamic>>>>(
-        indicatorAndDurationKey, lists, null);
-  }
-
-  static List<SignalAlert>? getOrSetUnitTradeCall({
-    List<SignalAlert>? signalAlerts,
-    required String halfKey
+  static TradeCallStore? getOrSetTradeCallStore({
+    TradeCallStore? tradeCallStore, String? halfKey
   }) {
-    final String key = unitTradeCallPreKey + halfKey;
+    if(tradeCallStore != null) {
+      _readOrWrite<TradeCallStore>(
+          tradeCallStore.storeKey, tradeCallStore, null);
 
-    if(_saveListObjectsToStorage(list: signalAlerts, key: key)) {
-      return signalAlerts;
-    } else {
-      return _getListObjectsFromStorage(key, SignalAlert());
+      return tradeCallStore;
     }
+    if(halfKey != null) {
+      return _readOrWrite<TradeCallStore>(halfKey, null, null);
+    }
+    return null;
   }
 
   static List<SignalIndicator>? getOrSetSignalIndicator({

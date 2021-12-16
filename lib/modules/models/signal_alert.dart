@@ -66,7 +66,7 @@ class SignalAlert implements JsonSerialized {
   }
 
   @override
-  fromJson(Map map) {
+  SignalAlert fromJson(Map map) {
     final json = map as Map<String, dynamic>;
 
     return SignalAlert(
@@ -82,7 +82,9 @@ class SignalAlert implements JsonSerialized {
   }
 
   @override
-  List listFromJson(List<dynamic> json) {
+  List<SignalAlert>? listFromJson(List<dynamic>? json) {
+    if(json == null || json.length == 0) return null;
+
     final list = json.cast<Map<String, dynamic>>();
     return list.map((j) => SignalAlert().fromJson(j)).toList();
   }

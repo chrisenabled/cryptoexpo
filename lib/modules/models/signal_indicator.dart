@@ -29,7 +29,9 @@ class SignalIndicator implements JsonSerialized {
   }
 
   @override
-  List<SignalIndicator> listFromJson(List<dynamic> json) {
+  List<SignalIndicator>? listFromJson(List<dynamic>? json) {
+    if(json == null || json.length == 0) return null;
+
     final list = json.cast<Map<String, dynamic>>();
     return list.map((j) => SignalIndicator().fromJson(j)).toList();
   }

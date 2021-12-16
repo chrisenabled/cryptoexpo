@@ -1,5 +1,6 @@
 
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
+import 'package:cryptoexpo/modules/models/trade_calls_store.dart';
 import 'package:cryptoexpo/modules/models/signal_indicator.dart';
 import 'package:cryptoexpo/utils/helpers/local_store.dart';
 import 'package:cryptoexpo/widgets/lottie_buttom_navigation.dart';

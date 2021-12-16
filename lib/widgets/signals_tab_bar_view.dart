@@ -5,10 +5,11 @@ import 'package:cryptoexpo/core/home/signals_screen/signals_controller.dart';
 import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data_model.dart';
+import 'package:cryptoexpo/modules/models/trade_calls_store.dart';
 import 'package:cryptoexpo/modules/models/signal_indicator.dart';
 import 'package:cryptoexpo/modules/models/trading_pair_list_item_model.dart';
 import 'package:cryptoexpo/utils/helpers/local_store.dart';
-import 'package:cryptoexpo/widgets/trading_pair_list_item.dart';
+import 'package:cryptoexpo/widgets/trade_calls_list_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -67,7 +68,7 @@ class SignalsTabBarView extends StatelessWidget {
                     (BuildContext context, int index) {
                   final coinMeta = followedMarkets[index];
                   // print('signals tabview has ${coinMeta.id}');
-                  return TradingPairListItem(
+                  return TradeCallsListItem(
                     key: Key(coinMeta.id!),
                     indicatorName: indicator.name!,
                     isBackgroundBar: isBackgroundBar,

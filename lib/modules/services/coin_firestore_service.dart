@@ -14,7 +14,7 @@ class CoinFirestoreService {
   List<SignalIndicator>? indicators;
 
   Stream<SignalAlert> signalStream(String coinId) =>
-      Stream.periodic(Duration(seconds: 45))
+      Stream.periodic(Duration(minutes: 1))
           .asyncMap((event) => _fakeSignalAlert(coinId))
           .asBroadcastStream(onCancel: (sub) => sub.cancel()) ;
 

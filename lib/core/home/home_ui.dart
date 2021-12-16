@@ -1,7 +1,7 @@
 import 'package:cryptoexpo/config/themes/app_themes.dart';
 import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/constants/test_data.dart';
-import 'package:cryptoexpo/core/home/assets_screen/asset_detail.dart';
+import 'package:cryptoexpo/core/home/derivative_screen/derivative_detail.dart';
 import 'package:cryptoexpo/core/home/assets_screen/assets_ui.dart';
 import 'package:cryptoexpo/core/home/home_controller.dart';
 import 'package:cryptoexpo/core/home/markets_screen/markets_ui.dart';
@@ -33,7 +33,7 @@ class HomeUI extends StatelessWidget {
                 views: [
                   const Signals(),
                   const MarketsUI(),
-                  AssetDetail(coinId: controller.selectedDerivative!),
+                  DerivativeDetail(coinId: controller.selectedDerivative!),
                   const AssetsUI(),
                 ]
             ),

@@ -31,7 +31,9 @@ class CoinMetaData implements JsonSerialized<CoinMetaData> {
 
   int get hashCode => hash2(name.hashCode, id.hashCode);
 
-  List<CoinMetaData> listFromJson(List<dynamic> json) {
+  List<CoinMetaData>? listFromJson(List<dynamic>? json) {
+    if(json == null || json.length == 0) return null;
+
     final tickers = json.cast<Map<String, dynamic>>();
     return tickers.map((j) => CoinMetaData().fromJson(j)).toList();
   }
