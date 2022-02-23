@@ -157,7 +157,7 @@ class Signals extends StatelessWidget {
                       followedMarkets: controller.followedMarkets.value!,
                       padding: EdgeInsets.symmetric(horizontal: 15),
                       onPressed: (coinId) {
-                        HomeController.to.navigateToDerivative(coinId);
+                        // HomeController.to.navigateToDerivative(coinId);
                       },
                     ))
                 : Text('No followed Market'),

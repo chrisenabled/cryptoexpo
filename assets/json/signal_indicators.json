@@ -19,7 +19,7 @@
   },
   {
     "name": "Heat Warm",
-    "messages": ["bearish", "bullish"],
+    "messages": ["downtrend", "uptrend"],
     "durations": [1440, 10080],
     "description": "This is used to know new market trend"
   }

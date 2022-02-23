@@ -5,11 +5,11 @@ import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/trade_calls_store.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/utils/helpers/helpers.dart';
+import 'package:cryptoexpo/utils/ui/widgets.dart';
+import 'package:cryptoexpo/widgets/trade_call_msg_widget.dart';
+import 'package:cryptoexpo/widgets/trade_call_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
-
-import 'animated_flip_counter.dart';
 
 class TradeCallsListItem extends StatelessWidget {
   final String indicatorName;
@@ -27,126 +27,148 @@ class TradeCallsListItem extends StatelessWidget {
     this.onPressed,
   }) : super(key: key);
 
-  bool isWidget(String? msg) {
+  bool showIconForSignalMsg(String? msg) {
     if (msg == null) return false;
-    return msg == 'bear' || msg == 'bull';
+    return ['bear', 'bull', 'uptrend', 'downtrend'].contains(msg.toLowerCase());
   }
-
-  Color getTrendColor(BuildContext context, num percentage) {
-    return percentage == 0
-        ? Theme.of(context).colorScheme.secondaryVariant
-        : percentage > 0
-            ? MyColors.upTrendColor
-            : MyColors.downTrendColor;
-  }
-
-  // Future<void> executeAfterBuild(BuildContext context) async {
-  //   // this code will get executed after the build method
-  //   // because of the way async functions are scheduled
-  // }
 
   @override
   Widget build(BuildContext context) {
-    Rx<num> monthPerformance = 0.0.obs;
-    // Rx<double> contentHeight = 40.0.obs;
-    //
-    // WidgetsBinding.instance?.addPostFrameCallback((_) => () {
-    //   contentHeight.value = context.height;
-    // });
+
+    final tradeCallStore = TradeCallStore(
+            coinId: coinId,
+            indicatorName: indicatorName,
+            duration: alertDuration)
+        .obs;
+
+    final Rx<num> monthPerformance = 0.0.obs;
 
     return GetBuilder<CoinController>(
-      // id: Key(indicatorTypeTag),
+      id: '$coinId$indicatorName$alertDuration',
       tag: coinId,
       builder: (controller) {
 
-        final tradeCallStore = controller.tradeCallStores.firstWhereOrNull(
-            (store) => (store.value.duration == alertDuration &&
-                store.value.indicatorName == indicatorName));
+        controller.tradeCallStoreUpdate(tradeCallStore.value.storeKey,
+            (newStore) {
+          tradeCallStore.value = newStore;
+        });
 
-        final historyKey = tradeCallStore?.value.historyKey
-            ?? coinId + indicatorName + '$alertDuration';
-
-        controller.historyUpdate(historyKey, (aggregatePercent) {
+        controller.historyUpdate(tradeCallStore.value.historyKey,
+                (aggregatePercent) {
           monthPerformance.value = aggregatePercent;
         });
-        num percentage = 0.0;
 
-        if(tradeCallStore!.value.calls.length > 0) {
-          final current = controller.coinData.value?.priceData?.usd?? 0.0;
-          final initial = tradeCallStore.value.calls.first.price?? 0.0;
-          percentage = getPercentageDiff(initial: initial, current: current);
-        }
-
-
-
-        return GestureDetector(
-          onTap: () {
-            if (onPressed != null) {
-              onPressed!(coinId);
-            }
-          },
-          child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 5),
-              child: Stack(
-                children: [
-                  if (isBackgroundBar)
-                    Positioned.fill(
-                      child: _fullPriceProgressIndicator(controller),
-                    ),
-                  Container(
-                    color:
-                        Theme.of(context).colorScheme.primary.withOpacity(0.8),
-                    padding: const EdgeInsets.only(
-                        left: 4, top: 2, bottom: 2, right: 4),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: _pairInfoColumn(context, controller),
-                                    flex: 4,
-                                  ),
-                                  Expanded(
-                                      flex: 4,
-                                      child: _priceColumn(context, controller)),
-                                  Expanded(
-                                      flex: 2,
-                                      child: Obx(() {
-                                        return _signalContainer(
-                                            context, tradeCallStore.value);
-                                      })),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Row(
+        return Obx(() {
+          num percentage =
+          tradeCallCurrentProfit(tradeCallStore.value, controller);
+          return  GestureDetector(
+              onTap: () {
+                if (onPressed != null) {
+                  // onPressed!(coinId);
+                }
+                _showFullTradeCalls(context, tradeCallStore, controller);
+              },
+              child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 5),
+                  child: Stack(
+                    children: [
+                      if (isBackgroundBar)
+                        Positioned.fill(
+                          child: _fullPriceProgressIndicator(percentage),
+                        ),
+                      Container(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.8),
+                        padding: const EdgeInsets.only(
+                            left: 4, top: 2, bottom: 2, right: 4),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  _xAmount(context, controller),
-                                  _miniPriceProgressIndicator(
-                                      context, percentage),
-                                  _percentageDiff(context, percentage)
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: _pairInfoColumn(
+                                            context, controller),
+                                        flex: 4,
+                                      ),
+                                      Expanded(
+                                          flex: 4,
+                                          child: _priceColumn(
+                                              context,
+                                              controller,
+                                              tradeCallStore.value)),
+                                      Expanded(
+                                          flex: 2,
+                                          child: _signalMsg(tradeCallStore)),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      _xAmount(context, controller),
+                                      _miniPriceProgressIndicator(
+                                          context, percentage),
+                                      _percentageDiff(context, percentage)
+                                    ],
+                                  ),
+                                  _monthPerformance(context, monthPerformance),
                                 ],
                               ),
-                              _monthPerformance(context, monthPerformance),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              )),
-        );
+                      ),
+                    ],
+                  )),
+            );
+        });
       },
+    );
+  }
+
+  Future<dynamic> _showFullTradeCalls(BuildContext context,
+      Rx<TradeCallStore> tradeCallStore, CoinController controller) async {
+    return showModalBottomSheet(
+        // isScrollControlled: true,
+        context: context,
+        builder: (BuildContext context) {
+          return Obx(() {
+            if (tradeCallStore.value.calls.length == 0) {
+              return Center(
+                child: Text('No Calls yet'),
+              );
+            }
+            return TradeCallView(
+              store: tradeCallStore.value,
+              isAlternateDesign: isBackgroundBar,
+              controller: controller,
+            );
+          });
+        });
+  }
+
+  Widget _signalMsg(Rx<TradeCallStore> tradeCallStore) {
+    String? msg = '';
+    final store = tradeCallStore.value;
+    if (store.calls.length > 0) {
+      final signalAlerts = store.calls;
+      msg = signalAlerts[signalAlerts.length - 1].alertMsg;
+    }
+    return TradeCallSignalMsgWidget(
+      isAlternateDecoration: isBackgroundBar,
+      message: msg,
+      counter: store.consecutiveLastCall > 1 ? store.consecutiveLastCall : 0,
     );
   }
 
@@ -155,27 +177,20 @@ class TradeCallsListItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text('month performance: ',
-          style: Theme.of(context).textTheme
-              .caption!),
-
-        Obx(() =>
-            Text(
-              '$performancePercent%',
-              style: Theme.of(context).textTheme
-                  .caption!
-                  .copyWith(
-                  color: getTrendColor(context,
-                      performancePercent.value
-                  )
-              ),
-            ),
+            style: Theme.of(context).textTheme.caption!),
+        Obx(
+          () => Text(
+            '$performancePercent%',
+            style: Theme.of(context).textTheme.caption!.copyWith(
+                color: getTrendColor(context, performancePercent.value),
+                fontSize: 10.0),
+          ),
         ),
       ],
     );
   }
 
   Widget _percentageDiff(BuildContext context, num percentage) {
-
     return Expanded(
         flex: 2,
         child: Container(
@@ -200,8 +215,7 @@ class TradeCallsListItem extends StatelessWidget {
         ));
   }
 
-  Widget _miniPriceProgressIndicator(
-      BuildContext context, num percentage) {
+  Widget _miniPriceProgressIndicator(BuildContext context, num percentage) {
     final widthFactor =
         getPercentageChangeProgress(percentage: percentage) / 100;
 
@@ -252,109 +266,6 @@ class TradeCallsListItem extends StatelessWidget {
               ));
   }
 
-  Widget _signalContainer(BuildContext context, TradeCallStore? alertStore) {
-    String? msg = '';
-
-    if (alertStore?.calls != null) {
-      if (alertStore!.calls.length > 0) {
-        final signalAlerts = alertStore.calls;
-        msg = signalAlerts[signalAlerts.length - 1].alertMsg;
-      }
-    }
-    // printInfo(info: 'alertStore:  ${alertStore?.type}'
-    //     ' ${alertStore?.duration} ${alertStore?.signalAlerts?.length}');
-
-    // printInfo(info: 'the alert msg received by $coinId is  $msg');
-
-    bool isAlternateDecoration() {
-      return isBackgroundBar || msg == 'bull' || msg == 'bear';
-    }
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Stack(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3.0),
-                color: isAlternateDecoration()
-                    ? null
-                    : msg!.isEmpty
-                        ? Theme.of(context).colorScheme.surface
-                        : Globals.upTrendMsgList.contains(msg)
-                            ? MyColors.upTrendColor
-                            : MyColors.downTrendColor,
-              ),
-              child: msg!.isEmpty
-                  ? Text(Globals.emptyText)
-                  : isWidget(msg)
-                      ? Lottie.asset(
-                          'assets/lottie/${msg}_run.json',
-                          height: 36,
-                        )
-                      : Text(
-                          '${msg.isNotEmpty ? msg : 'No signal'}',
-                          textScaleFactor: !isBackgroundBar ? 1 : 1.2,
-                          style:
-                              Theme.of(context).textTheme.bodyText2!.copyWith(
-                                    color: !isBackgroundBar
-                                        ? Globals.upTrendMsgList.contains(msg)
-                                            ? Colors.white
-                                            : Colors.black
-                                        : Globals.upTrendMsgList.contains(msg)
-                                            ? MyColors.upTrendColor
-                                            : MyColors.downTrendColor,
-                                    shadows: !isBackgroundBar
-                                        ? null
-                                        : <Shadow>[
-                                            Shadow(
-                                              offset: Offset(0.5, 0.5),
-                                              blurRadius: 0.5,
-                                              color: MyColors.richBlack,
-                                            )
-                                          ],
-                                  ),
-                        ),
-            ),
-            Transform.translate(
-              offset: Offset(isAlternateDecoration() ? -3 : -13,
-                  isAlternateDecoration() ? 6 : 2),
-              child: alertStore != null && alertStore.calls.length > 0
-                  ? Container(
-                      width: 11,
-                      height: 11,
-                      decoration: new BoxDecoration(
-                        color: Globals.upTrendMsgList.contains(msg)
-                            ? MyColors.upTrendColor
-                            : MyColors.downTrendColor,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                          child: Text(
-                        '${alertStore.calls.length}',
-                        style: Theme.of(context).textTheme.caption!.copyWith(
-                          fontSize: 8,
-                          color: Theme.of(context).colorScheme.primary,
-                          shadows: <Shadow>[
-                            Shadow(
-                              offset: Offset(0.4, 0.4),
-                              blurRadius: 0.3,
-                              color: MyColors.richBlack,
-                            )
-                          ],
-                        ),
-                      )),
-                    )
-                  : null,
-            )
-          ],
-        ),
-      ],
-    );
-  }
-
   Widget _pairInfoColumn(BuildContext context, CoinController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -379,10 +290,15 @@ class TradeCallsListItem extends StatelessWidget {
     );
   }
 
-  Widget _priceColumn(BuildContext context, CoinController controller) {
+  Widget _priceColumn(
+      BuildContext context, CoinController controller, TradeCallStore store) {
     CoinDataModel coin = controller.coinData.value!;
     num price = (coin.priceData?.usd) ?? Globals.zeroMoney;
-    var a = price.toString().split('.');
+    num initPrice = 0.0;
+
+    if (store.calls.length > 0) {
+      initPrice = store.calls.first.price ?? 0.0;
+    }
 
     return Row(
       mainAxisAlignment: price == Globals.zeroMoney
@@ -403,8 +319,7 @@ class TradeCallsListItem extends StatelessWidget {
                             : MyColors.downTrendColor)),
             RichText(
               text: TextSpan(
-                  text:
-                      '${coin.coinMarketData?.currentPrice ?? Globals.zeroMoney}',
+                  text: '$initPrice',
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2!
@@ -425,13 +340,13 @@ class TradeCallsListItem extends StatelessWidget {
     );
   }
 
-  Widget _fullPriceProgressIndicator(CoinController controller) {
-    final percentage = controller.getPercentageDifference();
+  Widget _fullPriceProgressIndicator(num percentage) {
+    final widthFactor =
+        (getPercentageChangeProgress(percentage: percentage) / 100).abs();
     return Container(
       child: FractionallySizedBox(
         alignment: percentage > 0 ? Alignment.topLeft : Alignment.topRight,
-        widthFactor:
-            (getPercentageChangeProgress(percentage: percentage) / 100).abs(),
+        widthFactor: widthFactor,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(

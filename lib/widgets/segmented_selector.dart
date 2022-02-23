@@ -32,8 +32,8 @@ class SegmentedSelector extends StatelessWidget {
           value: (option) => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(option.icon),
-              SizedBox(width: 6),
+              if(option.icon != null) Icon(option.icon),
+              if(option.icon != null) SizedBox(width: 6),
               Text(option.value),
             ],
           ),

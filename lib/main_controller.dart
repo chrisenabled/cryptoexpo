@@ -46,7 +46,7 @@ class MainController extends FullLifeCycleController {
   }
 
   void _initAppWideServices() {
-    Get.put(CoinCoinGeckoService());
+    Get.put(CoinGeckoService());
     Get.put(CoinFirestoreService());
   }
 
@@ -57,18 +57,22 @@ class MainController extends FullLifeCycleController {
   }
 
   Future<void> _setUpSignalIndicators() async {
-   CoinCoinGeckoService.to.readJsonIndicators()
+   CoinGeckoService.to.readJsonIndicators()
        .then((value) =>
        LocalStore.getOrSetSignalIndicator(indicators: value));
   }
 
   Future<void> _initCoinMetaDatas()  async {
 
-    final coinMetaDatas = (await readJsonCoinIds()).sublist(0,30);
+    final coinMetaDatas = (await readJsonCoinIds());
 
-    Get.put<List<CoinMetaData>>(coinMetaDatas, permanent: true);
+    final majorCoins = coinMetaDatas.where(
+            (coin) => ['btc','eth','bnb']
+                .contains(coin.symbol!.toLowerCase())).toList();
 
-    coinMetaDatas.forEach((coinMeta) {
+    Get.put<List<CoinMetaData>>(majorCoins, permanent: true);
+
+    majorCoins.forEach((coinMeta) {
       Get.put<CoinController>(
           CoinController(coinMeta: coinMeta),
           tag: coinMeta.id,
@@ -79,20 +83,13 @@ class MainController extends FullLifeCycleController {
     final List<CoinMetaData>? followedMarkets = LocalStore.getOrSetMarkets();
 
     if(followedMarkets == null || followedMarkets.length == 0) {
-      List<CoinMetaData> coinMetas = [];
-      coinMetaDatas.forEach((coinMeta) {
-        if(['zoc','algohalf', 'bchhalf','adahalf']
-            .contains(coinMeta.symbol?.toLowerCase())) {
-          coinMetas.add(coinMeta);
-        }
-      });
-      LocalStore.getOrSetMarkets(markets: coinMetas);
+      LocalStore.getOrSetMarkets(markets: majorCoins);
     }
   }
 
   Future<void> _preCacheImages() async {
     // prefetch Svg images to reduce loading lag
-    await precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoder,
+    await precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder,
         'assets/images/cx-landing.svg'),null);
   }
 

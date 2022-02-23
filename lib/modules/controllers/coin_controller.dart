@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/modules/models/trade_calls_store.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
@@ -15,7 +16,7 @@ import 'package:get/get.dart';
 
 class CoinController extends GetxController {
 
-  final CoinCoinGeckoService _coinGeckoService = CoinCoinGeckoService.to;
+  final CoinGeckoService _coinGeckoService = CoinGeckoService.to;
 
   final CoinFirestoreService _coinFirestoreService = CoinFirestoreService.to;
 
@@ -24,12 +25,6 @@ class CoinController extends GetxController {
   Rxn<CoinDataModel> _coinData = Rxn<CoinDataModel>();
 
   Rxn<CoinDataModel> get coinData => _coinData;
-
-  Rxn<SignalAlert> _signalAlertStream = Rxn<SignalAlert>();
-
-  final _tradeCallStores = <Rx<TradeCallStore>>[];
-
-  List<Rx<TradeCallStore>> get tradeCallStores => _tradeCallStores;
 
   num _oldPrice = 0.00;
 
@@ -51,9 +46,6 @@ class CoinController extends GetxController {
     super.onInit();
 
     _coinData.value = CoinDataModel(metaData: coinMeta);
-
-    _setUpTradeCallStores();
-
   }
 
   @override
@@ -64,8 +56,6 @@ class CoinController extends GetxController {
     //run every time auth state changes
     ever(_coinDataStream, _handleCoinChanged);
 
-    ever(_signalAlertStream, _handleSignalAlert);
-
     _loadFullData();
 
     _coinDataStream.bindStream(_coinGeckoService.priceDataChanges(
@@ -74,27 +64,61 @@ class CoinController extends GetxController {
     _setUpAlertStream();
   }
 
-
   _setUpAlertStream() {
 
-    StreamSubscription<SignalAlert>? subscription;
+    Map<String,
+        StreamSubscription<List<SignalAlert>?>> subscriptions = {};
 
-    _subscribe(event) {
-      _signalAlertStream.value = event;
+    _subscribe(List<SignalAlert>? alerts) {
+      if(alerts != null && alerts.length > 0) {
+        printInfo(info: 'alerts received: ${alerts.length}');
+        _handleSignalAlert(alerts);
+      }
     }
 
-    _mayBeSubscribe(List<CoinMetaData>? followedCoins) {
+    _mayBeSubscribeToCoinsUpdates(List<CoinMetaData>? followedCoins) {
       if(followedCoins != null && followedCoins.length > 0) {
         if(followedCoins.contains(coinMeta)) {
-          final stream = _coinFirestoreService.signalStream(coinMeta.id!);
-          subscription = stream.listen(_subscribe);
+
+          LocalStore.getOrSetSignalIndicator()!.forEach((indicator) {
+
+            indicator.durationsInMin!.forEach((duration) {
+
+              final docPath = '${coinMeta.symbol}'.toLowerCase();
+
+              final collectionPath = '${coinMeta.symbol}${indicator.name}'
+                  '$duration'.toLowerCase().replaceAll(' ', '');
+
+             _coinFirestoreService
+                  .fetchSignalAlerts<SignalAlert>(
+                 docPath: docPath,
+                 collectionPath: collectionPath,
+                 instance: SignalAlert())
+                 .then((value) => _subscribe(value));
+
+              // final stream = _coinFirestoreService
+              //     .streamSignalAlerts<SignalAlert>(
+              //     docPath: docPath, collectionPath: collectionPath,
+              //     instance: SignalAlert()
+              // );
+              //
+              // subscriptions[docPath + collectionPath] =
+              //     stream.listen(_subscribe);
+            });
+
+          });
+
         } else {
-          subscription?.cancel();
+          if(subscriptions.length > 0) {
+            subscriptions.forEach((key, sub) {
+              sub.cancel();
+            });
+          }
         }
       }
     }
 
-    _mayBeSubscribe(LocalStore.getOrSetMarkets());
+    _mayBeSubscribeToCoinsUpdates(LocalStore.getOrSetMarkets());
 
     LocalStore.box.listenKey(LocalStore.marketsKey, (value) {
       if(value is List<Map<String, dynamic>>) {
@@ -102,49 +126,25 @@ class CoinController extends GetxController {
         final List<CoinMetaData> coins =
           value.map((e) => CoinMetaData().fromJson(e)).toList();
 
-        _mayBeSubscribe(coins);
+        _mayBeSubscribeToCoinsUpdates(coins);
 
       }
     });
   }
 
-  _setUpTradeCallStores() {
-    final indicators = LocalStore.getOrSetSignalIndicator();
+  Future<void> tradeCallStoreUpdate(String storeKey,
+      void Function(TradeCallStore) callback) async {
+     final store = LocalStore.getOrSetTradeCallStore(key: storeKey);
+     if(store != null) callback(store);
 
-    if(indicators != null && indicators.length > 0) {
-      indicators.forEach((indicator) {
-        indicator.durationsInMin!.forEach((duration) {
-
-          final tradeCallStore = TradeCallStore(
-            coinId: coinMeta.id,
-              indicatorName: indicator.name!,
-              duration: duration).obs;
-
-          _tradeCallStores.add(tradeCallStore);
-
-          final key = LocalStore.tradeCallPreKey
-              + tradeCallStore.value.halfKey;
-
-          LocalStore.box.listenKey(key, (value) {
-            // printInfo(info: 'value updated in storage: $key');
-            if(value is Map<String, dynamic>) {
-               tradeCallStore.value = TradeCallStore().fromJson(value);
-            }
-          });
-        });
-      });
-    } else {
-      Globals.AlertTypes.forEach((type) {
-        _tradeCallStores.add(TradeCallStore(indicatorName: type, duration: 5).obs,);
-        _tradeCallStores.add(TradeCallStore(indicatorName: type, duration: 15).obs,);
-        _tradeCallStores.add(TradeCallStore(indicatorName: type, duration: 240).obs,);
-        _tradeCallStores.add(TradeCallStore(indicatorName: type, duration: 10080).obs,);
-      });
-
-    }
+     LocalStore.box.listenKey(storeKey, (value) {
+       if(value is TradeCallStore) {
+         callback(value);
+       }
+     });
   }
 
-  _loadFullData() async {
+  Future<void> _loadFullData() async {
     CoinDataModel? c = await _coinGeckoService.getCoinData(coinMeta);
     if (c != null) {
       final priceData = CoinPriceData(
@@ -179,21 +179,32 @@ class CoinController extends GetxController {
     }
   }
 
-  _handleSignalAlert(alert) {
-    if(alert != null && alert is SignalAlert) {
-      final Rx<TradeCallStore>? store =
-      _tradeCallStores.firstWhereOrNull((store) =>
-      store.value.indicatorName == alert.indicatorName
-          && store.value.duration == alert.duration
-      );
+  Future<void> _handleSignalAlert(List<SignalAlert> alerts) async {
 
-      if (store != null) {
-        final newAlert = alert.copyWith(price: alert.price
-            ?? coinData.value?.priceData?.usd);
+    printInfo(info: 'firestore alerts returned are: '
+        '${alerts.length} in number');
 
-        updateTradingCalls(store.value, newAlert);
+    final arbitraryAlert = alerts[0];
+
+      final key = LocalStore.tradeCallPreKey
+          + arbitraryAlert.coinId!
+          + arbitraryAlert.indicatorName!
+          + '${arbitraryAlert.duration}';
+
+      TradeCallStore? store = LocalStore.getOrSetTradeCallStore(key: key);
+
+      final newAlerts = alerts.map((alert) => alert.copyWith(price: alert.price
+          ?? coinData.value?.priceData?.usd)).toList();
+
+      if (store == null) {
+        store = TradeCallStore(
+          coinId: arbitraryAlert.coinId,
+          duration: arbitraryAlert.duration,
+          indicatorName: arbitraryAlert.indicatorName
+        );
       }
-    }
+
+      updateTradingCalls(store, newAlerts);
   }
 
   // useful calculations

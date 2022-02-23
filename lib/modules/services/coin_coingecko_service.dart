@@ -31,9 +31,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class CoinCoinGeckoService extends GetConnect {
+class CoinGeckoService extends GetConnect {
 
-  static CoinCoinGeckoService to = Get.find();
+  static CoinGeckoService to = Get.find();
 
   @override
   void onInit() {

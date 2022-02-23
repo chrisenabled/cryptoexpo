@@ -1,7 +1,10 @@
+import 'package:cryptoexpo/config/themes/app_themes.dart';
+import 'package:cryptoexpo/constants/constants.dart';
 import 'package:cryptoexpo/modules/models/country_model.dart';
 import 'package:cryptoexpo/widgets/country_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 Widget circularImage(
     {required String asset, required double size, String? package}) {
@@ -115,6 +118,26 @@ Future<dynamic> showCountryModalBottomSheet(
           ),
         );
       });
+}
+
+Widget getWidgetForSignalMsg(String? msg, {double size = 36}) {
+  if(msg != null
+      && ['bear','bull','uptrend','downtrend']
+          .contains(msg.toLowerCase())) {
+    return Lottie.asset(
+      'assets/lottie/$msg.json',
+      height: size,
+    );
+  }
+  return Text('${msg?? Globals.emptyText}');
+}
+
+Color getTrendColor(BuildContext context, num percentage) {
+  return percentage == 0
+      ? Theme.of(context).colorScheme.secondaryVariant
+      : percentage > 0
+      ? MyColors.upTrendColor
+      : MyColors.downTrendColor;
 }
 
 Widget countryCodeIndicator({

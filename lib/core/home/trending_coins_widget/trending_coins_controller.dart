@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 class TrendingCoinsController extends GetxController {
 
-  final CoinCoinGeckoService _coinGeckoService = CoinCoinGeckoService.to;
+  final CoinGeckoService _coinGeckoService = CoinGeckoService.to;
 
   final _trendingCoinsStream = Rxn<List<CoinMetaData>>();
   

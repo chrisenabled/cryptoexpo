@@ -39,7 +39,7 @@ class LocalStore {
   }
 
   static TradeCallStore? getOrSetTradeCallStore({
-    TradeCallStore? tradeCallStore, String? halfKey
+    TradeCallStore? tradeCallStore, String? key
   }) {
     if(tradeCallStore != null) {
       _readOrWrite<TradeCallStore>(
@@ -47,8 +47,8 @@ class LocalStore {
 
       return tradeCallStore;
     }
-    if(halfKey != null) {
-      return _readOrWrite<TradeCallStore>(halfKey, null, null);
+    if(key != null) {
+      return _readOrWrite<TradeCallStore>(key, null, null);
     }
     return null;
   }

@@ -18,6 +18,25 @@ class TradeCallStore implements JsonSerialized {
 
   String get storeKey => '${LocalStore.tradeCallPreKey}$halfKey';
 
+  int get consecutiveLastCall {
+    if(calls.length == 0) return 0;
+
+    int consecutive = 0;
+    SignalAlert? sig;
+    calls.reversed.forEachIndexed((index, element) {
+      if(index == 0) {
+        sig = element;
+      }
+      if(sig != null) {
+        if(element.alertMsg == sig!.alertMsg) {
+          consecutive += 1;
+        }
+      }
+    });
+
+    return consecutive;
+  }
+
   num get percentageProfit {
     if(calls.length > 0) {
       final SignalAlert? sellCall =
@@ -53,7 +72,7 @@ class TradeCallStore implements JsonSerialized {
   }
 
   @override
-  TradeCallStore fromJson(Map map) {
+  TradeCallStore fromJson(dynamic map) {
     final json = map as Map<String, dynamic>;
 
     return TradeCallStore(

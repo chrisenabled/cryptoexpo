@@ -20,13 +20,6 @@ class TradeDurationGroup extends StatelessWidget implements PreferredSizeWidget 
 
   @override
   Widget build(BuildContext context) {
-
-    final periodMap = {
-      15: '15m',
-      240: '4h',
-      1440: '1d',
-      10080: '1w'
-    };
     
     RxInt _selectedPos = selectedIndex.obs;
 
@@ -36,7 +29,7 @@ class TradeDurationGroup extends StatelessWidget implements PreferredSizeWidget 
         list.add(SizedBox(width: 10,));
         list.add(
             TradeDuration(
-              duration: periodMap[value]!,
+              duration: Globals.durationStringMap[value]!,
               isSelected: durations.indexOf(value) == selectedIndex,
               onSelected: (duration) {
                 _selectedPos.value = durations.indexOf(value);

@@ -24,39 +24,30 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-
-  # The following adds the FlutterFire libraries for the firebase products used in the app
-  firebase_core: ^1.7.0
-  firebase_auth: ^3.1.2
-  cloud_firestore: ^2.5.3
-
-  # GetX Flutter solution for DI, Routing, State, Navigation, MVC
-  get: ^4.5.1
-  get_storage: ^2.0.3 # key-value storage with memory and disk persistence
-
-  # Cryptographic hashing
-  crypto: ^3.0.1
-
-  http: ^0.13.3
-  csv: ^5.0.0
-  device_preview: ^0.7.4 # used to preview app on different screen types of (phones, tabs, OS)
-  flutter_svg: ^0.22.0 # to display svg images
-  lottie: ^1.2.1 # lottie for animated icons
-  google_fonts: ^2.1.0
-  font_awesome_flutter: ^9.2.0
-  quiver: ^3.0.1+1
-  country_icons: ^2.0.2 # has all country flags as icons
   alphabet_scroll_view: ^0.3.1 # used to quickly scroll to alphabet in a list
-  country_codes: ^2.1.1 # used for getting country phone codes
   auto_size_text: ^3.0.0 #used for auto scaling of font size to fixed maxlines
-  syncfusion_flutter_charts: ^19.3.56 # for drawing crypto charts
+  cloud_firestore: ^3.1.8   # FlutterFire library for firebase
+  country_codes: ^2.1.1 # used for getting country phone codes
+  country_icons: ^2.0.2 # has all country flags as icons
+  crypto: ^3.0.1 # Cryptographic hashing
+  csv: ^5.0.0
+  cupertino_icons: ^1.0.2   # Adds the Cupertino Icons font to your application.
+  device_preview: ^1.0.0 # used to preview app on different screen types of (phones, tabs, OS)
+  firebase_auth: ^3.3.7   # FlutterFire library for firebase
+  firebase_core: ^1.12.0   # FlutterFire library for firebase
+  flutter_svg: ^1.0.3 # to display svg images
+  font_awesome_flutter: ^9.2.0
+  get: ^4.6.1 # GetX Flutter solution for DI, Routing, State, Navigation, MVC
+  get_storage: ^2.0.3 # key-value storage with memory and disk persistence
+  google_fonts: ^2.1.0
+  http: ^0.13.3
+  lottie: ^1.2.2 # lottie for animated icons
+  syncfusion_flutter_charts: ^19.4.52 # for drawing crypto charts
+  timeago: ^3.2.2
+  quiver: ^3.0.1+1
 
 dev_dependencies:
-  flutter_native_splash: ^1.2.4
+  flutter_native_splash: ^2.0.5
   flutter_test:
     sdk: flutter
 

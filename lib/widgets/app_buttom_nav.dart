@@ -16,13 +16,16 @@ class AppBottomNav extends StatelessWidget {
   final LottieBottomNavigationController? controller;
 
   static const List<LottieTabItem> tabItems = [
-    const LottieTabItem('assets/lottie/home_on_light.json',
-        'assets/lottie/home_on_dark.json', Globals.bottomNavHome),
+    const LottieTabItem('assets/lottie/signal_on_light.json',
+        'assets/lottie/signal_on_dark.json', Globals.bottomNavHome),
     const LottieTabItem('assets/lottie/markets_on_light.json',
         'assets/lottie/markets_on_dark.json', Globals.BottomNavMarkets),
     const LottieTabItem(
-        'assets/lottie/trading.json', 'assets/lottie/trading.json',
-        Globals.bottomNavDerivative),
+        'assets/lottie/discover_on_light.json',
+        'assets/lottie/discover_on_dark.json',
+        Globals.bottomNavDiscover,
+        url: 'https://lottiefiles.com/4581-discovery'
+    ),
     const LottieTabItem('assets/lottie/profile_on_light.json',
         'assets/lottie/profile_on_dark.json', Globals.bottomNavAssets),
   ];
