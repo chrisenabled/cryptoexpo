@@ -40,27 +40,9 @@ void main() async {
 
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
 
-  @override
-  State<StatefulWidget> createState() => MyAppState();
-}
-
-class MyAppState extends State<MyApp> with WidgetsBindingObserver {
-
-  MainController mainController = MainController.to;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance!.addObserver(this);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
-    super.dispose();
-  }
+  final MainController mainController = MainController.to;
 
   @override
   Widget build(BuildContext context) {

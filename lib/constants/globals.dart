@@ -4,18 +4,19 @@ class Globals {
   static const num zeroMoney = 0.00;
   static const AlertTypes = ['MacD', 'Trend'];
   static const emptyText = '. . .';
-  static const List<Map<String, List<String>>> alertList = [
-    {'MacD': ['buy', 'sell']},
-    {'Trend': ['bull', 'bear']},
-  ];
 
   static const String imgPlaceHolder64Path = 'assets/images/placeholder_64.png';
 
   static const List<num> durations = [5, 15, 240, 10080];
 
-  static const List<String> upTrendMsgList = ['buy', 'bull', 'long'];
+  static const List<String> greenList = [
+    'buy', 'bull', 'long', 'uptrend', 'bullish'];
 
-  static const List<String> downTrendMsgList = ['sell', 'bear', 'short'];
+  static const List<String> redList = [
+    'sell', 'bear', 'short', 'downtrend', 'bearish'];
+
+  static const List<String> iconSignalMsgList = [
+    'bear','bull','uptrend','downtrend'];
 
   static const String usdDerivative = 'USD';
 
@@ -23,9 +24,16 @@ class Globals {
 
   static const String BottomNavMarkets = 'Markets';
 
-  static const String bottomNavDerivative = 'Derivative';
+  static const String bottomNavDiscover = 'Discover';
 
   static const String bottomNavAssets = 'Assets';
+
+  static const durationStringMap = {
+    15: '15m',
+    240: '4h',
+    1440: '1d',
+    10080: '1w'
+  };
 
 
 }

@@ -3,6 +3,7 @@
 import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_data.dart';
 import 'package:cryptoexpo/utils/helpers/helpers.dart';
+import 'package:cryptoexpo/utils/ui/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,7 +51,7 @@ class TrendingCoinView extends StatelessWidget {
                     Text(
                       '$priceChange24%',
                       style: Theme.of(context).textTheme.caption!.copyWith(
-                        color: getTrendColor(priceChange24, context)
+                        color: getTrendColor(context, priceChange24)
                       ),
                     ),
                   ],
@@ -59,7 +60,7 @@ class TrendingCoinView extends StatelessWidget {
                 Text(
                   '\$${controller.coinData.value?.priceData?.usd?? '- - -'}',
                   style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                    color: getTrendColor(controller.priceDifference, context)
+                    color: getTrendColor(context, controller.priceDifference)
                   ),
                 ),
                 SizedBox(height: 3,),
@@ -92,8 +93,8 @@ class TrendingCoinView extends StatelessWidget {
           yValueMapper: (int index) => data.keys.elementAt(index),
           dataCount: data.length,
           axisLineColor: Colors.transparent,
-          color: getTrendColor(
-              data[data.length - 1]! - data[0]!, context),
+          color: getTrendColor(context,
+              data[data.length - 1]! - data[0]!),
         ),
       ),
     );

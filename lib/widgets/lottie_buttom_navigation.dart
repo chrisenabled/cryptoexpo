@@ -10,9 +10,17 @@ class LottieTabItem {
   final String iconPathOnDark;
   final String label;
   final double size;
+  final String url;
 
-  const LottieTabItem(this.iconPathOnLight, this.iconPathOnDark, this.label,
-      {this.size = 0});
+
+  const LottieTabItem(
+      this.iconPathOnLight,
+      this.iconPathOnDark,
+      this.label, {
+        this.size = 0,
+        this.url = ''
+      }
+      );
 }
 
 class LottieBottomNavigation extends StatefulWidget {

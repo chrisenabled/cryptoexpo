@@ -3,6 +3,7 @@
 import 'dart:math';
 
 import 'package:cryptoexpo/config/themes/app_themes.dart';
+import 'package:cryptoexpo/modules/controllers/coin_controller.dart';
 import 'package:cryptoexpo/modules/models/coin_data/coin_meta_data.dart';
 import 'package:cryptoexpo/modules/models/signal_alert.dart';
 import 'package:cryptoexpo/modules/models/trade_calls_store.dart';
@@ -39,14 +40,6 @@ T? getTypeFromJson<T>(dynamic _json) {
   return null;
 }
 
-Color getTrendColor(num value, BuildContext context) {
-  return value > 0
-      ? MyColors.upTrendColor
-      : value == 0
-      ? Theme.of(context).colorScheme.onPrimary
-      : MyColors.downTrendColor;
-}
-
 num getPercentageDiff({required num initial,
   required num current, int fraction = 2}) {
   if(initial <= 0 || current <= 0) {
@@ -57,6 +50,22 @@ num getPercentageDiff({required num initial,
   num percentage = double.parse((((end - start) / start)  * 100)
       .toStringAsFixed(fraction));
   return current >= initial ? percentage : -(percentage);
+}
+
+num tradeCallCurrentProfit(TradeCallStore store, CoinController controller) {
+  if(store.coinId != controller.coinMeta.id) {
+    throw Exception('store coin id must be same as controller id. '
+        'store coin id: ${store.coinId}, '
+        'controller coin id: ${controller.coinMeta.id}');
+  }
+  num percentage = 0.0;
+
+  if(store.calls.length > 0) {
+    final current = controller.coinData.value?.priceData?.usd?? 0.0;
+    final initial = store.calls.first.price?? 0.0;
+    percentage = getPercentageDiff(initial: initial, current: current);
+  }
+  return percentage;
 }
 
 num  getPercentageChangeProgress ({required num percentage}) {
@@ -73,16 +82,16 @@ int getRandomNumber(int min, int max, {bool includeMax: false}) {
   return min + random.nextInt(diff);
 }
 
-Future<void> updateTradingCalls (TradeCallStore store,
-    SignalAlert alert) async {
+void updateTradingCalls (TradeCallStore store,
+    List<SignalAlert> alerts)  {
 
-  _updateTradeCall(store, alert);
+  _updateTradeCall(store, alerts);
 
   // return compute(_updateTradeCall, signalAlert);
 }
 
 void _updateTradeCall(TradeCallStore store,
-    SignalAlert alert) {
+    List<SignalAlert> alerts) {
 
   // print('updateTradeCall: for '
   //     '${signalAlert.coinId}:''${call.length}:'
@@ -90,40 +99,22 @@ void _updateTradeCall(TradeCallStore store,
   //     ':${signalAlert.indicatorName}'
   // );
 
-  if(store.calls.isEmpty) {
-    if(alert.alertCode == 1) {
+  alerts.forEach((alert) {
+    if(store.calls.isEmpty) {
+      if(alert.alertCode == 1) {
+        store.calls.add(alert);
+      }
+    } else {
+      if(alert.alertCode == 1 && store.calls.last.alertCode == 0) {
+        LocalStore.getOrUpdateTradeCallsHistory(
+            tradeCallsStore: store);
+        store.calls.clear();
+      }
       store.calls.add(alert);
     }
-  } else {
-    if(store.calls.last.alertCode == 0 && alert.alertCode == 1) {
+  });
 
-      final percentageGain = getPercentageDiff(
-          initial: store.calls.first.price!,
-          current: store.calls.last.price!);
-
-      final completedTrade = store.copyWith(
-        calls: [...store.calls, alert ],
-        percentageGain: percentageGain
-      );
-
-      LocalStore.getOrUpdateTradeCallsHistory(tradeCallsStore: completedTrade);
-
-      store.calls.clear();
-    }
-
-    store.calls.add(alert);
-  }
-
-  if(store.calls.length > 0) {
-
-    final percentageGain = getPercentageDiff(
-        initial: store.calls.first.price!,
-        current: store.calls.last.price!
-    );
-
-    LocalStore.getOrSetTradeCallStore(tradeCallStore:
-    store.copyWith(percentageGain: percentageGain));
-  }
+  LocalStore.getOrSetTradeCallStore(tradeCallStore: store);
 }
 
 List<List<SignalAlert>> getTradeCalls(List<SignalAlert> signalAlerts) {

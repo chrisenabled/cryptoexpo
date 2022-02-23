@@ -1,7 +1,7 @@
 
 import 'package:cryptoexpo/modules/interfaces/json_serialized.dart';
 
-class SignalAlert implements JsonSerialized {
+class SignalAlert implements JsonSerialized<SignalAlert> {
   final String? coinId;
   final String? indicatorName;
   final String? alertMsg;
@@ -66,7 +66,7 @@ class SignalAlert implements JsonSerialized {
   }
 
   @override
-  SignalAlert fromJson(Map map) {
+  SignalAlert fromJson(dynamic map) {
     final json = map as Map<String, dynamic>;
 
     return SignalAlert(
